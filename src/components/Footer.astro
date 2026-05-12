@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border-subtle bg-background-soft">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-text-secondary">
+
+      <!-- Copyright + Claim -->
+      <p>
+        © {year} Torsten Günter
+        <span class="text-border-subtle mx-2" aria-hidden="true">·</span>
+        Softwareentwickler &amp; Berater
+      </p>
+
+      <!-- Rechtliches -->
+      <nav aria-label="Rechtliches" class="flex items-center gap-4">
+        <a href="/impressum"  class="hover:text-primary transition-colors">Impressum</a>
+        <a href="/datenschutz" class="hover:text-primary transition-colors">Datenschutz</a>
+      </nav>
+    </div>
+  </div>
+</footer>
