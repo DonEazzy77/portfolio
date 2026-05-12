@@ -1,20 +1,154 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title       = 'Torsten Günter — Online Marketing & E-Commerce mit technischer DNA';
+const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performance-Marketing und Customer Experience. Heute mit Fokus auf CRM und KI-gestützter Automation.';
 ---
 
-<BaseLayout
-  title="Torsten Günter – Portfolio"
-  description="Portfolio von Torsten Günter – Softwareentwickler und Berater."
->
-  <!-- Platzhalter-Hero: wird im nächsten Schritt durch echte Inhalte ersetzt -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-    <p class="text-sm font-medium text-text-secondary tracking-wide mb-4">Platzhalter</p>
-    <h1 class="font-serif text-5xl text-text-primary mb-6 leading-tight">
-      Startseite – Inhalt folgt
-    </h1>
-    <p class="text-text-secondary text-lg max-w-xl leading-relaxed">
-      Das Layout-Skelett steht. Navigation, Footer und Design-System sind aktiv.
-      Die eigentlichen Inhalte kommen im nächsten Schritt.
-    </p>
+<BaseLayout title={title} description={description}>
+
+  <!-- ── 1. HERO ─────────────────────────────────────────────────── -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Badge-Pill -->
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-soft text-primary mb-6">
+        Online Marketing · E-Commerce · CRM
+      </span>
+
+      <!-- Headline: "technischer DNA." in Bronze -->
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-6 max-w-3xl">
+        Marketing &amp; E-Commerce mit <span class="text-primary">technischer DNA.</span>
+      </h1>
+
+      <!-- Subline -->
+      <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl">
+        10+ Jahre an der Schnittstelle von Webentwicklung, Performance-Marketing und Customer Experience.
+        Heute mit Fokus auf CRM und KI-gestützter Automation.
+      </p>
+
+      <!-- CTA-Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/ueber-mich"
+          class="inline-flex items-center px-6 py-3 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium transition-all duration-200"
+        >
+          Mehr über mich
+        </a>
+        <a
+          href="/kontakt"
+          class="inline-flex items-center px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary-soft font-medium transition-all duration-200"
+        >
+          Kontakt aufnehmen
+        </a>
+      </div>
+
+    </div>
   </section>
+
+  <!-- ── 2. DREI DISZIPLINEN ──────────────────────────────────────── -->
+  <section class="bg-background-soft py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <h2 class="font-serif text-3xl font-medium text-text-primary mb-4">
+        Drei Disziplinen, eine Person.
+      </h2>
+      <p class="text-text-secondary leading-relaxed mb-12 max-w-xl">
+        Selten findet sich jemand, der Marketing, Customer Experience und Web-Technik gleichermaßen versteht.
+        Ich tue es seit über 10 Jahren.
+      </p>
+
+      <!-- Cards: 1 Spalte → 2 Spalten → 3 Spalten -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
+          <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
+          <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
+            Marketing &amp; E-Commerce
+          </h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Über 10 Jahre Erfahrung in Performance-Marketing, SEO/SEA, Multichannel-Vertrieb und
+            Plattformen wie Shopify und Plentymarkets. Strategie und operative Umsetzung in einer Person.
+          </p>
+        </article>
+
+        <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
+          <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
+          <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
+            CRM &amp; Customer Experience
+          </h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Im laufenden CRM-Manager-Studium (IHK) mit Fokus auf datengetriebene Customer Journey,
+            Kundenbindung und Conversion-Optimierung. Wo aus Daten echte Beziehungen werden.
+          </p>
+        </article>
+
+        <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
+          <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
+          <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
+            Tech &amp; Web
+          </h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Ausgebildeter Informatiker (Multimedia) mit Frontend-Erfahrung. Versteht die technische
+            Seite und spricht die Sprache von Entwickler-Teams. Schließt die Lücke zwischen Marketing und IT.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. AKTUELLER FOKUS ──────────────────────────────────────── -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Zweispaltig auf lg+, gestapelt auf Mobile -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Linke Spalte: Eyebrow + Headline -->
+        <div>
+          <!-- Bronze-Quadrat als Eyebrow-Marker statt Caps -->
+          <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
+            <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+            Aktueller Fokus
+          </p>
+          <h2 class="font-serif text-3xl font-medium text-text-primary leading-snug">
+            CRM trifft auf KI-gestützte Automation.
+          </h2>
+        </div>
+
+        <!-- Rechte Spalte: Fließtext -->
+        <p class="text-base text-text-secondary leading-relaxed">
+          Aktuell vertiefe ich meine CRM-Expertise im Studium zum CRM-Manager (IHK, Abschluss 2026)
+          und arbeite intensiv an der Verbindung von Customer-Experience-Strategien mit modernen
+          KI-Werkzeugen — von Claude und Multi-Agent-Systemen bis zu Marketing-Automation.
+          Das Ziel: smarte, datengetriebene Kundenreisen, in denen Mensch und Maschine sinnvoll
+          zusammenspielen — statt sich gegenseitig zu ersetzen.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. CTA ───────────────────────────────────────────────────── -->
+  <section class="bg-background-soft py-20 sm:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <h2 class="font-serif text-4xl font-medium text-text-primary mb-5">
+        Lass uns sprechen.
+      </h2>
+      <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto">
+        Auf der Suche nach jemandem, der Marketing und Tech wirklich verbindet?
+        Ob Festanstellung, Freelance oder Beratung — ich freue mich auf dein Anliegen.
+      </p>
+      <a
+        href="/kontakt"
+        class="inline-flex items-center px-8 py-4 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium text-lg transition-all duration-200"
+      >
+        Kontakt aufnehmen
+      </a>
+
+    </div>
+  </section>
+
 </BaseLayout>
