@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Kontakt — Torsten Günter"
+  description="Lass uns sprechen. Aktuell verfügbar für Festanstellung und Freelance-Projekte. Erreichbar per E-Mail, LinkedIn, GitHub und XING."
+>
+
+  <!--
+    Spacing-Konvention (siehe skills.astro / Memory):
+      • Page-Wrapper:    py-16 md:py-24 lg:py-32  (Abstand zu Header/Footer)
+      • Sektionen:       flex flex-col + Inline-Style row-gap: clamp(2.5rem, 4vw, 4.5rem)
+      • Alle Grids:      Inline-Style display:grid + repeat(auto-fit, minmax(…))
+                         Kein Tailwind-grid-cols-*/gap-* – im Setup unzuverlässig.
+  -->
+  <div class="py-16 md:py-24 lg:py-32">
+
+    <div
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
+    >
+
+      <!-- ── 1. HERO ───────────────────────────────────────────────────── -->
+      <div>
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Kontakt
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
+          Lass uns sprechen.
+        </h1>
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Aktuell verfügbar für Festanstellung und Freelance-Projekte. Schreib mir gerne —
+          ich antworte innerhalb von 24 Stunden.
+        </p>
+      </div>
+
+      <!-- ── 2. EMAIL + STANDORT (2-Spalten-Grid, auto-fit) ────────────── -->
+      <!-- align-items: stretch ist Grid-Default, hier zur Klarheit explizit:
+           sorgt dafür, dass Email- und Standort-Card in einer Reihe dieselbe Höhe bekommen. -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch;">
+
+        <!-- ── CARD A: EMAIL (ganze Card ist mailto-Link) ──────────────── -->
+        <a
+          href="mailto:me@torsten-guenter.de?subject=%5BPortfolio%5D%20Anfrage%20%C3%BCber%20torsten-guenter.de"
+          class="contact-card flex flex-col items-center text-center"
+          style="padding: 2rem; gap: 0.75rem; position: relative;"
+        >
+          <!-- Bronze-Akzentlinie (konsistent zu den Werte-Cards auf /ueber-mich) -->
+          <div aria-hidden="true" style="width: 2rem; height: 3px; background: var(--color-primary); margin: 0 auto 1rem;"></div>
+
+          <!-- SLOT 1: Icon-Zone (rem-basiert → skaliert mit System-Schriftgröße) -->
+          <div style="min-height: 8.75rem; display: flex; align-items: center; justify-content: center; width: 100%;">
+            <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="text-primary">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+          </div>
+
+          <!-- SLOT 2: Eyebrow -->
+          <div style="min-height: 1.5rem;">
+            <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em;">
+              Direkter Draht
+            </p>
+          </div>
+
+          <!-- SLOT 3: Hauptzeile (vereinheitlicht auf 1.125rem – gleich groß wie Standort-Card) -->
+          <div style="min-height: 3.5rem; display: flex; align-items: center; justify-content: center;">
+            <p class="font-serif font-medium text-text-primary" style="font-size: 1.125rem;">
+              me@torsten-guenter.de
+            </p>
+          </div>
+
+          <!-- Corner-Hint unten rechts (absolute, einheitlicher Stil zur Standort-Card) -->
+          <span
+            class="text-primary"
+            style="position: absolute; bottom: 0.75rem; right: 0.875rem; font-size: 0.6875rem; opacity: 0.7; display: flex; align-items: center; gap: 0.25rem;"
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16v12H4z" />
+              <path d="M4 8l8 5 8-5" />
+            </svg>
+            Mail
+          </span>
+        </a>
+
+        <!-- ── CARD B: STANDORT (3D-Flip) ──────────────────────────────── -->
+        <div
+          class="flip-container"
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          aria-label="Standort-Karte umdrehen"
+          data-flip-card
+        >
+          <div class="flip-inner" data-flip-inner>
+
+            <!-- ── VORDERSEITE: Schwarzwald-Mini-Illustration ──────────── -->
+            <!--
+              Achtung: position: relative wird hier NICHT inline gesetzt –
+              .flip-face hat per CSS-Klasse position: absolute; inset: 0;
+              (notwendig für die 3D-Flip-Stack-Geometrie). Der Corner-Hint
+              findet seinen positioned ancestor über die Klasse.
+            -->
+            <div class="flip-face flip-front flex flex-col items-center text-center" style="padding: 2rem; gap: 0.75rem;">
+
+              <!-- Bronze-Akzentlinie (konsistent zur Email-Card und zu den Werte-Cards) -->
+              <div aria-hidden="true" style="width: 2rem; height: 3px; background: var(--color-primary); margin: 0 auto 1rem;"></div>
+
+              <!-- SLOT 1: Icon-Zone (rem-basiert) -->
+              <div style="min-height: 8.75rem; display: flex; align-items: center; justify-content: center; width: 100%;">
+                <svg width="128" height="96" viewBox="0 0 96 64" fill="currentColor" aria-hidden="true" class="text-primary">
+                  <path d="M 0 42 Q 24 26 48 32 T 96 36 L 96 56 L 0 56 Z" opacity="0.2"/>
+                  <path d="M 13 56 L 20 42 L 27 56 Z M 15 47 L 20 33 L 25 47 Z M 17 37 L 20 26 L 23 37 Z"/>
+                  <path d="M 38 56 L 48 38 L 58 56 Z M 41 41 L 48 25 L 55 41 Z M 44 28 L 48 12 L 52 28 Z"/>
+                  <path d="M 66 56 L 74 42 L 82 56 Z M 68 45 L 74 32 L 80 45 Z M 70 35 L 74 24 L 78 35 Z"/>
+                  <line x1="0" y1="56" x2="96" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                </svg>
+              </div>
+
+              <!-- SLOT 2: Eyebrow -->
+              <div style="min-height: 1.5rem;">
+                <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em;">
+                  Standort
+                </p>
+              </div>
+
+              <!-- SLOT 3: Hauptzeile, zweizeilig (vereinheitlicht auf 1.125rem) -->
+              <div style="min-height: 3.5rem; display: flex; align-items: center; justify-content: center;">
+                <p class="font-serif font-medium text-text-primary leading-snug" style="font-size: 1.125rem;">
+                  Im Schwarzwald zuhause —<br/>weltweit digital.
+                </p>
+              </div>
+
+              <!-- Corner-Hint unten rechts (absolute, einheitlicher Stil zur Email-Card) -->
+              <span
+                class="text-primary"
+                style="position: absolute; bottom: 0.75rem; right: 0.875rem; font-size: 0.6875rem; opacity: 0.7; display: flex; align-items: center; gap: 0.25rem;"
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Drehen
+              </span>
+            </div>
+
+            <!-- ── RÜCKSEITE: Region-Outline + Stadt-Detail ────────────── -->
+            <div class="flip-face flip-back flex flex-col items-center justify-center text-center" style="padding: 2rem;">
+
+              <!-- Eyebrow -->
+              <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em; margin-bottom: 12px;">
+                Standort
+              </p>
+
+              <!--
+                Schwarzwald-Baar-Kreis SVG (gerendert bei 140×168;
+                viewBox bleibt 200×280 wie spezifiziert).
+              -->
+              <svg width="140" height="168" viewBox="0 0 200 280" fill="none" aria-hidden="true" style="margin-bottom: 10px;">
+                <!--
+                  TODO: Diese Outline ist ein handgezeichneter Platzhalter.
+                  Später durch echte Schwarzwald-Baar-Kreis-SVG aus Wikipedia
+                  (gemeinfrei) ersetzen für geographische Präzision.
+                -->
+                <path id="sbk-outline" d="M 65 35 Q 75 25 88 30 Q 100 22 112 28 Q 125 30 135 38 Q 148 42 152 55 Q 145 70 155 82 Q 168 90 162 105 Q 170 122 158 138 Q 165 152 152 165 Q 158 180 148 195 Q 162 210 145 222 Q 130 235 115 235 Q 100 245 85 235 Q 72 230 65 218 Q 50 210 55 192 Q 45 178 50 162 Q 40 148 45 132 Q 38 118 42 102 Q 35 88 42 75 Q 50 60 55 48 Q 58 38 65 35 Z" fill="#FAEEDA" stroke="#92400E" stroke-width="1.6" stroke-linejoin="round"/>
+
+                <defs>
+                  <clipPath id="sbk-clip">
+                    <path d="M 65 35 Q 75 25 88 30 Q 100 22 112 28 Q 125 30 135 38 Q 148 42 152 55 Q 145 70 155 82 Q 168 90 162 105 Q 170 122 158 138 Q 165 152 152 165 Q 158 180 148 195 Q 162 210 145 222 Q 130 235 115 235 Q 100 245 85 235 Q 72 230 65 218 Q 50 210 55 192 Q 45 178 50 162 Q 40 148 45 132 Q 38 118 42 102 Q 35 88 42 75 Q 50 60 55 48 Q 58 38 65 35 Z"/>
+                  </clipPath>
+                </defs>
+
+                <g clip-path="url(#sbk-clip)">
+                  <path d="M 65 90 Q 80 120 100 150" stroke="#5C7FA8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                  <path d="M 50 145 Q 75 152 100 150" stroke="#5C7FA8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                  <path d="M 100 150 Q 125 158 150 162 Q 165 165 175 168" stroke="#5C7FA8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M 120 95 Q 122 70 118 50 Q 116 38 113 28" stroke="#5C7FA8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <g fill="#92400E" opacity="0.28">
+                  <polygon points="80,55 76,61 84,61"/>
+                  <polygon points="140,75 136,81 144,81"/>
+                  <polygon points="90,200 86,206 94,206"/>
+                </g>
+
+                <g transform="translate(120, 95)">
+                  <ellipse cx="0" cy="14" rx="6" ry="2" fill="#92400E" opacity="0.25"/>
+                  <path d="M0 -18 C-8 -18 -14 -12 -14 -4 C-14 6 0 16 0 16 C0 16 14 6 14 -4 C14 -12 8 -18 0 -18 Z" fill="#92400E"/>
+                  <circle cx="0" cy="-6" r="4" fill="#FFFFFF"/>
+                </g>
+              </svg>
+
+              <!-- Stadt (vereinheitlicht auf 1.125rem — gleich groß wie Vorderseiten-Haupttext) -->
+              <p class="font-serif font-medium text-text-primary" style="font-size: 1.125rem; margin-bottom: 2px;">
+                Villingen-Schwenningen
+              </p>
+              <!-- Region -->
+              <p class="text-text-secondary" style="font-size: 11px;">
+                Schwarzwald-Baar-Kreis
+              </p>
+
+              <!-- Corner-Hint unten rechts -->
+              <span class="text-primary" style="position: absolute; bottom: 10px; right: 12px; font-size: 10px; opacity: 0.7; display: inline-flex; align-items: center; gap: 4px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Zurück
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── 3. SOCIAL-TILES (3-Spalten-Grid, auto-fit) ────────────────── -->
+      <div>
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-6">
+          Auch hier erreichbar.
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(0.75rem, 1.5vw, 1.25rem);">
+
+          <!--
+            LinkedIn
+            Hinweis: URL kann übergangsweise 404 sein, falls LinkedIn die
+            Custom-URL noch nicht durchgeschaltet hat.
+          -->
+          <a
+            href="https://www.linkedin.com/in/torsten-guenter"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card flex flex-col items-center text-center"
+            style="padding: 1.25rem;"
+          >
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="text-primary" style="margin-bottom: 10px;">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <p class="font-medium text-text-primary" style="font-size: 13px; margin-bottom: 2px;">LinkedIn</p>
+            <p class="text-text-secondary" style="font-size: 11px;">torsten-guenter</p>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/DonEazzy77"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card flex flex-col items-center text-center"
+            style="padding: 1.25rem;"
+          >
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="text-primary" style="margin-bottom: 10px;">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <p class="font-medium text-text-primary" style="font-size: 13px; margin-bottom: 2px;">GitHub</p>
+            <p class="text-text-secondary" style="font-size: 11px;">DonEazzy77</p>
+          </a>
+
+          <!-- XING -->
+          <a
+            href="https://www.xing.com/profile/Torsten_Guenter"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card flex flex-col items-center text-center"
+            style="padding: 1.25rem;"
+          >
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="text-primary" style="margin-bottom: 10px;">
+              <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+            </svg>
+            <p class="font-medium text-text-primary" style="font-size: 13px; margin-bottom: 2px;">XING</p>
+            <p class="text-text-secondary" style="font-size: 11px;">Torsten_Guenter</p>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Card-Basisstil (Email + Social) – ein Stil, ein Ort. */
+  .contact-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 200ms ease, border-color 200ms ease;
+  }
+  .contact-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+  }
+
+  /* Flip-Card: 3D-Setup. Hover-Lift sitzt auf dem Container (außen),
+     damit er nicht mit dem rotateY der inneren Achse kollidiert. */
+  .flip-container {
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 200ms ease;
+  }
+  .flip-container:hover {
+    transform: translateY(-2px);
+  }
+  .flip-container:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    min-height: 340px;   /* Höhe ausreichend für die Rückseite mit 140×168-SVG */
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .flip-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.5rem;
+    transition: border-color 200ms ease;
+  }
+  .flip-container:hover .flip-face {
+    border-color: var(--color-primary);
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<script>
+  // Flip-Toggle: Click + Keyboard (Enter/Space) → aria-pressed + is-flipped.
+  document.querySelectorAll('[data-flip-card]').forEach((card) => {
+    const inner = card.querySelector('[data-flip-inner]');
+    if (!inner) return;
+
+    const toggle = () => {
+      const pressed = card.getAttribute('aria-pressed') === 'true';
+      card.setAttribute('aria-pressed', String(!pressed));
+      inner.classList.toggle('is-flipped');
+    };
+
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
