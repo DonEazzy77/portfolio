@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface SkillGroup {
+  title: string;
+  description: string;
+  pills: string[];
+}
+
+const skillGroups: SkillGroup[] = [
+  {
+    title: 'Marketing & Performance',
+    description:
+      'Strategische Online-Marketing-Konzepte, Performance-Optimierung und datengetriebene Kampagnensteuerung über alle relevanten Kanäle.',
+    pills: [
+      'SEO',
+      'SEA / Google Ads',
+      'Performance Marketing',
+      'Meta Ads',
+      'Conversion-Optimierung',
+      'A/B-Testing',
+      'Customer Journey',
+      'Google Analytics',
+    ],
+  },
+  {
+    title: 'E-Commerce & Multichannel',
+    description:
+      'Aufbau, Betreuung und Optimierung von Online-Shops und Multichannel-Vertriebsstrukturen — von der Plattformwahl bis zur Performance.',
+    pills: [
+      'Shopify',
+      'Plentymarkets',
+      'XT-Commerce',
+      'Amazon Seller Central',
+      'eBay',
+      'Otto Market',
+      'Multichannel-Strategie',
+    ],
+  },
+  {
+    title: 'CRM & Customer Experience',
+    description:
+      'Datengetriebene Kundenbeziehungen, Lifecycle-Marketing und Customer-Journey-Optimierung. Aktuell in vertiefender Weiterbildung.',
+    pills: [
+      'Customer Journey Design',
+      'Kundenbindungsstrategien',
+      'E-Mail-Marketing',
+      'Marketing Automation',
+      'Datengetriebene Optimierung',
+      'CRM-Manager (IHK) (In Vertiefung)',
+    ],
+  },
+  {
+    title: 'Tech & Web',
+    description:
+      'Solides Frontend-Fundament, technisches Verständnis für moderne Webprojekte. Schnittstelle zwischen Marketing und Entwicklung.',
+    // Reihenfolge: erst etablierte Skills, dann 'Im Aufbau' / 'In Vertiefung'
+    pills: [
+      'HTML / CSS',
+      'JavaScript',
+      'WordPress',
+      'TYPO3',
+      'Joomla',
+      'Git / GitHub',
+      'VS Code',
+      'Astro (Im Aufbau)',
+      'Tailwind CSS (Im Aufbau)',
+    ],
+  },
+  {
+    title: 'KI & Moderner Workflow',
+    description:
+      'Aktive Integration von KI-Werkzeugen in Marketing-, Content- und Entwicklungs-Prozesse. Fokus: Multi-Agent-Workflows und sinnvolle Automation.',
+    // Reihenfolge: erst etablierte Skills, dann 'Im Aufbau' / 'In Vertiefung'
+    pills: [
+      'ChatGPT',
+      'Claude (Anthropic) (Im Aufbau)',
+      'Claude Code (Im Aufbau)',
+      'Prompt Engineering (Im Aufbau)',
+      'KI-gestützte Marketing-Automation (Im Aufbau)',
+      'Multi-Agent-Systeme (Im Aufbau)',
+    ],
+  },
+  {
+    title: 'Tools & Software',
+    description:
+      'Werkzeuge für Design, Content, Office und Medienproduktion — von der Konzeption bis zur fertigen Asset-Lieferung.',
+    pills: [
+      'Adobe Photoshop',
+      'Adobe InDesign',
+      'Adobe Illustrator',
+      'Adobe Premiere Pro',
+      'Canva',
+      'Microsoft Office',
+      '3ds Max (Grundlagen)',
+      'Blender (Grundlagen)',
+    ],
+  },
+];
+
+// Pills mit diesem Marker → Bronze-Akzent statt Grau
+const isLearning = (pill: string) =>
+  pill.includes('(Im Aufbau)') || pill.includes('(In Vertiefung)');
+---
+
+<BaseLayout
+  title="Skills — Torsten Günter"
+  description="Marketing, E-Commerce, CRM, Tech und KI-Workflow — die Skills, mit denen ich Disziplinen verbinde."
+>
+
+  <!--
+    Spacing-Konvention für Content-Seiten:
+      • Page-Wrapper:   py-16 md:py-24 lg:py-32  (Abstand zu Header/Footer)
+      • Sektionen:      flat hierarchy – jede Sektion ist EIN direktes Kind
+                        eines flex-col-Containers mit gap-16 md:gap-24 lg:gap-32.
+                        Eyebrow/Headline/Subline gehören IN eine Box, nicht daneben.
+    Hinweis: Die Startseite (index.astro) nutzt bewusst eigene per-Sektion-Werte
+    und folgt dieser Konvention nicht. Bei neuen Content-Seiten bitte konsistent
+    diese Werte verwenden.
+  -->
+  <div class="py-16 md:py-24 lg:py-32">
+
+    <!--
+      Spacing per inline-style mit clamp(): Tailwinds gap-* Utilities werden in
+      diesem Setup (Tailwind v4 + Astro) für diesen Container nicht zuverlässig
+      generiert (Diagnose abgeschlossen). clamp() liefert responsive Spacing
+      ohne Klassen-Detection-Abhängigkeit.
+    -->
+    <div
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
+    >
+
+      <!-- ── 1. INTRO-BOX ─────────────────────────────────────────────── -->
+      <div>
+
+        <!-- Eyebrow -->
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Skills
+        </p>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
+          Was ich kann.
+        </h1>
+
+        <!-- Subline -->
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Eine Übersicht der Werkzeuge, Methoden und Disziplinen, mit denen ich Marketing, Customer
+          Experience und Tech zusammenbringe. Manche davon nutze ich seit über 10 Jahren, andere baue
+          ich gerade aktiv aus.
+        </p>
+
+      </div>
+
+      <!-- ── 2. GRID-BOX ──────────────────────────────────────────────── -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+        {skillGroups.map((group) => (
+          <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
+
+            <!-- Bronze-Akzentlinie -->
+            <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
+
+            <!-- Card-Titel -->
+            <h2 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+              {group.title}
+            </h2>
+
+            <!-- Beschreibung -->
+            <p class="text-sm text-text-secondary leading-relaxed mb-5">
+              {group.description}
+            </p>
+
+            <!-- Skill-Pills -->
+            <div class="flex flex-wrap gap-2">
+              {group.pills.map((pill) => (
+                <span
+                  class:list={[
+                    'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium',
+                    isLearning(pill)
+                      ? 'bg-primary-soft text-primary'
+                      : 'bg-[#F3F4F6] text-text-secondary',
+                  ]}
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</BaseLayout>
