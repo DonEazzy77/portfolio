@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Impressum — Torsten Günter"
+  description="Rechtliche Angaben gemäß § 5 TMG."
+>
+
+  <div class="py-16 md:py-24 lg:py-32">
+    <article
+      class="legal-page max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2rem, 4vw, 3rem);"
+    >
+
+      <!-- ── HERO ──────────────────────────────────────────────────────── -->
+      <header>
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Rechtliches
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight">
+          Impressum
+        </h1>
+      </header>
+
+      <!-- ── ANGABEN GEMÄSS § 5 TMG ────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <p>
+          <span
+            class="obf-name"
+            data-name-first="Torsten"
+            data-name-last="Günter"
+          >[wird beim Laden eingesetzt]</span><br />
+          <span
+            class="obf-address"
+            data-street="Eichhaldeweg"
+            data-number="8"
+            data-zip="78089"
+            data-city="Unterkirnach"
+          >[wird beim Laden eingesetzt]</span><br />
+          Deutschland
+        </p>
+        <noscript>
+          <p class="legal-noscript">
+            Für die Anzeige der Kontaktdaten benötigt diese Seite JavaScript.
+            Alternativ erreichst du mich per E-Mail über das Kontaktformular.
+          </p>
+        </noscript>
+      </section>
+
+      <!-- ── KONTAKT ───────────────────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Kontakt</h2>
+        <p>
+          E-Mail:
+          <a
+            href="#"
+            class="obf-mail"
+            data-mail-user="me"
+            data-mail-domain="torsten-guenter.de"
+            data-mail-subject="%5BPortfolio%5D%20Anfrage%20%C3%BCber%20torsten-guenter.de"
+          >[wird beim Laden eingesetzt]</a>
+        </p>
+        <p>
+          Telefon:
+          <a
+            href="#"
+            class="obf-phone"
+            data-phone-cc="+49"
+            data-phone-area="7721"
+            data-phone-num="9161046"
+          >[wird beim Laden eingesetzt]</a>
+        </p>
+      </section>
+
+      <!-- ── BERUFSBEZEICHNUNG ─────────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Berufsbezeichnung</h2>
+        <p>
+          Online Marketing &amp; E-Commerce Manager<br />
+          <span class="legal-muted">(tätig als Privatperson — kein Gewerbe angemeldet)</span>
+        </p>
+      </section>
+
+      <!-- ── VERANTWORTLICH § 18 ABS. 2 MStV ───────────────────────────── -->
+      <section class="legal-section">
+        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+        <p>
+          Torsten Günter
+          <span class="legal-muted">(Anschrift siehe oben)</span>
+        </p>
+      </section>
+
+      <!-- ── HAFTUNG FÜR INHALTE ───────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Haftung für Inhalte</h2>
+        <p>
+          Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+          Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
+          Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
+          nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als
+          Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+          Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
+          rechtswidrige Tätigkeit hinweisen.
+        </p>
+      </section>
+
+      <!-- ── HAFTUNG FÜR LINKS ─────────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Haftung für Links</h2>
+        <p>
+          Diese Website enthält Links zu meinen eigenen Profilen auf externen Plattformen
+          (LinkedIn, GitHub, XING) sowie zu Datenschutzhinweisen Dritter. Auf die Inhalte, das
+          Layout und die Funktionen dieser externen Plattformen sowie auf User-Generated-Content
+          Dritter (etwa Kommentare oder Posts anderer Nutzer:innen) habe ich keinen Einfluss.
+          Für die Inhalte der jeweiligen verlinkten Seiten ist stets der jeweilige Anbieter oder
+          Betreiber verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung
+          auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der
+          Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle ist ohne konkrete
+          Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
+        </p>
+      </section>
+
+      <!-- ── URHEBERRECHT ──────────────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Urheberrecht</h2>
+        <p>
+          Die auf dieser Website veröffentlichten Inhalte und Werke unterliegen dem deutschen
+          Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung
+          außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung.
+          Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen
+          Gebrauch gestattet.
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ── Legal-Typografie ────────────────────────────────────────────────── */
+  .legal-page h2 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin: 0 0 1rem;
+  }
+  .legal-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .legal-section p + p {
+    margin-top: 1rem;
+  }
+  .legal-muted {
+    color: var(--color-text-secondary);
+  }
+  .legal-noscript {
+    color: var(--color-text-secondary);
+    margin-top: 1rem;
+  }
+
+  /* ── Obfuskierte Mail/Tel-Links ──────────────────────────────────────── */
+  .obf-mail,
+  .obf-phone {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 200ms ease;
+    word-break: break-word;
+  }
+  .obf-mail:hover,
+  .obf-phone:hover {
+    color: var(--color-primary);
+  }
+</style>
+
+<script>
+  // Astro lädt dieses Script als deferred Module (type="module") –
+  // der DOM ist beim Ausführen garantiert bereit, daher kein DOMContentLoaded.
+
+  // Name: data-name-first + data-name-last → "Vorname Nachname"
+  document.querySelectorAll<HTMLElement>('.obf-name').forEach((el) => {
+    const first = el.dataset.nameFirst ?? '';
+    const last = el.dataset.nameLast ?? '';
+    el.textContent = `${first} ${last}`.trim();
+  });
+
+  // Adresse: data-street/number/zip/city → zwei Zeilen mit <br>
+  document.querySelectorAll<HTMLElement>('.obf-address').forEach((el) => {
+    const street = el.dataset.street ?? '';
+    const number = el.dataset.number ?? '';
+    const zip = el.dataset.zip ?? '';
+    const city = el.dataset.city ?? '';
+    el.innerHTML = `${street} ${number}<br>${zip} ${city}`;
+  });
+
+  // E-Mail: setzt href="mailto:..." und textContent auf die Adresse
+  document.querySelectorAll<HTMLAnchorElement>('.obf-mail').forEach((el) => {
+    const user = el.dataset.mailUser ?? '';
+    const domain = el.dataset.mailDomain ?? '';
+    const subject = el.dataset.mailSubject ?? '';
+    const address = `${user}@${domain}`;
+    el.href = `mailto:${address}${subject ? `?subject=${subject}` : ''}`;
+    el.textContent = address;
+  });
+
+  // Telefon: setzt href="tel:..." (ohne Whitespace) und textContent mit Leerzeichen
+  document.querySelectorAll<HTMLAnchorElement>('.obf-phone').forEach((el) => {
+    const cc = el.dataset.phoneCc ?? '';
+    const area = el.dataset.phoneArea ?? '';
+    const num = el.dataset.phoneNum ?? '';
+    el.href = `tel:${cc}${area}${num}`.replace(/\s/g, '');
+    el.textContent = `${cc} ${area} ${num}`.trim();
+  });
+</script>
