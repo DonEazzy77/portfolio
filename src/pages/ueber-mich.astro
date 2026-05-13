@@ -13,7 +13,7 @@ import torstenImage from '../assets/images/torsten.png';
     Wenn das echte Foto kein PNG ist, zusätzlich den Import-Pfad oben anpassen
     (z. B. auf '../assets/images/torsten.jpg').
 */
-const hasRealPhoto = false;
+const hasRealPhoto = true;
 
 interface Station {
   period: string;
@@ -143,7 +143,7 @@ const education: EducationItem[] = [
 
       <!-- ── 1. HERO (zweispaltig: Text + Foto-Stack mit Mini-Qualifikationen) ── -->
       <section>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;">
 
           <!-- LEFT: Text -->
           <div>
@@ -179,8 +179,8 @@ const education: EducationItem[] = [
                   <Image
                     src={torstenImage}
                     alt="Torsten Günter"
-                    width={420}
-                    height={420}
+                    width={220}
+                    height={220}
                     loading="eager"
                     style="width: 100%; height: 100%; object-fit: cover; display: block;"
                   />
@@ -384,7 +384,7 @@ const education: EducationItem[] = [
     border: 0.5px solid var(--color-border-subtle);
     border-radius: 12px;
     padding: 1.5rem;
-    max-width: 290px;
+    max-width: 420px;
     width: 100%;
     position: relative;
   }
@@ -398,8 +398,8 @@ const education: EducationItem[] = [
   }
 
   .profile-photo {
-    width: 140px;
-    height: 140px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     border: 1.5px solid var(--color-primary);
     background: var(--color-primary-soft);
@@ -408,6 +408,13 @@ const education: EducationItem[] = [
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+    }
   }
 
   .profile-initials {
