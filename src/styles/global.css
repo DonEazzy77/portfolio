@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────
+   Self-hosted Fonts via Fontsource (DSGVO-konform,
+   keine Requests an fonts.googleapis.com / gstatic.com).
+   @import muss vor allen anderen Regeln stehen.
+   ───────────────────────────────────────── */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+
+/* ─────────────────────────────────────────
    Design-Token – Tailwind v4 theme extension
-   Fonts werden über <link> in BaseLayout eingebunden.
    ───────────────────────────────────────── */
 @theme {
   /* Akzent: Bronze/Kupfer */
