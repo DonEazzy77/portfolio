@@ -18,6 +18,12 @@ const { title, description = 'Portfolio von Torsten Günter – Softwareentwickl
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     {description && <meta name="description" content={description} />}
+
+    {/* TODO: Diese noindex/nofollow Meta-Tags ENTFERNEN, sobald die .de-Domain live ist.
+        Stand: aktuell aktiv, weil die Netlify-Subdomain nicht in den Suchindex soll. */}
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 

@@ -1,0 +1,4 @@
+# TODO: Diese Disallow-Direktive entfernen, sobald die Domain torsten-guenter.de
+# angebunden und live ist. Dann durch "Allow: /" plus ggf. Sitemap-Verweis ersetzen.
+User-agent: *
+Disallow: /
