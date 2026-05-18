@@ -11,6 +11,14 @@
 @import "@fontsource/fraunces/400.css";
 @import "@fontsource/fraunces/500.css";
 
+/*
+ Typografie-Konvention für & vs ·:
+ - "&" für Job-Titel und Brand-Tagline (kombinierte Rollen, gewachsene Phrasen)
+   z.B. "Online Marketing & E-Commerce Manager", "Marketing & E-Commerce mit technischer DNA."
+ - "·" für strukturelle Aufzählungen (Kategorien, Phasen, Listen)
+   z.B. "Marketing · Performance", "Weiterbildung · Neuorientierung"
+*/
+
 /* ─────────────────────────────────────────
    Design-Token – Tailwind v4 theme extension
    ───────────────────────────────────────── */
