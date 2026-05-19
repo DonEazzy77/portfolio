@@ -153,42 +153,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </p>
 
               <!--
-                Schwarzwald-Baar-Kreis SVG (gerendert bei 140×168;
-                viewBox bleibt 200×280 wie spezifiziert).
+                Schwarzwald-Baar-Kreis – brand-bereinigte SVG (Wikipedia-Basis, CC BY-SA).
+                VS in Bronze, Kreis-Gemeinden in Cream, Flüsse in gedämpftem Blau.
+                Größe wird über .kreis-map gesteuert (siehe Style-Block).
               -->
-              <svg width="140" height="168" viewBox="0 0 200 280" fill="none" aria-hidden="true" style="margin-bottom: 10px;">
-                <!--
-                  TODO: Diese Outline ist ein handgezeichneter Platzhalter.
-                  Später durch echte Schwarzwald-Baar-Kreis-SVG aus Wikipedia
-                  (gemeinfrei) ersetzen für geographische Präzision.
-                -->
-                <path id="sbk-outline" d="M 65 35 Q 75 25 88 30 Q 100 22 112 28 Q 125 30 135 38 Q 148 42 152 55 Q 145 70 155 82 Q 168 90 162 105 Q 170 122 158 138 Q 165 152 152 165 Q 158 180 148 195 Q 162 210 145 222 Q 130 235 115 235 Q 100 245 85 235 Q 72 230 65 218 Q 50 210 55 192 Q 45 178 50 162 Q 40 148 45 132 Q 38 118 42 102 Q 35 88 42 75 Q 50 60 55 48 Q 58 38 65 35 Z" fill="#FAEEDA" stroke="#92400E" stroke-width="1.6" stroke-linejoin="round"/>
-
-                <defs>
-                  <clipPath id="sbk-clip">
-                    <path d="M 65 35 Q 75 25 88 30 Q 100 22 112 28 Q 125 30 135 38 Q 148 42 152 55 Q 145 70 155 82 Q 168 90 162 105 Q 170 122 158 138 Q 165 152 152 165 Q 158 180 148 195 Q 162 210 145 222 Q 130 235 115 235 Q 100 245 85 235 Q 72 230 65 218 Q 50 210 55 192 Q 45 178 50 162 Q 40 148 45 132 Q 38 118 42 102 Q 35 88 42 75 Q 50 60 55 48 Q 58 38 65 35 Z"/>
-                  </clipPath>
-                </defs>
-
-                <g clip-path="url(#sbk-clip)">
-                  <path d="M 65 90 Q 80 120 100 150" stroke="#5C7FA8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                  <path d="M 50 145 Q 75 152 100 150" stroke="#5C7FA8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                  <path d="M 100 150 Q 125 158 150 162 Q 165 165 175 168" stroke="#5C7FA8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                  <path d="M 120 95 Q 122 70 118 50 Q 116 38 113 28" stroke="#5C7FA8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <g fill="#92400E" opacity="0.28">
-                  <polygon points="80,55 76,61 84,61"/>
-                  <polygon points="140,75 136,81 144,81"/>
-                  <polygon points="90,200 86,206 94,206"/>
-                </g>
-
-                <g transform="translate(120, 95)">
-                  <ellipse cx="0" cy="14" rx="6" ry="2" fill="#92400E" opacity="0.25"/>
-                  <path d="M0 -18 C-8 -18 -14 -12 -14 -4 C-14 6 0 16 0 16 C0 16 14 6 14 -4 C14 -12 8 -18 0 -18 Z" fill="#92400E"/>
-                  <circle cx="0" cy="-6" r="4" fill="#FFFFFF"/>
-                </g>
-              </svg>
+              <img
+                src="/schwarzwald_baar_brand.svg"
+                alt="Lage von Villingen-Schwenningen im Schwarzwald-Baar-Kreis"
+                class="kreis-map"
+                loading="lazy"
+              />
 
               <!-- Stadt (vereinheitlicht auf 1.125rem — gleich groß wie Vorderseiten-Haupttext) -->
               <p class="font-serif font-medium text-text-primary" style="font-size: 1.125rem; margin-bottom: 2px;">
@@ -335,6 +309,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .flip-back {
     transform: rotateY(180deg);
+  }
+
+  /* Schwarzwald-Baar-Kreis-Karte auf der Flip-Rückseite – wertbereich 180–260px,
+     falls visuell zu klein/groß: max-height anpassen. margin-bottom 10px hält
+     den alten Abstand zur Stadt-Caption. */
+  .kreis-map {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
   }
 </style>
 
