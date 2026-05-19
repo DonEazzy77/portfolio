@@ -1,18 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import torstenImage from '../assets/images/torsten.png';
+import torstenImage from '../assets/images/torsten.jpeg';
 
-/*
-  TODO – Profilfoto-Tausch:
-    Aktueller Stand: src/assets/images/torsten.png ist ein 1×1-Platzhalter
-    (wird durch hasRealPhoto = false nicht gerendert; statt dessen TG-Initialen).
-    Sobald ein echtes quadratisches Foto (mind. 800×800 px) dort abgelegt ist,
-    den Flag unten auf `true` setzen. Astro generiert dann automatisch
-    Responsive-Sizing inkl. WebP/AVIF-Varianten.
-    Wenn das echte Foto kein PNG ist, zusätzlich den Import-Pfad oben anpassen
-    (z. B. auf '../assets/images/torsten.jpg').
-*/
 const hasRealPhoto = true;
 
 interface Station {
