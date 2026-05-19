@@ -348,6 +348,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const pressed = card.getAttribute('aria-pressed') === 'true';
       card.setAttribute('aria-pressed', String(!pressed));
       inner.classList.toggle('is-flipped');
+      // @ts-ignore – plausible() wird global durch das Init-Stub im BaseLayout gesetzt.
+      window.plausible?.('Standort-Karte gedreht');
     };
 
     card.addEventListener('click', toggle);
