@@ -27,6 +27,26 @@ const { title, description = 'Portfolio von Torsten Günter – Online Marketing
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    {/* TODO: og:url und og:image-/twitter:image-URLs auf https://torsten-guenter.de/...
+        umstellen, sobald die .de-Domain live ist (Suchen & Ersetzen für die Netlify-URL). */}
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Torsten Günter — Portfolio" />
+    <meta property="og:title" content="Marketing &amp; E-Commerce mit technischer DNA." />
+    <meta property="og:description" content="Portfolio von Torsten Günter – Online Marketing &amp; E-Commerce Manager. Fokus auf CRM, Customer Experience und KI-gestützte Automation." />
+    <meta property="og:image" content="https://torsten-guenter.netlify.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+    <meta property="og:image:alt" content="Torsten Günter – Portfolio. Marketing &amp; E-Commerce mit technischer DNA." />
+    <meta property="og:url" content="https://torsten-guenter.netlify.app/" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marketing &amp; E-Commerce mit technischer DNA." />
+    <meta name="twitter:description" content="Portfolio von Torsten Günter – Online Marketing &amp; E-Commerce Manager. Fokus auf CRM, Customer Experience und KI-gestützte Automation." />
+    <meta name="twitter:image" content="https://torsten-guenter.netlify.app/og-image.png" />
+
     <!--
       Fonts: Fraunces (Serif-Überschriften) + Inter (Sans-UI/Fließtext)
       werden self-hosted via Fontsource geladen – siehe src/styles/global.css.
