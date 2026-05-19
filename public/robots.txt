@@ -1,4 +1,41 @@
-# TODO: Diese Disallow-Direktive entfernen, sobald die Domain torsten-guenter.de
+# TODO: Diese Disallow-Direktiven entfernen, sobald die Domain torsten-guenter.de
 # angebunden und live ist. Dann durch "Allow: /" plus ggf. Sitemap-Verweis ersetzen.
+
+# Suchmaschinen-Bots blockieren (bis Domain torsten-guenter.de live ist)
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+# Social-Media-Bots erlauben (für Link-Previews auf LinkedIn, Facebook, etc.)
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Default: alle anderen Bots blockieren
 User-agent: *
 Disallow: /
