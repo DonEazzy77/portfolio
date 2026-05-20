@@ -18,9 +18,11 @@ interface Value {
   body: string;
 }
 
-interface EducationItem {
+interface EducationStation {
+  period: string;
   title: string;
-  note: string | null;
+  institution: string;
+  description: string;
 }
 
 // Werdegang – reverse chronologisch (neueste Station zuerst)
@@ -122,13 +124,27 @@ const values: Value[] = [
   },
 ];
 
-// Wird in der Profil-Card im Hero angezeigt (kein eigener Block am Ende mehr).
-// Hinweis: `note` enthält ggf. den Em-Dash inline (z. B. „— laufend"),
-// damit nicht alle Notes zwangsweise ein Trennzeichen davor bekommen.
-const education: EducationItem[] = [
-  { title: 'CRM-Manager (IHK)', note: '— laufend, Fernstudium über ILS, Abschluss 2026' },
-  { title: 'Geprüfter Fachkaufmann für Marketing (IHK)', note: '— 2016-2018' },
-  { title: 'Staatlich geprüfter Informatiker für Multimedia', note: '— SRH Heidelberg, 2004-2006' },
+// Ausbildungs-Stationen für den dedizierten Block unter dem Werdegang.
+// Reihenfolge: chronologisch absteigend (neueste zuerst).
+const educationStations: EducationStation[] = [
+  {
+    period: 'Mai 2025 – 2026',
+    title: 'CRM-Manager (IHK)',
+    institution: 'ILS — Institut für Lernsysteme',
+    description: 'Fernstudium · in Vorbereitung · Abschluss 2026',
+  },
+  {
+    period: '2016 – 2018',
+    title: 'Geprüfter Fachkaufmann für Marketing (IHK)',
+    institution: 'IHK Schwarzwald-Baar-Heuberg',
+    description: 'Berufsbegleitende Weiterbildung parallel zur Selbstständigkeit',
+  },
+  {
+    period: '2004 – 2006',
+    title: 'Staatlich geprüfter Informatiker für Multimedia',
+    institution: 'SRH Heidelberg',
+    description: 'Erstausbildung — technisches Fundament für die spätere Marketing-Karriere',
+  },
 ];
 ---
 
@@ -202,18 +218,18 @@ const education: EducationItem[] = [
               <!-- Subtiler Separator zwischen Foto und Text-Block -->
               <hr class="profile-separator" />
 
-              <!-- Eyebrow „Formale Basis" mit Bronze-Punkt (::before) -->
-              <p class="profile-eyebrow">Formale Basis</p>
+              <!-- Eyebrow „Profil auf einen Blick" mit Bronze-Punkt (::before) -->
+              <p class="profile-eyebrow">Profil auf einen Blick</p>
 
-              <!-- Qualifikationen-Liste: <strong> für Hauptname, <span> für Suffix -->
+              <!-- Quick-Facts: <strong> für Label, <span class="qual-note"> für Wert.
+                   Klassen analog zur vormaligen Qualifikationen-Liste, damit Styling
+                   konsistent bleibt. Ausbildungs-Details stehen jetzt im dedizierten
+                   Ausbildungs-Block unterhalb des Werdegangs. -->
               <ul class="profile-quals">
-                {education.map((item) => (
-                  <li>
-                    <strong>{item.title}</strong>{item.note && (
-                      <span class="qual-note">{item.note}</span>
-                    )}
-                  </li>
-                ))}
+                <li><strong>Erfahrung</strong><span class="qual-note">— 15+ Jahre Marketing &amp; Tech</span></li>
+                <li><strong>Schwerpunkt</strong><span class="qual-note">— CRM · Customer Experience · KI-Automation</span></li>
+                <li><strong>Standort</strong><span class="qual-note">— Süddeutschland · Remote möglich</span></li>
+                <li><strong>Status</strong><span class="qual-note">— CRM-Manager (IHK), Abschluss 2026</span></li>
               </ul>
 
             </article>
@@ -284,7 +300,29 @@ const education: EducationItem[] = [
         </ol>
       </section>
 
-      <!-- ── 5. CLOSING-CTA ──────────────────────────────────────────── -->
+      <!-- ── 5. AUSBILDUNGS-TIMELINE (3 Stationen, reverse chronologisch) ─ -->
+      <section class="max-w-3xl mx-auto w-full">
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Ausbildung
+        </p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
+          Formale Basis und Weiterbildung.
+        </h2>
+
+        <ol class="timeline">
+          {educationStations.map((station) => (
+            <li>
+              <p class="station-period">{station.period}</p>
+              <h3 class="station-title">{station.title}</h3>
+              <p class="station-company">{station.institution}</p>
+              <p class="station-description">{station.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- ── 6. CLOSING-CTA ──────────────────────────────────────────── -->
       <section>
         <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
