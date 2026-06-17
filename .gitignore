@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# interne Arbeitsdateien (Lighthouse-Reports, Chat-Exporte, Claude-Cache) — nicht ins Repo
+info/
+chats/
+.claude/
