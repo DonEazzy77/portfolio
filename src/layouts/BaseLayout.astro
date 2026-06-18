@@ -21,7 +21,7 @@ const { title, description = 'Portfolio von Torsten Günter – Online Marketing
 
     <link rel="canonical" href={new URL(Astro.url.pathname, 'https://torsten-guenter.de').href} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/wappen.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack, etc.) -->
@@ -66,8 +66,9 @@ const { title, description = 'Portfolio von Torsten Günter – Online Marketing
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-background text-text-primary font-sans antialiased">
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
     <Header />
-    <main class="flex-1">
+    <main id="main" tabindex="-1" class="flex-1">
       <slot />
     </main>
     <Footer />
