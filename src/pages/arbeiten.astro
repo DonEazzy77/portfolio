@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Prozess-Schritte (der „Weg dorthin")
+const prozess = [
+  { t: 'Brand & Konzept', d: 'Eigenständiges Schwarzwald-Motiv, Drei-Türme-Wappen (Unterkirnach), Schrift-Duo Fraunces + Inter, Bronze-Palette.' },
+  { t: 'Design', d: 'Ruhiges, redaktionelles Layout — Inhalte und Lesbarkeit vor Effekten.' },
+  { t: 'Entwicklung', d: 'Statisch gebaut mit Astro & Tailwind, Fonts self-hosted (keine Google-Requests).' },
+  { t: 'Go-Live', d: 'Eigene Domain, Sitemap, Security-Header, Open-Graph — sauber für Suche und Social.' },
+  { t: 'Betrieb', d: 'Cookieless Analytics (Plausible), Google Search Console, laufende Pflege.' },
+];
+
+// Ergebnis-Kennzahlen
+const ergebnis = [
+  { k: '100', v: 'Lighthouse — Best Practices & SEO' },
+  { k: '~100', v: 'Accessibility (WCAG-orientiert)' },
+  { k: '< 1 s', v: 'Ladezeit der Startseite' },
+  { k: '0', v: 'Cookies & externe Fonts (DSGVO)' },
+];
+
+// „Das System dahinter" — ein Brand, viele Kontaktpunkte
+const elemente = [
+  { img: '/showcase/website.png',         alt: 'Startseite von torsten-guenter.de im Brand-Look',                 title: 'Website',              note: 'torsten-guenter.de',       wide: true },
+  { img: '/showcase/banner-linkedin.png', alt: 'LinkedIn-Profilbanner im Schwarzwald-Brand mit Drei-Türme-Wappen', title: 'LinkedIn-Banner',      note: '1584 × 396',               wide: true },
+  { img: '/showcase/banner-xing.png',     alt: 'XING-Profilbanner im Schwarzwald-Brand mit Drei-Türme-Wappen',     title: 'XING-Banner',          note: '1280 × 624',               wide: true },
+  { img: '/showcase/cv-twocolumn.png',    alt: 'Lebenslauf-Design, zweispaltig (Kontaktdaten unkenntlich)',        title: 'Lebenslauf — Variante A', note: 'Zweispaltig',            wide: false },
+  { img: '/showcase/cv-linksbuendig.png', alt: 'Lebenslauf-Design, linksbündig (Kontaktdaten unkenntlich)',        title: 'Lebenslauf — Variante B', note: 'Linksbündig',            wide: false },
+];
+
+const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Git / GitHub'];
+---
+
+<BaseLayout
+  title="Arbeiten — Torsten Günter"
+  description="Ausgewählte Arbeiten von Torsten Günter — diese Website und das durchgängige Brand-System dahinter. Nicht nur das Was, sondern das Wie."
+>
+  <div class="py-16 md:py-24 lg:py-32">
+    <div
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
+    >
+
+      <!-- ── INTRO ─────────────────────────────────────────────────────── -->
+      <div>
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Arbeiten
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
+          Ausgewählte Arbeiten.
+        </h1>
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Marketing und Technik gehören zusammen — das beweise ich am liebsten an echten Beispielen.
+          Hier zeige ich nicht nur, <em>was</em> entstanden ist, sondern <em>wie</em>: vom ersten
+          Konzept bis zum laufenden Betrieb.
+        </p>
+      </div>
+
+      <!-- ── CASE STUDY 1: DIESE WEBSITE ───────────────────────────────── -->
+      <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-10">
+
+        <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Ausgewählte Arbeit</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary leading-tight mb-3">
+          Diese Website — und das System dahinter.
+        </h2>
+        <p class="text-sm text-text-secondary mb-6">Konzept · Design · Entwicklung · Brand-System</p>
+
+        <p class="text-base text-text-primary leading-relaxed max-w-2xl mb-10">
+          Du schaust sie dir gerade an. Diese Seite ist meine Handwerksprobe — selbst konzipiert,
+          gestaltet und gebaut. Sie behauptet „technische DNA" nicht, sie zeigt sie.
+        </p>
+
+        <!-- Ausgangslage / Ziel -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-10">
+          <div>
+            <div class="w-8 h-[3px] bg-primary rounded-full mb-4" aria-hidden="true"></div>
+            <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Ausgangslage</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Eine Portfolio-Seite, die meine Verbindung aus Marketing und Technik wirklich belegt —
+              kein Baukasten, keine Floskeln, volle Kontrolle über Code, Daten und Marke.
+            </p>
+          </div>
+          <div>
+            <div class="w-8 h-[3px] bg-primary rounded-full mb-4" aria-hidden="true"></div>
+            <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Ziel</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Schnell, barrierearm, markenkonsistent und DSGVO-sauber — eine Seite, die als
+              Aushängeschild funktioniert und gleichzeitig zeigt, wie ich arbeite.
+            </p>
+          </div>
+        </div>
+
+        <!-- Der Weg / Prozess -->
+        <h3 class="font-serif text-lg font-medium text-text-primary mb-5">Der Weg</h3>
+        <ol class="mb-10 flex flex-col" style="row-gap: 1rem;">
+          {prozess.map((step, i) => (
+            <li class="flex gap-4">
+              <span class="shrink-0 w-7 h-7 rounded-full bg-primary-soft text-primary text-sm font-medium flex items-center justify-center" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div>
+                <p class="text-sm font-medium text-text-primary">{step.t}</p>
+                <p class="text-sm text-text-secondary leading-relaxed">{step.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <!-- Ergebnis -->
+        <h3 class="font-serif text-lg font-medium text-text-primary mb-5">Ergebnis</h3>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          {ergebnis.map((e) => (
+            <div class="bg-background-soft border border-border-subtle rounded-lg p-5 text-center">
+              <p class="font-serif text-2xl sm:text-3xl text-primary mb-1">{e.k}</p>
+              <p class="text-xs text-text-secondary leading-snug">{e.v}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Das System dahinter (Galerie) -->
+        <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Das System dahinter</h3>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-6">
+          Dieselbe Identität trägt über alle Kontaktpunkte — Website, Social-Banner, Lebenslauf.
+          Ein durchgängiges Brand-System statt zusammengewürfelter Einzelteile.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          {elemente.map((el) => (
+            <figure class={`bg-background-soft border border-border-subtle rounded-lg overflow-hidden ${el.wide ? '' : 'sm:col-span-1'}`}>
+              <div class="flex items-center justify-center p-4" style="min-height: 9rem;">
+                <img
+                  src={el.img}
+                  alt={el.alt}
+                  loading="lazy"
+                  class="max-h-64 w-auto max-w-full rounded-sm shadow-sm"
+                />
+              </div>
+              <figcaption class="flex items-center justify-between border-t border-border-subtle px-4 py-2.5">
+                <span class="text-sm font-medium text-text-primary">{el.title}</span>
+                <span class="text-xs text-text-secondary">{el.note}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p class="text-xs text-text-secondary mt-3">
+          Lebenslauf als Design-Vorschau — Kontaktdaten sind aus Datenschutzgründen unkenntlich gemacht.
+        </p>
+
+        <!-- Tech & Tools -->
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-10 mb-4">Tech &amp; Tools</h3>
+        <div class="flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#F3F4F6] text-text-secondary">{t}</span>
+          ))}
+        </div>
+
+      </article>
+
+      <!-- ── CASE STUDY 2: 7MILES (Teaser) ─────────────────────────────── -->
+      <article class="border border-dashed border-border-subtle rounded-lg p-6 sm:p-10 text-center">
+        <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Kundenprojekt</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary leading-tight mb-3">
+          Fahrschule 7Miles
+        </h2>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-xl mx-auto">
+          Marke, Web-Auftritt und digitale Präsenz für eine Fahrschule — die ausführliche
+          Case Study folgt in Kürze.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</BaseLayout>
