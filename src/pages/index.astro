@@ -8,7 +8,9 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
 <BaseLayout title={title} description={description}>
 
   <!-- ── 1. HERO ─────────────────────────────────────────────────── -->
-  <section class="py-20 sm:py-28">
+  <!-- overflow-x-clip: die Desktop-Helix darf nach rechts auslaufen, ohne eine
+       horizontale Scrollleiste zu erzeugen (NICHT overflow-hidden → kein vertikales Clipping) -->
+  <section class="py-20 sm:py-28 overflow-x-clip">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Badge-Pill -->
@@ -20,10 +22,26 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
           Brand-Statement in großer Display-Schrift Charakter trägt und
           als gewachsene Phrase (vergleichbar mit Markennamen) gilt.
           Strukturelle Trennungen verwenden ·, die Marken-Tagline behält &. */}
-      <!-- Headline: "technischer DNA." in Bronze -->
+      <!-- Headline: "technischer DNA." in Bronze; "DNA." ist Anker für das Helix-Element -->
       <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-6 max-w-3xl">
-        Marketing &amp; E-Commerce mit <span class="text-primary">technischer DNA.</span>
+        Marketing &amp; E-Commerce<br />
+        mit <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.<!--
+          Desktop: Helix tritt aus dem Punkt nach „DNA." heraus und läuft nach rechts in den freien Raum.
+        --><img
+            src="/dna-hero.png"
+            alt=""
+            aria-hidden="true"
+            class="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 w-[34rem] lg:w-[42rem] max-w-[52vw] h-auto pointer-events-none select-none"
+          /></span>
       </h1>
+
+      <!-- Mobile: kein Platz seitlich → Helix als Band unter der Headline (volle Breite) -->
+      <img
+        src="/dna-hero.png"
+        alt=""
+        aria-hidden="true"
+        class="md:hidden mt-5 w-full h-auto pointer-events-none select-none"
+      />
 
       <!-- Subline -->
       <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl">
