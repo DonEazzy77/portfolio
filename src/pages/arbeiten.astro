@@ -19,12 +19,23 @@ const ergebnis = [
 ];
 
 // „Das System dahinter" — ein Brand, viele Kontaktpunkte
-const elemente = [
-  { img: '/showcase/website.png',         alt: 'Startseite von torsten-guenter.de im Brand-Look',                 title: 'Website',              note: 'torsten-guenter.de',       wide: true },
-  { img: '/showcase/banner-linkedin.png', alt: 'LinkedIn-Profilbanner im Schwarzwald-Brand mit Drei-Türme-Wappen', title: 'LinkedIn-Banner',      note: '1584 × 396',               wide: true },
-  { img: '/showcase/banner-xing.png',     alt: 'XING-Profilbanner im Schwarzwald-Brand mit Drei-Türme-Wappen',     title: 'XING-Banner',          note: '1280 × 624',               wide: true },
-  { img: '/showcase/cv-twocolumn.png',    alt: 'Lebenslauf-Design, zweispaltig (Kontaktdaten unkenntlich)',        title: 'Lebenslauf — Variante A', note: 'Zweispaltig',            wide: false },
-  { img: '/showcase/cv-linksbuendig.png', alt: 'Lebenslauf-Design, linksbündig (Kontaktdaten unkenntlich)',        title: 'Lebenslauf — Variante B', note: 'Linksbündig',            wide: false },
+const digital = [
+  { img: '/showcase/tile-website.png',      title: 'Website',               note: 'torsten-guenter.de',
+    alt: 'Startseite von torsten-guenter.de als Browser-Vorschau im Brand-Look' },
+  { img: '/showcase/tile-kontaktkarte.png', title: 'Digitale Kontaktkarte', note: 'vCard per QR',
+    alt: 'Digitale Kontaktkarte als Smartphone-Vorschau mit Wappen und „Kontakt speichern“' },
+  { img: '/showcase/tile-signatur.png',     title: 'E-Mail-Signatur',       note: 'HTML + Text',
+    alt: 'Gebrandete E-Mail-Signatur mit Wappen und Bronze-Linie (Kontaktzeile unscharf)' },
+  { img: '/showcase/tile-banner.png',       title: 'Social-Banner',         note: 'LinkedIn · XING',
+    alt: 'Profil-Banner im Schwarzwald-Brand mit Drei-Türme-Wappen' },
+];
+const printh = [
+  { img: '/showcase/card-overlap.png',      title: 'Visitenkarte',          note: 'Print + QR',
+    alt: 'Visitenkarte, Vorder- und Rückseite überlappend, im Brand-Look' },
+  { img: '/showcase/tile-lebenslauf.png',   title: 'Lebenslauf',            note: 'zwei Varianten',
+    alt: 'Zwei Lebenslauf-Varianten gestapelt (Inhalt weichgezeichnet)' },
+  { img: '/showcase/tile-geschaeft.png',    title: 'Briefpapier & Rechnung', note: 'PDF · Word · Excel',
+    alt: 'Briefbogen und Rechnungsvorlage gestapelt (Inhalt weichgezeichnet)' },
 ];
 
 const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Git / GitHub'];
@@ -117,32 +128,37 @@ const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Gi
           ))}
         </div>
 
-        <!-- Das System dahinter (Galerie) -->
+        <!-- ── Das System dahinter ─────────────────────────────────────── -->
         <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Das System dahinter</h3>
-        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-6">
-          Dieselbe Identität trägt über alle Kontaktpunkte — Website, Social-Banner, Lebenslauf.
-          Ein durchgängiges Brand-System statt zusammengewürfelter Einzelteile.
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-5">
+          Eine Marke, die auf dem Bildschirm <em>und</em> auf Papier trägt — und über den QR
+          die Brücke schlägt. Dieselbe technische DNA über alle Kontaktpunkte.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-          {elemente.map((el) => (
-            <figure class={`bg-background-soft border border-border-subtle rounded-lg overflow-hidden ${el.wide ? '' : 'sm:col-span-1'}`}>
-              <div class="flex items-center justify-center p-4" style="min-height: 9rem;">
-                <img
-                  src={el.img}
-                  alt={el.alt}
-                  loading="lazy"
-                  class="max-h-64 w-auto max-w-full rounded-sm shadow-sm"
-                />
-              </div>
-              <figcaption class="flex items-center justify-between border-t border-border-subtle px-4 py-2.5">
-                <span class="text-sm font-medium text-text-primary">{el.title}</span>
-                <span class="text-xs text-text-secondary">{el.note}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <img src="/dna-divider.png" alt="" aria-hidden="true"
+             class="w-full max-w-xl h-8 object-cover object-left mb-8 opacity-90
+                    [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]" />
+
+        {[{ label: 'Digital', items: digital }, { label: 'Print & Hybrid', items: printh }].map((grp) => (
+          <div class="mb-8 last:mb-0">
+            <p class="text-xs tracking-[0.18em] uppercase text-primary font-medium mb-4">{grp.label}</p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+              {grp.items.map((el) => (
+                <figure class="bg-background-soft border border-border-subtle rounded-lg overflow-hidden">
+                  <div class="flex items-center justify-center p-4" style="min-height: 8.5rem;">
+                    <img src={el.img} alt={el.alt} loading="lazy"
+                         class="max-h-40 w-auto max-w-full" />
+                  </div>
+                  <figcaption class="flex items-center justify-between border-t border-border-subtle px-3 py-2">
+                    <span class="text-sm font-medium text-text-primary">{el.title}</span>
+                    <span class="text-xs text-text-secondary">{el.note}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
         <p class="text-xs text-text-secondary mt-3">
-          Lebenslauf als Design-Vorschau — Kontaktdaten sind aus Datenschutzgründen unkenntlich gemacht.
+          Dokumente als Design-Vorschau — persönliche Kontaktdaten sind bewusst unkenntlich gemacht.
         </p>
 
         <!-- Tech & Tools -->
@@ -153,38 +169,6 @@ const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Gi
           ))}
         </div>
 
-      </article>
-
-      <!-- ── VISITENKARTE / KONTAKTKARTE ───────────────────────────────── -->
-      <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-center">
-          <div class="flex items-center justify-center order-1 md:order-none">
-            <img
-              src="/showcase/card-overlap.png"
-              alt="Visitenkarte von Torsten Günter — Vorder- und Rückseite überlappend, im Schwarzwald-Brand mit Drei-Türme-Wappen"
-              loading="lazy"
-              class="w-full max-w-md h-auto"
-            />
-          </div>
-          <div>
-            <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Visitenkarte</p>
-            <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary leading-tight mb-3">
-              Analog trifft digital — datenschutzbewusst.
-            </h2>
-            <p class="text-base text-text-secondary leading-relaxed mb-6">
-              Eine Karte, zwei Welten: Der QR-Code auf der gedruckten Visitenkarte führt
-              auf eine private, nicht gelistete Seite, auf der man meinen Kontakt mit
-              einem Tipp ins Adressbuch speichert. Bewusst so gebaut, dass online keine
-              persönlichen Daten frei herumliegen — ein kleines Beispiel für „technische DNA“.
-            </p>
-            <a
-              href="/kontakt"
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
-            >
-              Zum Kontakt
-            </a>
-          </div>
-        </div>
       </article>
 
       <!-- ── CASE STUDY 2: 7MILES (Teaser) ─────────────────────────────── -->
