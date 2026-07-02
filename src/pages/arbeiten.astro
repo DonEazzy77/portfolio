@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Prozess-Schritte (der „Weg dorthin")
 const prozess = [
-  { t: 'Brand & Konzept', d: 'Eigenständiges Schwarzwald-Motiv, Drei-Türme-Wappen (Unterkirnach), Schrift-Duo Fraunces + Inter, Bronze-Palette.' },
-  { t: 'Design', d: 'Ruhiges, redaktionelles Layout — Inhalte und Lesbarkeit vor Effekten.' },
-  { t: 'Entwicklung', d: 'Statisch gebaut mit Astro & Tailwind, Fonts self-hosted (keine Google-Requests).' },
-  { t: 'Go-Live', d: 'Eigene Domain, Sitemap, Security-Header, Open-Graph — sauber für Suche und Social.' },
-  { t: 'Betrieb', d: 'Cookieless Analytics (Plausible), Google Search Console, laufende Pflege.' },
+  { t: 'Brand & Konzept', d: 'Zuerst die Marke, dann der Code: ein eigenes Schwarzwald-Motiv mit Drei-Türme-Wappen statt Stockfotos. Wiedererkennbare Herkunft und ein ruhiger, hochwertiger Ton — Schrift-Duo Fraunces + Inter, Bronze-Palette.' },
+  { t: 'Design', d: 'Ruhiges, redaktionelles Layout: Ich stelle Inhalt und Lesbarkeit über Effekte. Wer etwas sucht, findet es sofort — nichts lenkt ab.' },
+  { t: 'Entwicklung', d: 'Bewusst kein WordPress oder anderes CMS, sondern statisch mit Astro & Tailwind gebaut. Kein Server, keine Datenbank heißt: nichts, was gehackt wird oder langsam lädt — die Schriften liegen self-hosted, also ohne Google-Requests.' },
+  { t: 'Go-Live', d: 'Sauber online gebracht: eigene Domain, Sitemap, Security-Header, Open-Graph. Damit die Seite bei Google und beim Teilen auf Social genauso ordentlich aussieht wie im Browser.' },
+  { t: 'Betrieb', d: 'Läuft nicht einfach, sondern wird gepflegt: cookieless Analytics (Plausible), Google Search Console, laufende Updates. So bleibt die Seite schnell, sichtbar und aktuell.' },
 ];
 
 // Ergebnis-Kennzahlen
@@ -20,25 +20,80 @@ const ergebnis = [
 
 // „Das System dahinter" — ein Brand, viele Kontaktpunkte
 const digital = [
-  { img: '/showcase/tile-website.png',      title: 'Website',               note: 'torsten-guenter.de',
-    alt: 'Startseite von torsten-guenter.de als Browser-Vorschau im Brand-Look' },
+  { img: '/showcase/tile-website.png', title: 'Website', note: 'torsten-guenter.de',
+    alt: 'Startseite von torsten-guenter.de als Browser-Vorschau im Brand-Look',
+    lead: 'Statisch gebaut — schnell, sicher, DSGVO-sauber.',
+    points: [
+      'Astro + Tailwind, Fonts self-hosted (keine Google-Requests)',
+      'Kein WordPress oder anderes CMS, keine Datenbank → nichts, was gehackt wird',
+      'Unter 1 s Ladezeit, Lighthouse 100 in Best Practices & SEO',
+    ] },
   { img: '/showcase/tile-kontaktkarte.png', title: 'Digitale Kontaktkarte', note: 'vCard per QR',
-    alt: 'Digitale Kontaktkarte als Smartphone-Vorschau mit Wappen und „Kontakt speichern“' },
-  { img: '/showcase/tile-signatur.png',     title: 'E-Mail-Signatur',       note: 'HTML + Text',
-    alt: 'Gebrandete E-Mail-Signatur mit Wappen und Bronze-Linie (Kontaktzeile unscharf)' },
-  { img: '/showcase/tile-banner.png',       title: 'Social-Banner',         note: 'LinkedIn · XING',
-    alt: 'Profil-Banner im Schwarzwald-Brand mit Drei-Türme-Wappen' },
+    alt: 'Digitale Kontaktkarte als Smartphone-Vorschau mit Wappen und „Kontakt speichern“',
+    lead: 'QR statt Visitenkarten-Stapel — datenschutzbewusst.',
+    points: [
+      'QR führt auf eine nicht gelistete noindex-Seite',
+      'Kontakt wandert mit einem Tipp ins Adressbuch',
+      'Online liegen keine privaten Daten frei herum',
+    ] },
+  { img: '/showcase/tile-signatur.png', title: 'E-Mail-Signatur', note: 'HTML + Text',
+    alt: 'Gebrandete E-Mail-Signatur mit Wappen und Bronze-Linie (Kontaktzeile unscharf)',
+    lead: 'Markenauftritt bis in jede E-Mail.',
+    points: [
+      'Gestaltete HTML-Version fürs Auge',
+      'Reine Text-Version für Clients ohne HTML',
+      'Wappen eingebettet — keine externen Nachladungen',
+    ] },
+  { img: '/showcase/tile-banner.png', title: 'Social-Banner', note: 'LinkedIn · XING',
+    alt: 'Profil-Banner im Schwarzwald-Brand mit Drei-Türme-Wappen',
+    lead: 'Ein Layout, sauber auf beide Formate gerechnet.',
+    points: [
+      'Freigehaltene Zone fürs Profilfoto',
+      'Binäre Code-Helix macht die „technische DNA“ sichtbar',
+      'Per Skript erzeugt — jederzeit reproduzierbar',
+    ] },
 ];
 const printh = [
-  { img: '/showcase/card-overlap.png',      title: 'Visitenkarte',          note: 'Print + QR',
-    alt: 'Visitenkarte, Vorder- und Rückseite überlappend, im Brand-Look' },
-  { img: '/showcase/tile-lebenslauf.png',   title: 'Lebenslauf',            note: 'zwei Varianten',
-    alt: 'Zwei Lebenslauf-Varianten gestapelt (Inhalt weichgezeichnet)' },
-  { img: '/showcase/tile-geschaeft.png',    title: 'Briefpapier & Rechnung', note: 'PDF · Word · Excel',
-    alt: 'Briefbogen und Rechnungsvorlage gestapelt (Inhalt weichgezeichnet)' },
+  { img: '/showcase/card-overlap.png', title: 'Visitenkarte', note: 'Print + QR',
+    alt: 'Visitenkarte, Vorder- und Rückseite überlappend, im Brand-Look',
+    lead: 'Analog trifft digital — anfassbar und vernetzt.',
+    points: [
+      'Doppelseitig, 3-mm-Beschnitt + Schnittmarken, druckfertig',
+      'QR zeigt auf dieselbe private Kontaktseite wie online',
+      'QR-Generator selbst gebaut (Build-Umgebung hatte keine fertige Lib)',
+    ] },
+  { img: '/showcase/tile-lebenslauf.png', title: 'Lebenslauf', note: 'zwei Varianten',
+    alt: 'Zwei Lebenslauf-Varianten gestapelt (Inhalt weichgezeichnet)',
+    lead: 'Bewerbung im selben Marken-Look.',
+    points: [
+      'Zweispaltig und linksbündig, aus denselben Daten gesetzt',
+      'Gleiche Schriften & Bronze-Palette wie Web und Druck',
+      'Persönliche Daten in der Vorschau bewusst unkenntlich',
+    ] },
+  { img: '/showcase/tile-geschaeft.png', title: 'Briefpapier & Rechnung', note: 'PDF · Word · Excel',
+    alt: 'Briefbogen und Rechnungsvorlage gestapelt (Inhalt weichgezeichnet)',
+    lead: 'Ein Briefkopf, drei Wege.',
+    points: [
+      'PDF-Vorlage, bearbeitbares Word, rechnende Excel-Vorlage',
+      'DIN-5008-konform, Wappen-Briefkopf, automatische „Seite X von Y“',
+      'Geschäftspost, die zur Marke passt',
+    ] },
 ];
 
-const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Git / GitHub'];
+const tech = [
+  { name: 'Astro', tag: 'Framework', lead: 'Erzeugt superschnelle, statische Seiten.',
+    points: ['Liefert fast reines HTML — kaum JavaScript', 'Kein Server/Datenbank nötig → Tempo & Sicherheit'] },
+  { name: 'Tailwind CSS', tag: 'Styling', lead: 'Konsistentes Design ohne CSS-Wildwuchs.',
+    points: ['Gestaltung systematisch direkt im Markup', 'Ein durchgängiges Spacing- und Farbsystem'] },
+  { name: 'Netlify', tag: 'Hosting', lead: 'Liefert die Seite weltweit schnell aus.',
+    points: ['Automatischer Deploy bei jedem Git-Push', 'Global verteilt (CDN) → überall kurze Ladezeit'] },
+  { name: 'Plausible', tag: 'Analytics', lead: 'Besucherstatistik ohne Cookies.',
+    points: ['Cookieless — kein Cookie-Banner nötig', 'In der EU entwickelt, in Deutschland gehostet — kein US-Datentransfer'] },
+  { name: 'Fontsource', tag: 'Fonts', lead: 'Schriften self-hosted statt von Google.',
+    points: ['Keine Verbindung zu Google-Servern (DSGVO)', 'Schrift lädt mit der Seite — kein Nachladen'] },
+  { name: 'Git / GitHub', tag: 'Versionierung', lead: 'Jede Änderung nachvollziehbar und sicher.',
+    points: ['Vollständige Historie — nichts geht verloren', 'Basis für die automatischen Deploys'] },
+];
 ---
 
 <BaseLayout
@@ -101,58 +156,97 @@ const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Gi
           </div>
         </div>
 
-        <!-- Der Weg / Prozess -->
-        <h3 class="font-serif text-lg font-medium text-text-primary mb-5">Der Weg</h3>
-        <ol class="mb-10 flex flex-col" style="row-gap: 1rem;">
-          {prozess.map((step, i) => (
-            <li class="flex gap-4">
-              <span class="shrink-0 w-7 h-7 rounded-full bg-primary-soft text-primary text-sm font-medium flex items-center justify-center" aria-hidden="true">
-                {i + 1}
-              </span>
-              <div>
-                <p class="text-sm font-medium text-text-primary">{step.t}</p>
-                <p class="text-sm text-text-secondary leading-relaxed">{step.d}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <!-- ── Der Weg + Ergebnis als DNA-Spine ──────────────────────────── -->
+        <h3 class="font-serif text-lg font-medium text-text-primary mb-6">Der Weg — von der Idee zum Betrieb</h3>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-6">
+          Diese Seite ist selbst mein Arbeitsbeweis — nicht mit einem Baukasten
+          zusammengeklickt, sondern Schritt für Schritt bewusst entschieden. Hier der Weg
+          dorthin und warum die Entscheidungen so gefallen sind.
+        </p>
 
-        <!-- Ergebnis -->
-        <h3 class="font-serif text-lg font-medium text-text-primary mb-5">Ergebnis</h3>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          {ergebnis.map((e) => (
-            <div class="bg-background-soft border border-border-subtle rounded-lg p-5 text-center">
-              <p class="font-serif text-2xl sm:text-3xl text-primary mb-1">{e.k}</p>
-              <p class="text-xs text-text-secondary leading-snug">{e.v}</p>
+        <div class="spine" data-spine>
+          <div class="spine-track" data-rail>
+            <img class="spine-rail" src="/dna-spine.png" alt="" aria-hidden="true" />
+            <ol class="spine-steps">
+              {prozess.map((step, i) => (
+                <li class="spine-step" data-reveal>
+                  <span class="spine-node" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" width="40" height="40" role="presentation">
+                      <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="currentColor" />
+                      <text x="50" y="53" text-anchor="middle" dominant-baseline="central"
+                            font-family="Inter, sans-serif" font-weight="700" font-size="42" fill="#fff">{i + 1}</text>
+                    </svg>
+                  </span>
+                  <div class="spine-body">
+                    <p class="spine-step-title">{step.t}</p>
+                    <p class="spine-step-desc">{step.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <!-- Zerfalls-Fuß: Strang läuft nach unten aus und fächert breit in Daten auf -->
+          <div class="spine-foot" data-reveal aria-hidden="true">
+            <img src="/dna-spine-foot.png" alt="" />
+          </div>
+
+          <div class="spine-result" data-reveal>
+            <p class="spine-result-label">… wird zu messbarem Ergebnis</p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {ergebnis.map((e) => (
+                <div class="bg-background-soft border border-border-subtle rounded-lg p-5 text-center">
+                  <p class="font-serif text-2xl sm:text-3xl text-primary mb-1">{e.k}</p>
+                  <p class="text-xs text-text-secondary leading-snug">{e.v}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         <!-- ── Das System dahinter ─────────────────────────────────────── -->
-        <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Das System dahinter</h3>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-16 sm:mt-20 mb-2">Das System dahinter</h3>
         <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-5">
           Eine Marke, die auf dem Bildschirm <em>und</em> auf Papier trägt — und über den QR
           die Brücke schlägt. Dieselbe technische DNA über alle Kontaktpunkte.
         </p>
         <img src="/dna-divider.png" alt="" aria-hidden="true"
-             class="w-full max-w-xl h-8 object-cover object-left mb-8 opacity-90
-                    [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]" />
+             class="w-full h-12 sm:h-14 object-contain mb-10" />
 
         {[{ label: 'Digital', items: digital }, { label: 'Print & Hybrid', items: printh }].map((grp) => (
-          <div class="mb-8 last:mb-0">
+          <div class="mb-10 last:mb-0">
             <p class="text-xs tracking-[0.18em] uppercase text-primary font-medium mb-4">{grp.label}</p>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {grp.items.map((el) => (
-                <figure class="bg-background-soft border border-border-subtle rounded-lg overflow-hidden">
-                  <div class="flex items-center justify-center p-4" style="min-height: 8.5rem;">
-                    <img src={el.img} alt={el.alt} loading="lazy"
-                         class="max-h-40 w-auto max-w-full" />
+                <div class="flip-container" tabindex="0" role="button" aria-pressed="false"
+                     aria-label={`${el.title} — ${el.note}. ${el.lead} ${el.points.join('. ')}. Kachel zum Umdrehen.`}
+                     data-flip-card>
+                  <div class="flip-inner" data-flip-inner aria-hidden="true">
+                    <div class="flip-face flip-front">
+                      <span class="flip-rotate" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                      </span>
+                      <div class="flip-media"><img src={el.img} alt={el.alt} loading="lazy" /></div>
+                      <div class="flip-cap">
+                        <span class="flip-cap-title font-serif">{el.title}</span>
+                        <span class="flip-cap-tag">{el.note}</span>
+                      </div>
+                    </div>
+                    <div class="flip-face flip-back">
+                      <span class="flip-rotate flip-rotate-light" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                      </span>
+                      <p class="flip-eyebrow">{el.note}</p>
+                      <p class="flip-btitle font-serif">{el.title}</p>
+                      <p class="flip-lead">{el.lead}</p>
+                      <ul class="flip-points">{el.points.map((p) => (<li>{p}</li>))}</ul>
+                    </div>
                   </div>
-                  <figcaption class="flex items-center justify-between border-t border-border-subtle px-3 py-2">
-                    <span class="text-sm font-medium text-text-primary">{el.title}</span>
-                    <span class="text-xs text-text-secondary">{el.note}</span>
-                  </figcaption>
-                </figure>
+                </div>
               ))}
             </div>
           </div>
@@ -162,10 +256,41 @@ const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Gi
         </p>
 
         <!-- Tech & Tools -->
-        <h3 class="font-serif text-lg font-medium text-text-primary mt-10 mb-4">Tech &amp; Tools</h3>
-        <div class="flex flex-wrap gap-2">
-          {tech.map((t) => (
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#F3F4F6] text-text-secondary">{t}</span>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-10 mb-2">Tech &amp; Tools</h3>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-5">
+          Die Bausteine hinter der Seite — kurz erklärt. Dreh eine Karte um.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {tech.map((el) => (
+            <div class="flip-container flip-tech" tabindex="0" role="button" aria-pressed="false"
+                 aria-label={`${el.name} — ${el.tag}. ${el.lead} ${el.points.join('. ')}. Kachel zum Umdrehen.`}
+                 data-flip-card>
+              <div class="flip-inner" data-flip-inner aria-hidden="true">
+                <div class="flip-face flip-front">
+                  <span class="flip-rotate" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                  </span>
+                  <div class="flip-media flip-media-tech"><span class="flip-techmark">&lt;/&gt;</span></div>
+                  <div class="flip-cap">
+                    <span class="flip-cap-title font-serif">{el.name}</span>
+                    <span class="flip-cap-tag">{el.tag}</span>
+                  </div>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-rotate flip-rotate-light" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                  </span>
+                  <p class="flip-eyebrow">{el.tag}</p>
+                  <p class="flip-btitle font-serif">{el.name}</p>
+                  <p class="flip-lead">{el.lead}</p>
+                  <ul class="flip-points">{el.points.map((p) => (<li>{p}</li>))}</ul>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
@@ -186,3 +311,206 @@ const tech = ['Astro', 'Tailwind CSS', 'Netlify', 'Plausible', 'Fontsource', 'Gi
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .spine-track { position: relative; }
+
+  /* Durchgehende, STRUKTURIERTE Helix links (kein Zerfall) — Rückgrat über alle Schritte.
+     Wird von den Nodes NICHT unterbrochen. Der Zerfall passiert erst im Fuß darunter. */
+  .spine-rail {
+    position: absolute; left: 6px; top: 0;
+    width: 46px; height: 100%;
+    object-fit: cover; object-position: top center;
+    opacity: 0.85; pointer-events: none; user-select: none;
+    /* Weicher Kopf: die obersten ~9 % faden aus (kein harter Start oben) */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+    /* Startzustand leer; der Füllstand wird per JS SCROLL-GEKOPPELT gesetzt,
+       damit die Rail genau so schnell wächst wie die Bullets erscheinen. */
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.12s linear;   /* nur leichtes Glätten beim Scroll */
+  }
+
+  .spine-steps { list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; row-gap: 2.5rem; }
+
+  /* Spalte 1 = Node-Gasse (Hexagon ragt RECHTS aus der Helix), Spalte 2 = Text */
+  .spine-step { display: grid; grid-template-columns: 104px 1fr;
+    column-gap: 1rem; align-items: start; }
+
+  /* Hexagon sitzt am rechten Rand der Gasse (klar rechts der Rail);
+     der Arm (::before) zeigt zurück zur Helix = „Base bricht aus". */
+  .spine-node { position: relative; justify-self: end; margin-top: 0.1rem;
+    width: 40px; height: 40px; color: var(--color-primary); }
+  .spine-node::before { content: ""; position: absolute; top: 50%; left: -20px;
+    width: 20px; height: 2px; background: var(--color-primary); transform: translateY(-50%); }
+  .spine-node svg { display: block; }
+
+  .spine-step-title { font-weight: 600; color: var(--color-text-primary);
+    font-size: 0.95rem; margin: 0.15rem 0 0.15rem; }
+  .spine-step-desc { color: var(--color-text-secondary);
+    font-size: 0.875rem; line-height: 1.6; margin: 0; }
+
+  /* Zerfalls-Fuß: schließt UNTEN an die Rail an und fächert breit in Daten auf.
+     Feste Breite + links ausgerichtet, damit der Strang unter der Rail fluchtet
+     (Strang liegt bei ~10 % der Bildbreite → ~30px, deckt sich mit der Rail-Mitte). */
+  /* Fuß = Zerfall, der EXAKT am Rail-Ende (Kreuzung) ansetzt und nach unten zerstäubt,
+     vom Wind leicht nach rechts getragen. Bits im gleichen Maßstab wie die Rail.
+     Links auf die Rail (6px) ausgerichtet; margin oben nur minimal negativ, damit der
+     Ansatz exakt am Rail-Ende sitzt (nicht höher/niedriger). */
+  .spine-foot { margin: -2px 0 0 6px; }
+  .spine-foot img { display: block; width: 100px; height: auto; opacity: 0.9; }
+
+  /* Ergebnis wieder hochziehen: der zarte Bit-Schweif des Fußes läuft optisch lang aus
+     und würde die Kennzahlen sonst nach unten drücken. Negatives margin holt sie in den
+     ausfadenden Schweif zurück (Wert bei Bedarf justieren). */
+  .spine-result { margin-top: -6rem; padding-left: calc(104px + 1rem); }
+  .spine-result-label { font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--color-primary); font-weight: 600;
+    margin: 0 0 0.9rem; }
+
+  /* Scroll-Reveal — nur aktiv, wenn JS die Klasse gesetzt hat (sonst alles sichtbar) */
+  .spine-reveal-ready [data-reveal] { opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease; }
+  .spine-reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  /* Mobile: Rail + Fuß ausblenden, Hexagons bleiben als saubere Timeline-Marker */
+  @media (max-width: 640px) {
+    .spine-rail { display: none; }
+    .spine-foot { display: none; }
+    .spine-step { grid-template-columns: 52px 1fr; column-gap: 0.85rem; }
+    .spine-node { width: 34px; height: 34px; }
+    .spine-node svg { width: 34px; height: 34px; }
+    .spine-node::before { display: none; }
+    .spine-result { padding-left: 0; margin-top: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spine-reveal-ready [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+    .spine-rail { clip-path: none !important; transition: none; }
+  }
+
+  /* ── Flip-Karten „Das System dahinter" + „Tech & Tools" ── */
+  .flip-container { perspective: 1200px; cursor: pointer; }
+  .flip-container:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 16px; }
+  .flip-inner { position: relative; width: 100%; min-height: 18rem;
+    transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+  .flip-inner.is-flipped { transform: rotateY(180deg); }
+
+  .flip-face { position: absolute; inset: 0; backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; border-radius: 16px;
+    border: 1px solid var(--color-border-subtle); overflow: hidden; background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: box-shadow .2s ease, transform .2s ease; }
+  .flip-container:hover .flip-inner:not(.is-flipped) .flip-front { box-shadow: 0 12px 28px rgba(146,64,14,.12); transform: translateY(-2px); }
+
+  /* Vorderseite */
+  .flip-front { display: flex; flex-direction: column; background: linear-gradient(180deg,#fff,#fdfbf7); }
+  .flip-media { flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 1.25rem; min-height: 9.5rem; }
+  .flip-media img { max-height: 9.5rem; max-width: 100%; filter: drop-shadow(0 6px 14px rgba(0,0,0,.08)); }
+  .flip-media-tech { background: radial-gradient(120% 120% at 30% 20%, #fdf5ea, #f6ede0); }
+  .flip-techmark { font-family: ui-monospace, Menlo, monospace; font-size: 2.4rem; font-weight: 700;
+    color: var(--color-primary); opacity: .5; }
+  .flip-cap { border-top: 1px solid var(--color-border-subtle); display: flex; align-items: baseline;
+    justify-content: space-between; gap: .6rem; padding: .75rem .9rem; }
+  .flip-cap-title { font-weight: 600; font-size: 1rem; color: var(--color-text-primary); }
+  .flip-cap-tag { font-size: .68rem; color: #fff; background: var(--color-primary);
+    padding: .18rem .5rem; border-radius: 999px; white-space: nowrap; }
+
+  /* „Drehen“-Icon oben rechts */
+  .flip-rotate { position: absolute; top: .6rem; right: .6rem; z-index: 2; width: 1.9rem; height: 1.9rem;
+    border-radius: 50%; border: 1px solid var(--color-border-subtle); background: rgba(255,255,255,.85);
+    color: var(--color-primary); display: flex; align-items: center; justify-content: center; }
+  .flip-rotate-light { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.4); color: #fff; }
+
+  /* Rückseite: Bronze */
+  .flip-back { transform: rotateY(180deg); background: linear-gradient(160deg,#7a3a10,#92400E);
+    color: #fdf3e8; padding: 1.25rem 1.25rem 1.1rem; display: flex; flex-direction: column; }
+  .flip-eyebrow { letter-spacing: .16em; text-transform: uppercase; font-size: .66rem; font-weight: 700;
+    color: #f0c9a3; margin: 0 0 .4rem; }
+  .flip-btitle { font-size: 1.15rem; font-weight: 600; margin: 0 0 .5rem; }
+  .flip-lead { font-size: .84rem; line-height: 1.5; margin: 0 0 .65rem; color: #fbe7d4; }
+  .flip-points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+  .flip-points li { position: relative; padding-left: 1rem; font-size: .78rem; line-height: 1.45; color: #f4ddc7; }
+  .flip-points li::before { content: ""; position: absolute; left: 0; top: .45rem; width: 6px; height: 6px;
+    background: #f0c9a3; border-radius: 2px; transform: rotate(45deg); }
+
+  @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
+</style>
+
+<script>
+  const spine = document.querySelector('[data-spine]');
+  if (spine) {
+    // Reveal-Zustand erst aktivieren, wenn JS läuft → ohne JS bleibt alles sichtbar
+    spine.classList.add('spine-reveal-ready');
+
+    const track  = spine.querySelector('[data-rail]');
+    const rail   = spine.querySelector('.spine-rail');
+    const steps  = Array.from(spine.querySelectorAll('.spine-step[data-reveal]'));
+    const foot   = spine.querySelector('.spine-foot');
+    const result = spine.querySelector('.spine-result');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || !track || !rail) {
+      // Ohne Bewegung / ohne Rail: alles sofort sichtbar
+      [...steps, foot, result].forEach((el) => el && el.classList.add('is-visible'));
+      if (rail) (rail as HTMLElement).style.clipPath = 'inset(0 0 0 0)';
+    } else {
+      let tailShown = false;
+      let maxFill = 0;   // höchster erreichter Füllstand → Rail wächst nur, schrumpft nie
+      const update = () => {
+        const rect = track.getBoundingClientRect();
+        if (!rect.height) return;
+        const line = window.innerHeight * 0.82;                  // Auslöse-Linie im Viewport
+        const tip  = Math.min(Math.max(line - rect.top, 0), rect.height); // Rail-Spitze (Track-Koord.)
+        const fill = tip / rect.height;
+        if (fill > maxFill) maxFill = fill;                      // einmal gewachsen = bleibt
+        // Rail bis zum bisher höchsten Stand füllen → bleibt beim Hochscrollen bestehen
+        (rail as HTMLElement).style.clipPath = 'inset(0 0 ' + ((1 - maxFill) * 100).toFixed(2) + '% 0)';
+        // Bullet erscheint, sobald die Rail-Spitze seine Höhe erreicht (bleibt sichtbar)
+        const reached = maxFill * rect.height;
+        steps.forEach((el) => {
+          const node = el.querySelector('.spine-node');
+          const ref  = node || el;
+          const y = ref.getBoundingClientRect().top + (node ? (ref as HTMLElement).offsetHeight / 2 : 0) - rect.top;
+          if (reached >= y) el.classList.add('is-visible');
+        });
+        // Sprengung + Kennzahlen, wenn die Rail unten „ankommt"
+        if (!tailShown && maxFill > 0.985) {
+          tailShown = true;
+          foot && foot.classList.add('is-visible');
+          result && setTimeout(() => result.classList.add('is-visible'), 180);
+        }
+      };
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    }
+  }
+</script>
+
+<script>
+  document.querySelectorAll('[data-flip-card]').forEach((card) => {
+    const inner = card.querySelector('[data-flip-inner]');
+    if (!inner) return;
+    const toggle = () => {
+      const pressed = card.getAttribute('aria-pressed') === 'true';
+      card.setAttribute('aria-pressed', String(!pressed));
+      inner.classList.toggle('is-flipped');
+      // @ts-ignore
+      window.plausible?.('Arbeiten-Kachel gedreht');
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (event) => {
+      if ((event as KeyboardEvent).key === 'Enter' || (event as KeyboardEvent).key === ' ') {
+        event.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
