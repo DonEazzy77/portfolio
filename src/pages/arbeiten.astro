@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Prozess-Schritte (der „Weg dorthin")
 const prozess = [
-  { t: 'Brand & Konzept', d: 'Zuerst die Marke, dann der Code: ein eigenes Schwarzwald-Motiv mit Drei-Türme-Wappen statt Stockfotos. Wiedererkennbare Herkunft und ein ruhiger, hochwertiger Ton — Schrift-Duo Fraunces + Inter, Bronze-Palette.' },
+  { t: 'Brand & Konzept', d: 'Bevor eine Zeile Code entstand, stand die Marke — denn eine eigene, wiedererkennbare Identität wirkt schon, bevor das erste Wort gelesen ist. Statt Stockfotos habe ich ein eigenständiges Schwarzwald-Motiv mit Drei-Türme-Wappen entworfen (eine Anspielung auf meine Heimat Unterkirnach), dazu das Schrift-Duo Fraunces + Inter und eine Bronze-Palette. So trägt derselbe ruhige, hochwertige Ton durch alles — vom Wappen bis zur kleinsten Schaltfläche.' },
   { t: 'Design', d: 'Ruhiges, redaktionelles Layout mit klarer Hierarchie: Inhalt und Lesbarkeit führen, Gestaltung unterstützt. Effekte setze ich gezielt dort ein, wo sie den Blick führen statt abzulenken — die Helix hier zum Beispiel.' },
-  { t: 'Entwicklung', d: 'Bewusst kein WordPress oder anderes CMS, sondern statisch mit Astro & Tailwind gebaut. Kein Server, keine Datenbank heißt: nichts, was gehackt wird oder langsam lädt — die Schriften liegen self-hosted, also ohne Google-Requests.' },
-  { t: 'Go-Live', d: 'Sauber online gebracht: eigene Domain, Sitemap, Security-Header, Open-Graph. Damit die Seite bei Google und beim Teilen auf Social genauso ordentlich aussieht wie im Browser.' },
-  { t: 'Betrieb', d: 'Läuft nicht einfach, sondern wird gepflegt: cookieless Analytics (Plausible), Google Search Console, laufende Updates. So bleibt die Seite schnell, sichtbar und aktuell.' },
+  { t: 'Entwicklung', d: 'Bewusst kein WordPress oder anderes CMS, sondern statisch mit Astro & Tailwind gebaut. Kein Server, keine Datenbank — also nichts, was gehackt wird, langsam lädt oder ständig nach Updates verlangt. Selbst die Schriften liegen lokal: Die Seite lädt, ohne vorher bei Google anzuklopfen (DSGVO-sauber).' },
+  { t: 'Go-Live', d: 'Sauber online gebracht, nicht bloß schnell hochgeladen: eigene Domain, Sitemap, Security-Header und Open-Graph gehören für mich dazu. So steht die Seite bei Google ordentlich da — und wer sie teilt, bekommt eine hübsche Vorschau statt eines nackten Links mit kaputtem Bild.' },
+  { t: 'Betrieb', d: 'Eine Website ist kein Möbelstück, das man einmal hinstellt und dann vergisst. Also: cookieless Analytics mit Plausible — Besucher verstehen, ganz ohne den Cookie-Banner, den eh niemand mag —, Google Search Console im Blick und laufende Updates. So bleibt sie schnell, sichtbar und aktuell.' },
 ];
 
 // Ergebnis-Kennzahlen
@@ -81,19 +81,29 @@ const printh = [
 ];
 
 const tech = [
-  { name: 'Astro', tag: 'Framework', lead: 'Erzeugt superschnelle, statische Seiten.',
+  { func: 'Framework',     tool: 'Astro',        lead: 'Erzeugt superschnelle, statische Seiten.',
     points: ['Liefert fast reines HTML — kaum JavaScript', 'Kein Server/Datenbank nötig → Tempo & Sicherheit'] },
-  { name: 'Tailwind CSS', tag: 'Styling', lead: 'Konsistentes Design ohne CSS-Wildwuchs.',
+  { func: 'Styling',       tool: 'Tailwind CSS', lead: 'Konsistentes Design ohne CSS-Wildwuchs.',
     points: ['Gestaltung systematisch direkt im Markup', 'Ein durchgängiges Spacing- und Farbsystem'] },
-  { name: 'Netlify', tag: 'Hosting', lead: 'Liefert die Seite weltweit schnell aus.',
+  { func: 'Hosting',       tool: 'Netlify',      lead: 'Liefert die Seite weltweit schnell aus.',
     points: ['Automatischer Deploy bei jedem Git-Push', 'Global verteilt (CDN) → überall kurze Ladezeit'] },
-  { name: 'Plausible', tag: 'Analytics', lead: 'Besucherstatistik ohne Cookies.',
-    points: ['Cookieless — kein Cookie-Banner nötig', 'In der EU entwickelt, in Deutschland gehostet — kein US-Datentransfer'] },
-  { name: 'Fontsource', tag: 'Fonts', lead: 'Schriften self-hosted statt von Google.',
+  { func: 'Analytics',     tool: 'Plausible',    lead: 'Besucherstatistik ohne Cookies.',
+    points: ['Cookieless — kein Cookie-Banner nötig', 'In der EU entwickelt und gehostet — kein US-Datentransfer'] },
+  { func: 'Fonts',         tool: 'Fontsource',   lead: 'Schriften self-hosted statt von Google.',
     points: ['Keine Verbindung zu Google-Servern (DSGVO)', 'Schrift lädt mit der Seite — kein Nachladen'] },
-  { name: 'Git / GitHub', tag: 'Versionierung', lead: 'Jede Änderung nachvollziehbar und sicher.',
+  { func: 'Versionierung', tool: 'Git / GitHub', lead: 'Jede Änderung nachvollziehbar und sicher.',
     points: ['Vollständige Historie — nichts geht verloren', 'Basis für die automatischen Deploys'] },
 ];
+
+// Eigene, generische Funktions-Icons (Bronze via currentColor) — als HTML-Strings
+const techIcons = {
+  'Framework':     '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="9" width="30" height="30" rx="4"/><path d="M9 20h30M20 9v30"/><rect x="12.5" y="12.5" width="4.5" height="4.5" rx="1" fill="currentColor" stroke="none"/></svg>',
+  'Styling':       '<svg viewBox="0 0 48 48" fill="currentColor" stroke="none"><path d="M32 9c4 0 7 3 7 7 0 2-1 4-3 5L23 33l-8-8 13-13c1-2 3-3 4-3z"/><path d="M18 27l3 3-3 4c-2 3-5 2-8 4 2-3 1-6 4-8z"/></svg>',
+  'Hosting':       '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 33a7 7 0 01-1-13.9A9 9 0 0131 16a6 6 0 011.5 11.8"/><path d="M24 36V24M20 28l4-4 4 4"/></svg>',
+  'Analytics':     '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38V10M10 38h28"/><path d="M14 30 22 22 28 26 38 16"/><circle cx="22" cy="22" r="2" fill="currentColor"/><circle cx="28" cy="26" r="2" fill="currentColor"/><circle cx="38" cy="16" r="2" fill="currentColor"/></svg>',
+  'Fonts':         '<svg viewBox="0 0 48 48"><text x="24" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="27" font-weight="600" fill="currentColor">Aa</text></svg>',
+  'Versionierung': '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M24 12v24"/><circle cx="24" cy="14" r="3.5" fill="currentColor"/><circle cx="24" cy="24" r="3.5"/><circle cx="24" cy="34" r="3.5"/><path d="M24 14h9M24 24h9M24 34h9" opacity=".55"/></svg>',
+};
 ---
 
 <BaseLayout
@@ -207,8 +217,14 @@ const tech = [
         <!-- ── Das System dahinter ─────────────────────────────────────── -->
         <h3 class="font-serif text-lg font-medium text-text-primary mt-16 sm:mt-20 mb-2">Das System dahinter</h3>
         <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-5">
-          Eine Marke, die auf dem Bildschirm <em>und</em> auf Papier trägt — und über den QR
-          die Brücke schlägt. Dieselbe technische DNA über alle Kontaktpunkte.
+          Eine Marke ist kein Logo, das man draufklebt — sie ist ein System, das an jedem
+          Kontaktpunkt <em>gleich</em> klingt. Dieselbe Handschrift trägt vom Bildschirm bis
+          aufs Papier: Website, E-Mail-Signatur und Social-Banner genauso wie Visitenkarte,
+          Lebenslauf und Briefpapier. Der QR-Code schlägt die Brücke zwischen analog und
+          digital — ein Fingertipp auf die gedruckte Karte, und der Kontakt liegt im
+          Adressbuch. Zusammengehalten wird alles von derselben „technischen DNA“ — der
+          binären Code-Helix, die sich aus meinem Weg zwischen Code und Marke ableitet.
+          Dreh die Kacheln um: dahinter steht jeweils, wie und warum sie entstanden sind.
         </p>
         <img src="/dna-divider.png" alt="" aria-hidden="true"
              class="w-full h-12 sm:h-14 object-contain mb-10" />
@@ -258,12 +274,13 @@ const tech = [
         <!-- Tech & Tools -->
         <h3 class="font-serif text-lg font-medium text-text-primary mt-10 mb-2">Tech &amp; Tools</h3>
         <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-5">
-          Die Bausteine hinter der Seite — kurz erklärt. Dreh eine Karte um.
+          Werkzeug ist nicht gleich Werkzeug: Ich wähle es nach dem, was es der Seite bringt —
+          nicht nach Hype. Vorne die Aufgabe, dahinter meine Lösung. Dreh eine Karte um.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {tech.map((el) => (
             <div class="flip-container flip-tech" tabindex="0" role="button" aria-pressed="false"
-                 aria-label={`${el.name} — ${el.tag}. ${el.lead} ${el.points.join('. ')}. Kachel zum Umdrehen.`}
+                 aria-label={`${el.func}: ${el.tool}. ${el.lead} ${el.points.join('. ')}. Kachel zum Umdrehen.`}
                  data-flip-card>
               <div class="flip-inner" data-flip-inner aria-hidden="true">
                 <div class="flip-face flip-front">
@@ -272,10 +289,14 @@ const tech = [
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                     </svg>
                   </span>
-                  <div class="flip-media flip-media-tech"><span class="flip-techmark">&lt;/&gt;</span></div>
+                  <div class="flip-media flip-media-tech">
+                    <span class="flip-fnicon" set:html={techIcons[el.func as keyof typeof techIcons]} aria-hidden="true"></span>
+                  </div>
                   <div class="flip-cap">
-                    <span class="flip-cap-title font-serif">{el.name}</span>
-                    <span class="flip-cap-tag">{el.tag}</span>
+                    <span class="flip-cap-text">
+                      <span class="flip-cap-title font-serif">{el.func}</span>
+                      <span class="flip-cap-desc">{el.tool}</span>
+                    </span>
                   </div>
                 </div>
                 <div class="flip-face flip-back">
@@ -284,8 +305,8 @@ const tech = [
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                     </svg>
                   </span>
-                  <p class="flip-eyebrow">{el.tag}</p>
-                  <p class="flip-btitle font-serif">{el.name}</p>
+                  <p class="flip-eyebrow">{el.func}</p>
+                  <p class="flip-btitle font-serif">{el.tool}</p>
                   <p class="flip-lead">{el.lead}</p>
                   <ul class="flip-points">{el.points.map((p) => (<li>{p}</li>))}</ul>
                 </div>
@@ -409,11 +430,14 @@ const tech = [
     padding: 1.25rem; min-height: 9.5rem; }
   .flip-media img { max-height: 9.5rem; max-width: 100%; filter: drop-shadow(0 6px 14px rgba(0,0,0,.08)); }
   .flip-media-tech { background: radial-gradient(120% 120% at 30% 20%, #fdf5ea, #f6ede0); }
-  .flip-techmark { font-family: ui-monospace, Menlo, monospace; font-size: 2.4rem; font-weight: 700;
-    color: var(--color-primary); opacity: .5; }
+  .flip-fnicon { display: flex; color: var(--color-primary); }
+  /* :global nötig, weil das Icon per set:html injiziert wird und keine scoped-CSS-Kennung trägt */
+  .flip-fnicon :global(svg) { width: 58px; height: 58px; }
   .flip-cap { border-top: 1px solid var(--color-border-subtle); display: flex; align-items: baseline;
     justify-content: space-between; gap: .6rem; padding: .75rem .9rem; }
+  .flip-cap-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
   .flip-cap-title { font-weight: 600; font-size: 1rem; color: var(--color-text-primary); }
+  .flip-cap-desc { font-size: 0.72rem; color: var(--color-text-secondary); line-height: 1.2; }
   .flip-cap-tag { font-size: .68rem; color: #fff; background: var(--color-primary);
     padding: .18rem .5rem; border-radius: 999px; white-space: nowrap; }
 

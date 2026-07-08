@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Impressum — Torsten Günter"
-  description="Rechtliche Angaben gemäß § 5 TMG."
+  description="Rechtliche Angaben gemäß § 5 DDG."
 >
 
   <div class="py-16 md:py-24 lg:py-32">
@@ -24,30 +24,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </h1>
       </header>
 
-      <!-- ── ANGABEN GEMÄSS § 5 TMG ────────────────────────────────────── -->
+      <!-- ── ANGABEN GEMÄSS § 5 DDG ────────────────────────────────────── -->
       <section class="legal-section">
-        <h2>Angaben gemäß § 5 TMG</h2>
+        <h2>Angaben gemäß § 5 DDG</h2>
         <p>
-          <span
-            class="obf-name"
-            data-name-first="Torsten"
-            data-name-last="Günter"
-          >[wird beim Laden eingesetzt]</span><br />
-          <span
-            class="obf-address"
-            data-street="Eichhaldeweg"
-            data-number="8"
-            data-zip="78089"
-            data-city="Unterkirnach"
-          >[wird beim Laden eingesetzt]</span><br />
+          Torsten Günter<br />
+          Eichhaldeweg 8<br />
+          78089 Unterkirnach<br />
           Deutschland
         </p>
-        <noscript>
-          <p class="legal-noscript">
-            Für die Anzeige der Kontaktdaten benötigt diese Seite JavaScript.
-            Alternativ erreichst du mich per E-Mail über das Kontaktformular.
-          </p>
-        </noscript>
       </section>
 
       <!-- ── KONTAKT ───────────────────────────────────────────────────── -->
@@ -61,7 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             data-mail-user="me"
             data-mail-domain="torsten-guenter.de"
             data-mail-subject="%5BPortfolio%5D%20Anfrage%20%C3%BCber%20torsten-guenter.de"
-          >[wird beim Laden eingesetzt]</a>
+          >me [at] torsten-guenter.de</a>
         </p>
         <p>
           Telefon:
@@ -71,16 +56,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             data-phone-cc="+49"
             data-phone-area="7721"
             data-phone-num="9161046"
-          >[wird beim Laden eingesetzt]</a>
+          >+49 7721 9161046</a>
         </p>
       </section>
 
-      <!-- ── BERUFSBEZEICHNUNG ─────────────────────────────────────────── -->
+      <!-- ── TÄTIGKEIT ─────────────────────────────────────────────────── -->
       <section class="legal-section">
-        <h2>Berufsbezeichnung</h2>
+        <h2>Tätigkeit</h2>
         <p>
-          Online Marketing &amp; E-Commerce Manager<br />
-          <span class="legal-muted">(tätig als Privatperson — kein Gewerbe angemeldet)</span>
+          Online Marketing &amp; E-Commerce<br />
+          <span class="legal-muted">Einzelunternehmen (Gewerbe angemeldet)</span>
+        </p>
+      </section>
+
+      <!-- ── UMSATZSTEUER ──────────────────────────────────────────────── -->
+      <section class="legal-section">
+        <h2>Umsatzsteuer</h2>
+        <p>
+          Als Kleinunternehmer im Sinne von § 19 UStG wird keine Umsatzsteuer
+          ausgewiesen. Eine Umsatzsteuer-Identifikationsnummer liegt daher nicht vor.
         </p>
       </section>
 
@@ -99,8 +93,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>
           Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
           Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
-          Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
-          nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als
+          Als Diensteanbieter bin ich gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten
+          nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG bin ich als
           Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
           Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
           rechtswidrige Tätigkeit hinweisen.
@@ -187,22 +181,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <script>
   // Astro lädt dieses Script als deferred Module (type="module") –
   // der DOM ist beim Ausführen garantiert bereit, daher kein DOMContentLoaded.
-
-  // Name: data-name-first + data-name-last → "Vorname Nachname"
-  document.querySelectorAll<HTMLElement>('.obf-name').forEach((el) => {
-    const first = el.dataset.nameFirst ?? '';
-    const last = el.dataset.nameLast ?? '';
-    el.textContent = `${first} ${last}`.trim();
-  });
-
-  // Adresse: data-street/number/zip/city → zwei Zeilen mit <br>
-  document.querySelectorAll<HTMLElement>('.obf-address').forEach((el) => {
-    const street = el.dataset.street ?? '';
-    const number = el.dataset.number ?? '';
-    const zip = el.dataset.zip ?? '';
-    const city = el.dataset.city ?? '';
-    el.innerHTML = `${street} ${number}<br>${zip} ${city}`;
-  });
 
   // E-Mail: setzt href="mailto:..." und textContent auf die Adresse
   document.querySelectorAll<HTMLAnchorElement>('.obf-mail').forEach((el) => {
