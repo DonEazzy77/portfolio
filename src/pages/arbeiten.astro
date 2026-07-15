@@ -317,7 +317,39 @@ const techIcons = {
 
       </article>
 
-      <!-- ── CASE STUDY 2: 7MILES (Teaser) ─────────────────────────────── -->
+      <!-- ── CASE STUDY 2: BERTA (Eigenes Produkt) ─────────────────────── -->
+      <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-10">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 lg:gap-12 md:items-center">
+          <div>
+            <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Eigenes Produkt · 2026, laufend</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary leading-tight mb-3">
+              berta — Ihr digitaler Sekretär
+            </h2>
+            <p class="text-sm text-text-secondary mb-6">Naming &amp; Marke · Produkt · Landingpage</p>
+            <p class="text-base text-text-primary leading-relaxed max-w-2xl mb-6">
+              berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe —
+              der freundliche Sekretärvogel, der Belege, Fristen und Ablage im Blick behält, damit der
+              Papierkram nicht liegen bleibt. Von der ersten Idee über Naming und Marke bis zu Produkt
+              und Landingpage habe ich alles selbst aufgebaut — und entwickle es 2026 laufend weiter.
+            </p>
+            <a href="https://bertahilft.de" target="_blank" rel="noopener"
+               class="berta-link inline-flex items-center gap-1.5 text-sm font-medium"
+               aria-label="berta — Ihr digitaler Sekretär: bertahilft.de (öffnet in neuem Tab)">
+              bertahilft.de
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+                   stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </div>
+          <div class="berta-mark">
+            <img src="/showcase/berta-marke.png" width="640" height="640" loading="lazy"
+                 alt="Markenzeichen von berta — ein Sekretärvogel, dessen Kopf und Federhaube den Buchstaben „b“ bilden, auf cremefarbenem Grund" />
+          </div>
+        </div>
+      </article>
+
+      <!-- ── CASE STUDY 3: 7MILES (Teaser) ─────────────────────────────── -->
       <article class="border border-dashed border-border-subtle rounded-lg p-6 sm:p-10 text-center">
         <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Kundenprojekt</p>
         <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary leading-tight mb-3">
@@ -460,6 +492,17 @@ const techIcons = {
     background: #f0c9a3; border-radius: 2px; transform: rotate(45deg); }
 
   @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
+
+  /* ── berta: Projektkarte „Eigenes Produkt" ── */
+  .berta-mark { display: flex; justify-content: center; }
+  .berta-mark img { width: 100%; max-width: 200px; height: auto; border-radius: 16px;
+    border: 1px solid var(--color-border-subtle); background: #FAF4E6;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  @media (min-width: 768px) { .berta-mark img { max-width: 236px; } }
+
+  .berta-link { color: var(--color-primary); text-decoration: none; transition: color 200ms ease; }
+  .berta-link:hover, .berta-link:focus-visible { color: var(--color-primary-hover);
+    text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 </style>
 
 <script>
