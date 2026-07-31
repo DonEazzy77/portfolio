@@ -6,10 +6,26 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   noindex?: boolean;
 }
 
-const { title, description = 'Portfolio von Torsten Günter – Online Marketing & E-Commerce Manager mit technischer DNA. Fokus auf CRM, Customer Experience und KI-gestützte Automation.', noindex = false } = Astro.props;
+const {
+  title,
+  description = 'Portfolio von Torsten Günter – Online Marketing & E-Commerce Manager mit technischer DNA. Fokus auf CRM, Customer Experience und KI-gestützte Automation.',
+  ogTitle,
+  ogDescription,
+  noindex = false,
+} = Astro.props;
+
+// og:/twitter: spiegeln standardmäßig Title und Description der jeweiligen Seite,
+// damit jede Unterseite beim Teilen ihre eigene Vorschaukarte bekommt.
+// ogTitle/ogDescription sind optionale Overrides für den Fall, dass ein SEO-Titel
+// für eine Social-Karte zu lang ist. Diese Texte kommen aus S&R/Biz – hier wird
+// nichts gekürzt und nichts umformuliert.
+const socialTitle = ogTitle ?? title;
+const socialDescription = ogDescription ?? description;
 ---
 
 <!doctype html>
@@ -29,19 +45,19 @@ const { title, description = 'Portfolio von Torsten Günter – Online Marketing
     <!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack, etc.) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Torsten Günter — Portfolio" />
-    <meta property="og:title" content="Marketing &amp; E-Commerce mit technischer DNA." />
-    <meta property="og:description" content="Portfolio von Torsten Günter – Online Marketing &amp; E-Commerce Manager. Fokus auf CRM, Customer Experience und KI-gestützte Automation." />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
     <meta property="og:image" content="https://torsten-guenter.de/og-image.png" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="627" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Torsten Günter – Portfolio. Marketing &amp; E-Commerce mit technischer DNA." />
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://torsten-guenter.de').href} />
     <meta property="og:locale" content="de_DE" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Marketing &amp; E-Commerce mit technischer DNA." />
-    <meta name="twitter:description" content="Portfolio von Torsten Günter – Online Marketing &amp; E-Commerce Manager. Fokus auf CRM, Customer Experience und KI-gestützte Automation." />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image" content="https://torsten-guenter.de/og-image.png" />
 
     <!--
