@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Copy 1:1 aus selbststaendigkeit/leistungen_seite_entwurf.md (v3.1, S&R/§5-freigegeben).
+// GBP-Spiegelung: 4 Gruppen, 16 Leistungen — vollständig ausgeschrieben (kein „+ x weitere").
+// Belege nur: torsten-guenter.de (Website-Erstellung) + berta Case-Study (KI-Büro-Workflows).
+// Weiterer Referenz-Beleg bei „Website-Erstellung" folgt erst nach separater Freigabe — bewusst nicht im Markup (kein Kundenname vor Freigabe).
+
+interface Leistung {
+  titel: string;
+  text: string;
+  beleg?: { label: string; href: string };
+}
+interface Gruppe {
+  nr: string;
+  titel: string;
+  kern?: boolean;
+  vorbemerkung?: string;
+  items: Leistung[];
+}
+
+const gruppen: Gruppe[] = [
+  {
+    nr: '1',
+    titel: 'Websites & Webentwicklung',
+    items: [
+      { titel: 'Webdesign & Webentwicklung', text: 'Moderne, schnelle Websites — handgebaut statt Baukasten. Sauberer Code, klare Gestaltung, auf Wunsch mit Pflege danach.' },
+      { titel: 'Website-Erstellung', text: 'Von der Struktur bis zum Livegang: Konzept, Texte, Design und technische Umsetzung aus einer Hand. Diese Website hier ist so entstanden — sie ist mein erstes Referenzstück.', beleg: { label: 'Arbeiten: torsten-guenter.de', href: '/arbeiten#website' } },
+      { titel: 'Website-Relaunch & Redesign', text: 'Bestehende Seiten modernisieren — mit sorgfältiger Übernahme der Inhalte und sauber eingerichteten Weiterleitungen.' },
+      { titel: 'Landingpages', text: 'Einzelne Seiten mit einem klaren Ziel — für Aktionen, Angebote oder Kampagnen.' },
+      { titel: 'Impressum & Datenschutz-Basics', text: 'Impressum, Datenschutzerklärung, Cookie-freie Analytics: die formalen Grundlagen Ihrer Website, sorgfältig umgesetzt. Keine Rechtsberatung — bei rechtlichen Fragen verweise ich an Ihren Anwalt.' },
+      { titel: 'Website-Betreuung', text: 'Updates, Sicherheit, kleine Änderungen — damit die Seite gepflegt bleibt, ohne dass Sie sich darum kümmern müssen.' },
+    ],
+  },
+  {
+    nr: '2',
+    titel: 'Sichtbarkeit & Online-Marketing',
+    items: [
+      { titel: 'SEO-Grundoptimierung', text: 'Damit Ihre Seite gefunden wird: saubere Struktur, Meta-Daten, Ladezeit, lokale Suchbegriffe — die Grundlagen, die den Unterschied machen.' },
+      { titel: 'Google-Unternehmensprofil einrichten & optimieren', text: 'Der Eintrag, der bei Google Maps und der lokalen Suche erscheint — vollständig eingerichtet, richtlinienkonform und auf Ihre Leistungen zugeschnitten. Ich habe diesen Prozess für mein eigenes Profil vollständig durchlaufen und dokumentiert.' },
+      { titel: 'Social-Media-Banner & Brand-Assets', text: 'Konsistente Grafiken für LinkedIn, XING und Co. — passend zu Ihrem Auftritt, in reproduzierbarer Qualität.' },
+    ],
+  },
+  {
+    nr: '3',
+    titel: 'E-Commerce & CRM',
+    items: [
+      { titel: 'Onlineshop-Erstellung und Optimierung (Shopify)', text: 'Shop aufsetzen oder bestehenden Shop verbessern: Produktdarstellung, Checkout, Anbindungen — aus operativer Shop-Praxis.' },
+      { titel: 'E-Commerce-Beratung (Shopify)', text: 'Shopsystem-Auswahl, Prozesse, Marktplätze: Ich habe mit Shopify operativ gearbeitet und berate aus dieser Praxis heraus.' },
+      { titel: 'Corporate Design & Markenauftritt', text: 'Farben, Typografie, Logo-Anwendung, Vorlagen — ein Auftritt, der überall gleich aussieht: Website, Profile, Dokumente.' },
+      { titel: 'CRM & Kundenbindung', text: 'Kundendaten sinnvoll nutzen: Newsletter, Automationen, Wiederkäufer-Strecken — pragmatisch aufgesetzt für kleine Teams.' },
+    ],
+  },
+  {
+    nr: '4',
+    titel: 'KI-Automation',
+    kern: true,
+    vorbemerkung: 'Künstliche Intelligenz ist bei mir kein Schlagwort, sondern täglicher Werkzeugkasten — ich arbeite selbst durchgehend KI-gestützt. Diese Erfahrung gebe ich weiter:',
+    items: [
+      { titel: 'KI-Beratung für kleine Unternehmen', text: 'Wo lohnt sich KI bei Ihnen — und wo nicht? Eine ehrliche Bestandsaufnahme mit konkreten, umsetzbaren nächsten Schritten.' },
+      { titel: 'KI-gestützte Marketing-Automatisierung', text: 'Wiederkehrende Marketing-Aufgaben beschleunigen: Texte, Auswertungen, Kampagnen-Routinen — mit Kontrolle statt Blackbox.' },
+      { titel: 'KI-gestützte Büro-Workflows', text: 'Ablage, Dokumente, wiederkehrende Büroarbeit: Ich entwickle Abläufe, die Zeit sparen und nachvollziehbar bleiben. Wie das aussehen kann, zeigt mein Werkstatt-Projekt berta.', beleg: { label: 'Arbeiten: berta (Case-Study)', href: '/arbeiten#berta' } },
+    ],
+  },
+];
+
+const pageTitle = 'Leistungen — Webdesign, Online-Marketing & KI-Automation · Torsten Günter, Villingen-Schwenningen';
+const pageDescription = 'Webdesign, Onlineshops, SEO und KI-gestützte Automatisierung für kleine Unternehmen im Schwarzwald-Baar-Kreis. Technisch sauber, direkt vom Umsetzer.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+
+  <div class="py-16 md:py-24 lg:py-32">
+    <div
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
+    >
+
+      <!-- HERO -->
+      <div>
+        <p class="text-xs sm:text-sm tracking-[0.18em] uppercase text-primary font-semibold mb-5">
+          Webdesign · Online-Marketing · KI-Automation
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
+          Leistungen
+        </h1>
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Websites, Onlineshops und digitale Sichtbarkeit für kleine Unternehmen — geplant und
+          umgesetzt von einer Person, die beides kann: Marketing und Technik. Ich arbeite ohne
+          Agentur-Overhead, direkt und nachvollziehbar, aus Unterkirnach für den
+          Schwarzwald-Baar-Kreis und darüber hinaus.
+        </p>
+      </div>
+
+      <!-- LEISTUNGS-GRUPPEN (Desktop 2×2 → Mobil 1 Spalte) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+        {gruppen.map((gruppe) => (
+          <article
+            class:list={[
+              'bg-background rounded-lg p-6 sm:p-8 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary',
+              gruppe.kern ? 'border border-primary/40' : 'border border-border-subtle',
+            ]}
+          >
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-md bg-primary text-white text-sm font-semibold shrink-0" aria-hidden="true">
+                  {gruppe.nr}
+                </span>
+                <h2 class="font-serif text-xl sm:text-2xl font-medium text-text-primary">
+                  {gruppe.titel}
+                </h2>
+              </div>
+              {gruppe.kern && (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[0.08em] uppercase bg-primary-soft text-primary border border-primary/30 shrink-0">
+                  Kern
+                </span>
+              )}
+            </div>
+
+            <div class="w-8 h-[3px] bg-primary rounded-full mb-6" aria-hidden="true"></div>
+
+            {gruppe.vorbemerkung && (
+              <p class="text-sm text-text-secondary leading-relaxed mb-6">{gruppe.vorbemerkung}</p>
+            )}
+
+            <ul class="space-y-5">
+              {gruppe.items.map((item) => (
+                <li>
+                  <h3 class="text-[15px] font-semibold text-text-primary mb-1">{item.titel}</h3>
+                  <p class="text-sm text-text-secondary leading-relaxed">
+                    {item.text}
+                    {item.beleg && (
+                      <>
+                        {' '}
+                        <a
+                          href={item.beleg.href}
+                          class="inline-flex items-center gap-1 text-primary font-medium hover:text-primary-hover hover:underline underline-offset-2 whitespace-nowrap"
+                        >
+                          <span aria-hidden="true">→</span> {item.beleg.label}
+                        </a>
+                      </>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            {/* Weiterer Referenz-Link bei „Website-Erstellung" folgt nach separater Freigabe — bewusst noch nicht gerendert (kein Kundenname vor Freigabe). */}
+          </article>
+        ))}
+
+      </div>
+
+      <!-- ABSCHLUSS / CTA -->
+      <div>
+        <h2 class="font-serif text-3xl font-medium text-text-primary mb-4">
+          So arbeiten wir zusammen
+        </h2>
+        <p class="text-base text-text-secondary leading-relaxed max-w-2xl mb-8">
+          Erstkontakt per E-Mail oder Telefon, dann ein kurzes Gespräch über Ihr Vorhaben — Sie
+          bekommen eine klare Einschätzung und ein Angebot mit festem Umfang. Kein Abo, kein
+          Kleingedrucktes.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/kontakt" class="inline-flex items-center px-6 py-3 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium transition-all duration-200">
+            Projekt anfragen
+          </a>
+          <a href="/arbeiten" class="inline-flex items-center px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary-soft font-medium transition-all duration-200">
+            Arbeiten ansehen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</BaseLayout>
