@@ -42,7 +42,7 @@ const socialDescription = ogDescription ?? description;
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack, etc.) -->
+    {/* Open Graph (LinkedIn, Facebook, WhatsApp, Slack, etc.) */}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Torsten Günter — Portfolio" />
     <meta property="og:title" content={socialTitle} />
@@ -54,17 +54,17 @@ const socialDescription = ogDescription ?? description;
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://torsten-guenter.de').href} />
     <meta property="og:locale" content="de_DE" />
 
-    <!-- Twitter Card -->
+    {/* Twitter Card */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image" content="https://torsten-guenter.de/og-image.png" />
 
-    <!--
+    {/*
       Fonts: Fraunces (Serif-Überschriften) + Inter (Sans-UI/Fließtext)
       werden self-hosted via Fontsource geladen – siehe src/styles/global.css.
       Kein Request an Google.
-    -->
+    */}
 
     <title>{title}</title>
 
@@ -72,7 +72,7 @@ const socialDescription = ogDescription ?? description;
         Site-Konfiguration prüfen (ggf. Domain umstellen oder neue Site anlegen).
         Der Script-Pfad pa-LZdE3zo742iiKCInZsgyI.js ist site-spezifisch und könnte
         sich dann ändern. is:inline verhindert, dass Astro den Snippet bundlet. */}
-    <!-- Privacy-friendly analytics by Plausible -->
+    {/* Privacy-friendly analytics by Plausible */}
     <script is:inline async src="https://plausible.io/js/pa-LZdE3zo742iiKCInZsgyI.js"></script>
     <script is:inline>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};

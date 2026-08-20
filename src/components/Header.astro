@@ -18,7 +18,7 @@ const isActive = (href: string) =>
 <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border-subtle">
   <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
 
-    <!-- Logo -->
+    {/* Logo */}
     <a href="/" class="flex items-center gap-3 group">
       <span class="bg-primary text-white font-semibold text-sm rounded-lg w-9 h-9 flex items-center justify-center shrink-0">
         TG
@@ -28,7 +28,7 @@ const isActive = (href: string) =>
       </span>
     </a>
 
-    <!-- Desktop-Navigation -->
+    {/* Desktop-Navigation */}
     <div class="hidden md:flex items-center gap-6">
       {navLinks.map(({ href, label }) => (
         <a
@@ -45,7 +45,7 @@ const isActive = (href: string) =>
         </a>
       ))}
 
-      <!-- Sprachumschalter – Platzhalter, noch nicht funktional -->
+      {/* Sprachumschalter – Platzhalter, noch nicht funktional */}
       <span
         class="text-sm text-[#6b7280] border-l border-border-subtle pl-5 ml-1 select-none cursor-not-allowed"
         title="Sprachumschalter – folgt demnächst"
@@ -54,7 +54,7 @@ const isActive = (href: string) =>
       </span>
     </div>
 
-    <!-- Mobile: Burger-Button -->
+    {/* Mobile: Burger-Button */}
     <button
       id="burger-btn"
       class="md:hidden p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-background-soft transition-colors"
@@ -62,18 +62,18 @@ const isActive = (href: string) =>
       aria-expanded="false"
       aria-controls="mobile-nav"
     >
-      <!-- Hamburger-Icon (sichtbar wenn Menü zu) -->
+      {/* Hamburger-Icon (sichtbar wenn Menü zu) */}
       <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
-      <!-- Schließen-Icon (sichtbar wenn Menü offen) -->
+      {/* Schließen-Icon (sichtbar wenn Menü offen) */}
       <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </nav>
 
-  <!-- Mobile-Menü (md:hidden hält es auf Desktop immer versteckt) -->
+  {/* Mobile-Menü (md:hidden hält es auf Desktop immer versteckt) */}
   <div id="mobile-nav" class="hidden md:hidden border-t border-border-subtle bg-background px-4 py-3 space-y-1">
     {navLinks.map(({ href, label }) => (
       <a
