@@ -13,7 +13,6 @@ interface Leistung {
 interface Gruppe {
   nr: string;
   titel: string;
-  kern?: boolean;
   vorbemerkung?: string;
   items: Leistung[];
 }
@@ -53,7 +52,6 @@ const gruppen: Gruppe[] = [
   {
     nr: '4',
     titel: 'KI-Automation',
-    kern: true,
     vorbemerkung: 'Künstliche Intelligenz ist bei mir kein Schlagwort, sondern täglicher Werkzeugkasten — ich arbeite selbst durchgehend KI-gestützt. Diese Erfahrung gebe ich weiter:',
     items: [
       { titel: 'KI-Beratung für kleine Unternehmen', text: 'Wo lohnt sich KI bei Ihnen — und wo nicht? Eine ehrliche Bestandsaufnahme mit konkreten, umsetzbaren nächsten Schritten.' },
@@ -99,10 +97,7 @@ const pageOgTitle = 'Webdesign, Online-Marketing & KI-Automation · Torsten Gün
 
         {gruppen.map((gruppe) => (
           <article
-            class:list={[
-              'bg-background rounded-lg p-6 sm:p-8 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary',
-              gruppe.kern ? 'border border-primary/40' : 'border border-border-subtle',
-            ]}
+            class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
           >
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-3">
