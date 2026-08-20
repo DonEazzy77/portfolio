@@ -3,8 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Copy 1:1 aus selbststaendigkeit/leistungen_seite_entwurf.md (v3.1, S&R/§5-freigegeben).
 // GBP-Spiegelung: 4 Gruppen, 16 Leistungen — vollständig ausgeschrieben (kein „+ x weitere").
-// Belege nur: torsten-guenter.de (Website-Erstellung) + berta Case-Study (KI-Büro-Workflows).
-// Weiterer Referenz-Beleg bei „Website-Erstellung" folgt erst nach separater Freigabe — bewusst nicht im Markup (kein Kundenname vor Freigabe).
+// Belege: torsten-guenter.de (Website-Erstellung), Fahrschule 7Miles (Relaunch, Namensnennung freigegeben 03.08.2026), berta Case-Study (KI-Büro-Workflows).
 
 interface Leistung {
   titel: string;
@@ -26,7 +25,7 @@ const gruppen: Gruppe[] = [
     items: [
       { titel: 'Webdesign & Webentwicklung', text: 'Moderne, schnelle Websites — handgebaut statt Baukasten. Sauberer Code, klare Gestaltung, auf Wunsch mit Pflege danach.' },
       { titel: 'Website-Erstellung', text: 'Von der Struktur bis zum Livegang: Konzept, Texte, Design und technische Umsetzung aus einer Hand. Diese Website hier ist so entstanden — sie ist mein erstes Referenzstück.', beleg: { label: 'Arbeiten: torsten-guenter.de', href: '/arbeiten#website' } },
-      { titel: 'Website-Relaunch & Redesign', text: 'Bestehende Seiten modernisieren — mit sorgfältiger Übernahme der Inhalte und sauber eingerichteten Weiterleitungen.' },
+      { titel: 'Website-Relaunch & Redesign', text: 'Bestehende Seiten modernisieren — mit sorgfältiger Übernahme der Inhalte und sauber eingerichteten Weiterleitungen.', beleg: { label: 'Arbeiten: Fahrschule 7Miles', href: '/arbeiten#7miles' } },
       { titel: 'Landingpages', text: 'Einzelne Seiten mit einem klaren Ziel — für Aktionen, Angebote oder Kampagnen.' },
       { titel: 'Impressum & Datenschutz-Basics', text: 'Impressum, Datenschutzerklärung, Cookie-freie Analytics: die formalen Grundlagen Ihrer Website, sorgfältig umgesetzt. Keine Rechtsberatung — bei rechtlichen Fragen verweise ich an Ihren Anwalt.' },
       { titel: 'Website-Betreuung', text: 'Updates, Sicherheit, kleine Änderungen — damit die Seite gepflegt bleibt, ohne dass Sie sich darum kümmern müssen.' },
@@ -66,9 +65,12 @@ const gruppen: Gruppe[] = [
 
 const pageTitle = 'Leistungen — Webdesign, Online-Marketing & KI-Automation · Torsten Günter, Villingen-Schwenningen';
 const pageDescription = 'Webdesign, Onlineshops, SEO und KI-gestützte Automatisierung für kleine Unternehmen im Schwarzwald-Baar-Kreis. Technisch sauber, direkt vom Umsetzer.';
+// Social-Karten kürzen bei ~70 Zeichen; der SEO-Title hat 97. Gekürzte Fassung
+// der freigegebenen v3.1-§2-Zeile, von Biz am 03.08.2026 beauftragt (60 Zeichen).
+const pageOgTitle = 'Webdesign, Online-Marketing & KI-Automation · Torsten Günter';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} ogTitle={pageOgTitle}>
 
   <div class="py-16 md:py-24 lg:py-32">
     <div
@@ -145,7 +147,6 @@ const pageDescription = 'Webdesign, Onlineshops, SEO und KI-gestützte Automatis
                 </li>
               ))}
             </ul>
-            {/* Weiterer Referenz-Link bei „Website-Erstellung" folgt nach separater Freigabe — bewusst noch nicht gerendert (kein Kundenname vor Freigabe). */}
           </article>
         ))}
 
