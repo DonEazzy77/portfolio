@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+
+---
+
+<BaseLayout
+  title="berta — Ihre digitale Sekretärin — Torsten Günter"
+  description="berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe"
+  ogTitle="berta — Ihre digitale Sekretärin · Torsten Günter"
+  ogDescription="berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe"
+>
+  <div class="py-16 md:py-24 lg:py-32">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      {/* Breadcrumb — eine Ebene, deshalb schlicht als Zeile mit Trenner */}
+      <nav aria-label="Brotkrumen" class="text-sm text-text-secondary mb-8">
+        <a href="/arbeiten/" class="krumen-link">Arbeiten</a>
+        <span aria-hidden="true" class="mx-2">→</span>
+        <span class="text-text-primary">berta</span>
+      </nav>
+
+      <div class="berta-card rounded-lg p-6 sm:p-10">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_minmax(0,440px)] gap-8 lg:gap-12 md:items-center">
+
+          {/* Linke Spalte: Text-Lockup — alles fluchtet unter dem „b“,
+               nur Vogelkopf/Federn ragen links über die Fluchtlinie hinaus. */}
+          <div class="berta-text">
+
+            <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-3">Eigenes Produkt · 2026, laufend</p>
+
+            {/* Echtes Heading für a11y/SEO; die Optik übernimmt das Marken-Lockup darunter. */}
+            <h2 class="sr-only">berta — Ihre digitale Sekretärin</h2>
+
+            <img
+              class="berta-lockup"
+              src="/showcase/berta-lockup.svg"
+              width="4701" height="1872"
+              loading="lazy"
+              alt=""
+            />
+
+            {/* Claim, Register C: linksbündig am „b“-Fuß, rechts bündig am „a“.
+                textLength + lengthAdjust="spacing" verteilt das Tracking gleichmäßig auf alle
+                Zwischenräume, sodass der Claim die Wortmarkenbreite exakt füllt — ohne die
+                Glyphen zu verzerren und ohne handgesetzte letter-spacing-Werte pro Breakpoint. */}
+            <svg class="berta-claim" viewBox="0 0 845 75" aria-hidden="true" focusable="false">
+              <text x="0" y="55" textLength="845" lengthAdjust="spacing">Ihre digitale Sekretärin</text>
+            </svg>
+
+            <p class="text-sm text-text-secondary mb-6">Naming &amp; Marke · Produkt · Landingpage</p>
+
+            <p class="text-base text-text-primary leading-relaxed max-w-2xl mb-6">
+              berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe:
+              berta ordnet Belege, erinnert an Fristen und hält die Ablage im Blick — damit der
+              Papierkram nicht liegenbleibt und die Daten im Betrieb bleiben. Von der ersten Idee über
+              Naming und Marke bis zu Produkt und Landingpage habe ich alles selbst aufgebaut — und
+              entwickle es 2026 laufend weiter.
+            </p>
+
+            <a href="https://bertahilft.de" target="_blank" rel="noopener"
+               class="berta-link inline-flex items-center gap-1.5 text-sm font-medium"
+               aria-label="berta — Ihre digitale Sekretärin: bertahilft.de (öffnet in neuem Tab)">
+              bertahilft.de
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+                   stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+
+          </div>
+
+          <div class="berta-visual">
+            <img class="berta-hero" src="/showcase/berta-hero-vogel.png" width="1200" height="1357" loading="lazy"
+                 alt="Illustration der Marke berta: ein Sekretärvogel mit einem Blatt Papier im Schnabel steht auf einem Stapel Dokumente" />
+          </div>
+
+        </div>
+      </div>
+
+      {/* Nachbarschaft — damit man von hier aus weiterkommt, ohne zurückzuspringen */}
+      <nav aria-label="Weitere Arbeiten" class="mt-16 pt-8 border-t border-border-subtle flex flex-wrap justify-between gap-4 text-sm">
+        <a href="/arbeiten/website/" class="nachbar">← Vorherige Arbeit<span class="sr-only">: Diese Website</span></a>
+        <a href="/arbeiten/7miles/" class="nachbar">Nächste Arbeit →<span class="sr-only">: Fahrschule 7miles</span></a>
+      </nav>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .krumen-link { color: var(--color-primary); text-decoration: none; }
+  .krumen-link:hover, .krumen-link:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  .nachbar { color: var(--color-primary); text-decoration: none; }
+  .nachbar:hover, .nachbar:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  /* ── berta: Projektkarte „Eigenes Produkt“ — Marken-Exponat auf Creme (#FAF4E6) ── */
+  .berta-card { background: #FAF4E6; border: 1px solid rgba(74, 43, 79, .14); }
+
+  /* Text-Lockup (Register C).
+     --lockup-w steuert die gesamte Marken-Einheit; alle anderen Werte sind Anteile davon,
+     gemessen an berta_lockup_final.svg (viewBox 4701×1872) und gegen das Soll-Bild geprüft:
+       Vogel-Tinte linke Kante  0,018 × W
+       „b“-Fuß  = Fluchtlinie   0,136 × W
+       „a“ rechte Kante         0,981 × W   → Claim-Breite b→a = 0,845 × W
+       Wortmarken-Grundlinie    0,380 × W ab Bildoberkante (Bildhöhe = 0,3982 × W)
+       Grundlinie → Claim-Oberkante 0,034 × W  (eng getuckt)
+     Der Textblock wird um 0,136 × W eingerückt, das Lockup-Bild um denselben Betrag
+     zurückgezogen → alles fluchtet unter dem „b“, nur der Vogelkopf ragt links heraus. */
+  .berta-text {
+    --lockup-w: min(300px, 68vw);
+    padding-left: calc(var(--lockup-w) * 0.136);
+  }
+  @media (min-width: 768px) { .berta-text { --lockup-w: 340px; } }
+
+  .berta-lockup {
+    display: block;
+    width: var(--lockup-w);
+    height: auto;
+    margin-left: calc(var(--lockup-w) * -0.136);
+  }
+
+  /* Claim: Quicksand Medium, Pflaume voll. font-size steht in viewBox-Einheiten
+     (845 Einheiten = 0,845 × W), skaliert also automatisch mit dem Lockup mit. */
+  .berta-claim {
+    display: block;
+    width: calc(var(--lockup-w) * 0.845);
+    height: auto;
+    margin: calc(var(--lockup-w) * 0.0092) 0 1.5rem;
+    overflow: visible;
+  }
+  .berta-claim text {
+    font-family: "Quicksand", var(--font-sans);
+    font-weight: 500;
+    font-size: 65px;
+    fill: #4A2B4F;
+  }
+
+  /* Freigestelltes Hero-Keyvisual direkt auf der Creme-Fläche — kein Bild-Kasten, kein Badge */
+  .berta-visual { display: flex; justify-content: center; align-items: center; }
+  .berta-visual .berta-hero { display: block; width: 100%; max-width: 360px; height: auto; }
+
+  .berta-link { color: var(--color-primary); text-decoration: none; transition: color 200ms ease; }
+  .berta-link:hover, .berta-link:focus-visible {
+    color: var(--color-primary-hover);
+    text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+
+</style>

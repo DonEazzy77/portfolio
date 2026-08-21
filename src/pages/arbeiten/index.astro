@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import teaser7miles from '../../assets/showcase/7miles-desktop.png';
+
+// Index-Teaser. Leads sind an der Satzgrenze aus den Case-Seiten gekürzt —
+// kein Wort umformuliert (Ableitungsregel Biz, werkschau_7miles_copy.md).
+const arbeiten = [
+  {
+    href: '/arbeiten/website/',
+    anker: 'website',
+    eyebrow: 'Ausgewählte Arbeit',
+    titel: 'Diese Website — und das System dahinter.',
+    disziplinen: 'Konzept · Design · Entwicklung · Brand-System',
+    lead: 'Du schaust sie dir gerade an. Diese Seite ist meine Handwerksprobe — selbst konzipiert, gestaltet und gebaut.',
+    bild: '/showcase/tile-website.png',
+    alt: 'Startseite von torsten-guenter.de als Browser-Vorschau im Brand-Look',
+  },
+  {
+    href: '/arbeiten/berta/',
+    anker: 'berta',
+    eyebrow: 'Eigenes Produkt · 2026, laufend',
+    titel: 'berta — Ihre digitale Sekretärin',
+    disziplinen: 'Naming & Marke · Produkt · Landingpage',
+    lead: 'berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe: berta ordnet Belege, erinnert an Fristen und hält die Ablage im Blick — damit der Papierkram nicht liegenbleibt und die Daten im Betrieb bleiben.',
+    bild: '/showcase/berta-hero-vogel.png',
+    alt: 'Illustration der Marke berta: ein Sekretärvogel mit einem Blatt Papier im Schnabel steht auf einem Stapel Dokumente',
+  },
+  {
+    href: '/arbeiten/7miles/',
+    anker: '7miles',
+    eyebrow: 'Kundenprojekt · Fahrschule · 2026',
+    titel: 'Fahrschule 7miles',
+    disziplinen: 'Rebrand · Website-Neubau · Local SEO · Print',
+    lead: 'Die Website, die nicht ums Auto geht. Eine Fahrschule im Schwarzwald-Baar-Kreis, ein Fahrlehrer, drei sehr verschiedene Arten von Fahrschülern: Jugendliche, bei denen die Eltern mitentscheiden, Motorradfahrer mit eigenem Kopf, und Menschen, die nach Jahren wieder einsteigen und vor allem eines brauchen — Vertrauen.',
+    bildImport: teaser7miles,
+    alt: 'Startseite der Fahrschule 7miles auf einem Desktop-Bildschirm: dunkler Hintergrund, grüne Akzentfarbe, Crest und Einstieg zur Schnupperstunde.',
+  },
+];
+---
+
+<BaseLayout
+  title="Arbeiten: Website, Marke & Kundenprojekte — Torsten Günter"
+  description="Ausgewählte Arbeiten: das eigene Brand-System und diese Website, die Produktmarke berta und der Relaunch der Fahrschule 7miles — schnell, zugänglich, ohne Cookies."
+  ogTitle="Arbeiten: Website, Marke & Kundenprojekte · Torsten Günter"
+  ogDescription="Eigene Website, Produktmarke berta, Relaunch Fahrschule 7miles — drei Arbeiten, ein Anspruch: schnell, zugänglich, ohne Cookies."
+>
+  <div class="py-16 md:py-24 lg:py-32">
+    <div
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
+      style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
+    >
+
+      {/* ── INTRO ─────────────────────────────────────────────────────── */}
+      <div>
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Arbeiten
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
+          Ausgewählte Arbeiten.
+        </h1>
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Marketing und Technik gehören zusammen — das beweise ich am liebsten an echten Beispielen.
+          Hier zeige ich nicht nur, <em>was</em> entstanden ist, sondern <em>wie</em>: vom ersten
+          Konzept bis zum laufenden Betrieb.
+        </p>
+      </div>
+
+      {/* Teaser. Die Anker-IDs bleiben erhalten, damit die Belege auf
+          /leistungen weiter funktionieren, auch wenn sie später direkt
+          auf die Unterseiten zeigen. */}
+      {arbeiten.map((a) => (
+        <article id={a.anker} style="scroll-margin-top: 6rem;"
+                 class="teaser bg-background border border-border-subtle rounded-lg overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-[minmax(0,340px)_1fr] gap-0 md:items-stretch">
+            <div class="teaser-bild">
+              {a.bildImport ? (
+                <Image src={a.bildImport} alt={a.alt}
+                       widths={[340, 680]} sizes="(min-width: 768px) 340px, 100vw"
+                       format="webp" quality={72} loading="lazy" />
+              ) : (
+                <img src={a.bild} alt={a.alt} loading="lazy" />
+              )}
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <p class="text-xs tracking-[0.18em] uppercase text-text-secondary mb-2">{a.eyebrow}</p>
+              <h2 class="font-serif text-xl sm:text-2xl font-medium text-text-primary leading-tight mb-2">
+                {a.titel}
+              </h2>
+              <p class="text-sm text-text-secondary mb-4">{a.disziplinen}</p>
+              <p class="text-sm text-text-secondary leading-relaxed mb-5">{a.lead}</p>
+              <a href={a.href} class="teaser-link inline-flex items-center gap-1.5 text-sm font-medium"
+                 aria-label={`Case Study ${a.titel} lesen`}>
+                Case Study lesen
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .teaser-bild { background: var(--color-background-soft); display: flex; align-items: center; justify-content: center; }
+  .teaser-bild img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 767px) { .teaser-bild img { max-height: 15rem; } }
+
+  .teaser { transition: border-color 200ms ease, transform 200ms ease; }
+  .teaser:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+
+  .teaser-link { color: var(--color-primary); text-decoration: none; transition: color 200ms ease; }
+  .teaser-link:hover, .teaser-link:focus-visible {
+    color: var(--color-primary-hover);
+    text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) { .teaser { transition: none; } .teaser:hover { transform: none; } }
+</style>
