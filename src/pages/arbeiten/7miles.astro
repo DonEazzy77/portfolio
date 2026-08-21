@@ -6,6 +6,12 @@ import shot7milesDesktop from '../../assets/showcase/7miles-desktop.png';
 import shot7milesMobile from '../../assets/showcase/7miles-mobile.png';
 import shot7milesKlassen from '../../assets/showcase/7miles-unterseite.png';
 
+// Nachzügler 7miles (Biz 21.08.): /klassen-Hero wird neu gerendert, das Schild
+// zeigt die falsche Crest-Variante. Der Tausch ist ein reiner Dateitausch —
+// die beiden PNGs unten ersetzen, sonst nichts. Caption und Alt zu Motiv 1
+// stehen isoliert im ersten Eintrag von galerie.bilder.
+//   7miles-unterseite.png     (A3, Screenshot der Seite /klassen)
+//   7miles-hero-klassen.png   (Galerie-Motiv 1)
 import heroKlassen from '../../assets/showcase/7miles-hero-klassen.png';
 import heroAktuelles from '../../assets/showcase/7miles-hero-aktuelles.png';
 import heroUeberuns from '../../assets/showcase/7miles-hero-ueberuns.png';
@@ -315,6 +321,8 @@ const siebenMeilen = {
   .route7-item { flex: 0 0 min(78%, 25rem); scroll-snap-align: start; }
   .route7-item img {
     display: block; width: 100%; height: auto;
+    aspect-ratio: 3 / 2; object-fit: cover;   /* fester Kasten: ein neu geliefertes
+       Motiv kann die Leiste nicht verschieben, auch wenn es anders proportioniert ist */
     border-radius: .5rem; border: 1px solid var(--color-border-subtle);
   }
   .route7-item figure { margin: 0; }
