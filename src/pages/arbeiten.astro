@@ -6,6 +6,13 @@ import shot7milesDesktop from '../assets/showcase/7miles-desktop.png';
 import shot7milesMobile from '../assets/showcase/7miles-mobile.png';
 import shot7milesKlassen from '../assets/showcase/7miles-unterseite.png';
 
+import heroKlassen from '../assets/showcase/7miles-hero-klassen.png';
+import heroAktuelles from '../assets/showcase/7miles-hero-aktuelles.png';
+import heroUeberuns from '../assets/showcase/7miles-hero-ueberuns.png';
+import heroKontakt from '../assets/showcase/7miles-hero-kontakt.png';
+import heroSchnupper from '../assets/showcase/7miles-hero-schnupperstunde.png';
+import hero404 from '../assets/showcase/7miles-hero-404.png';
+
 // Prozess-Schritte (der „Weg dorthin")
 const prozess = [
   { t: 'Brand & Konzept', d: 'Bevor eine Zeile Code entstand, stand die Marke — denn eine eigene, wiedererkennbare Identität wirkt schon, bevor das erste Wort gelesen ist. Statt Stockfotos habe ich ein eigenständiges Schwarzwald-Motiv mit Drei-Türme-Wappen entworfen (eine Anspielung auf meine Heimat Unterkirnach), dazu das Schrift-Duo Fraunces + Inter und eine Bronze-Palette. So trägt derselbe ruhige, hochwertige Ton durch alles — vom Wappen bis zur kleinsten Schaltfläche.' },
@@ -168,6 +175,37 @@ const siebenMeilen = {
     { src: shot7milesMobile,  alt: 'Dieselbe Startseite auf dem Smartphone, Menü und Schnupperstunden-Button oben erreichbar.' },
     { src: shot7milesKlassen, alt: 'Seite Klassen der Fahrschule 7miles mit Übersicht der Führerscheinklassen und Galerie.' },
   ],
+
+  // Galerie „Route 7" — Copy v0.2 (S&R grün, Nachtrag XLV), Wortlaut 1:1.
+  // Reihenfolge: Menü-Folge der 7miles-Seite, danach die beiden Sonderplatzierungen.
+  // Schalter AN seit Torsten-Entscheid 21.08. (Daniels Einverständnis war Teil des
+  // Pitches → kein Kundenassets-Schalter). Auf false setzen blendet den Block aus.
+  galerieAn: true,
+  galerie: {
+    titel: 'Route 7 — eine Bildserie für sechs Seiten',
+    intro: 'Jede Seite der Fahrschule bekam ihr eigenes Motiv aus derselben Welt: eine leere Straße in der Dämmerung, ein grüner Schimmer am Horizont, der nie erklärt wird, und ein Präriehund, der immer abseits der Fahrbahn sitzt und zuschaut. Entstanden als KI-generierte Serie nach eigener Bildregie.',
+    label: 'KI-generierte Bildserie · Konzept, Bildregie und Auswahl: Torsten Günter · Kein Foto.',
+    bilder: [
+      { src: heroKlassen, stark: 'Vom Mofa bis zur großen Maschine.',
+        text: 'Vier Zweiräder in aufsteigender Größe vor dem Diner — und im Fenster das Crest, wie es gedacht ist: als Leuchtreklame.',
+        alt: 'Vier Zweiräder von Mofa bis Motorrad vor einem Chrom-Diner bei Dämmerung, im Fenster ein grünes Neonschild mit der 7.' },
+      { src: heroAktuelles, stark: 'Was bei uns gerade läuft.',
+        text: 'Die Präriehund-Familie vor ihrem Bau in der Abenddämmerung — einer steht schon, die anderen schauen noch.',
+        alt: 'Präriehund-Familie auf einem Erdhügel in der Abenddämmerung, daneben eine leere Landstraße mit grünem Schimmer am Horizont.' },
+      { src: heroUeberuns, stark: 'Seit 2007 auf der Straße.',
+        text: 'Die Werkstatt bei Nacht: Vespas, eine abgedeckte Maschine, ein alter Mustang — der Ort, an dem die Fahrschule zuhause ist.',
+        alt: 'Werkstatt bei Nacht mit zwei Vespas, einem schwarzen Mustang und einem grünen Neonschild an der Wand.' },
+      { src: heroKontakt, stark: 'Einfach anrufen.',
+        text: 'Eine Telefonzelle in der blauen Stunde, die einzige warme Lichtquelle weit und breit.',
+        alt: 'Beleuchtete Telefonzelle am Rand einer leeren Landstraße zur blauen Stunde, ein Präriehund sitzt davor.' },
+      { src: heroSchnupper, stark: 'Erst schnuppern, dann anmelden.',
+        text: 'Der Präriehund richtet sich am Kilometerstein auf — die grüne 7 leuchtet schon.',
+        alt: 'Präriehund richtet sich an einem Kilometerstein mit leuchtender grüner 7 auf, Sonnenuntergang über der Straße.' },
+      { src: hero404, stark: 'Hier geht\'s nicht weiter.',
+        text: 'Sackgassen-Schild, Laterne, Präriehund auf dem Felsen — selbst die Fehlerseite gehört zur Serie.',
+        alt: 'Nächtliche Landstraße mit Sackgassen-Schild unter einer Laterne, grüner Schimmer am Horizont, Präriehund auf einem Felsen.' },
+    ],
+  },
 
   vorherBild: null,   // A4 — erst nach Daniel-OK + Motivprüfung
   crest: null,        // A5 — erst nach Daniel-OK pro forma
@@ -543,6 +581,39 @@ const siebenMeilen = {
 
         <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mt-10">{siebenMeilen.designAnspruch}</p>
 
+        {/* Galerie „Route 7" — horizontale Leiste mit Scroll-Snap, ohne JavaScript.
+            Die Leiste ist tastaturbedienbar (tabindex) und als Gruppe ausgezeichnet. */}
+        {siebenMeilen.galerieAn && (
+          <section class="mt-14" aria-labelledby="route7-titel">
+            <h3 id="route7-titel" class="font-serif text-lg font-medium text-text-primary mb-3">
+              {siebenMeilen.galerie.titel}
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-2">
+              {siebenMeilen.galerie.intro}
+            </p>
+            <p class="text-xs text-text-secondary/80 leading-relaxed max-w-2xl mb-6">
+              {siebenMeilen.galerie.label}
+            </p>
+
+            <ol class="route7" tabindex="0" role="group"
+                aria-label="Bildserie Route 7 — sechs Motive, horizontal scrollbar">
+              {siebenMeilen.galerie.bilder.map((b, i) => (
+                <li class="route7-item">
+                  <figure>
+                    <Image src={b.src} alt={b.alt}
+                           widths={[420, 840]} sizes="(min-width: 640px) 400px, 78vw"
+                           format="webp" quality={72}
+                           loading={i === 0 ? 'eager' : 'lazy'} />
+                    <figcaption class="text-xs text-text-secondary leading-relaxed mt-2">
+                      <strong class="text-text-primary font-semibold">{b.stark}</strong>{' '}{b.text}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
         {/* A8 — O-Ton Daniel. Rendert nur mit gesetztem Wert. */}
         {siebenMeilen.zitat && (
           <blockquote class="mt-10 border-l-2 border-primary pl-5 max-w-2xl">
@@ -763,6 +834,27 @@ const siebenMeilen = {
     color: var(--color-primary-hover);
     text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
   }
+  /* ── Galerie „Route 7" (7miles-Karte) ───────────────────────────────
+     Horizontale Leiste mit Scroll-Snap. Kein JavaScript: das Scrollen macht
+     der Browser, Snap sorgt nur dafür, dass Bilder bündig einrasten. */
+  .route7 {
+    display: flex; gap: 1rem;
+    list-style: none; margin: 0; padding: 0 0 .9rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .route7-item { flex: 0 0 min(78%, 25rem); scroll-snap-align: start; }
+  .route7-item img {
+    display: block; width: 100%; height: auto;
+    border-radius: .5rem; border: 1px solid var(--color-border-subtle);
+  }
+  .route7-item figure { margin: 0; }
+  /* Tastaturbedienung sichtbar machen — die Leiste ist fokussierbar */
+  .route7:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 5px; border-radius: .25rem; }
+  .route7::-webkit-scrollbar { height: 8px; }
+  .route7::-webkit-scrollbar-thumb { background: var(--color-border-subtle); border-radius: 4px; }
 </style>
 
 <script>
