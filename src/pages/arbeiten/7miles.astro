@@ -81,7 +81,7 @@ const siebenMeilen = {
       // nicht live (S&R). Aktivierung: schild auf { src: schildVisual, label:
       // '<Wortlaut Biz>', alt: '<Wortlaut Biz>' } setzen. Kein Markup-Umbau.
       schild: null,
-      text: 'Visitenkarte, zwei Stempel, Gutscheinkarte — dazu Briefpapier, Rechnungsvorlage, E-Mail-Signatur, Standby-Bilder für den Beamer im Schulungsraum und vier Flyer aus einem Bausatz. Alles kommt aus denselben Bausteinen: gleiche Strichstärken, gleiche Abstände, ein System, das auf 85 × 55 Millimetern Visitenkarte genauso funktioniert wie auf 45 Millimetern Stempelrund. Übergeben wurde es als sortierte Mappe — jede Datei druckfertig mit Beschnitt, jeder Ordner mit einer kurzen Anleitung, was drin ist und was noch zu tun bleibt. Der Kunde kann damit zu jeder Druckerei gehen, ohne dass jemand nachzeichnen muss.',
+      text: 'Visitenkarte, zwei Stempel, Gutscheinkarte — dazu Briefpapier, Rechnungsvorlage, E-Mail-Signatur, Standby-Bilder für den Beamer im Schulungsraum und eine Flyer-Serie aus einem Bausatz. Alles kommt aus denselben Bausteinen: gleiche Strichstärken, gleiche Abstände, ein System, das auf 85 × 55 Millimetern Visitenkarte genauso funktioniert wie auf 45 Millimetern Stempelrund. Übergeben wurde es als sortierte Mappe — jede Datei druckfertig mit Beschnitt, jeder Ordner mit einer kurzen Anleitung, was drin ist und was noch zu tun bleibt. Der Kunde kann damit zu jeder Druckerei gehen, ohne dass jemand nachzeichnen muss.',
       alt: 'Drucksachen der Fahrschule 7miles: zweiseitige Visitenkarte, Rechteck- und Rundstempel mit Crest, Gutscheinkarte für eine kostenlose Schnupperstunde.',
       // Flyer-Faecher — Copy Biz 24.08.2026, Wortlaut 1:1, nicht umformuliert.
       // Vier Fronten plus die gemeinsame Rueckseite. Die Fremdfoto-Grenze fuer
@@ -93,8 +93,8 @@ const siebenMeilen = {
       // GEMELDET, Antwort steht aus: der Alt-Text sagt "helle Rueckseite" — die
       // Flyer-Rueckseite ist dunkel (Asphalt). Wortlaut bleibt bis zur Korrektur.
       flyer: {
-        titel: 'Vier Flyer, ein Bausatz',
-        text: 'Ein allgemeiner Flyer, dazu je einer für Fahranfänger, Motorrad und Wiedereinstieg — gleiche Architektur, pro Zielgruppe eine eigene Bildwelt und Ansprache. Die Rückseiten bleiben bewusst bildfrei: Text, Crest und ein QR-Code, der auf die Website führt. Für die Bildwelten musste niemand ins Archiv — das Schulfahrzeug wurde selbst fotografiert, die Lounge-Motive stammen aus dem Shooting im Schulungsraum. Gebaut wird die ganze Serie aus einem einzigen Skript: Ändert sich ein Foto oder eine Zeile, wird kein Layout angefasst, sondern der Inhalt getauscht und neu gerendert. Inhalte wechseln, das Design bleibt.',
+        titel: 'Viele Flyer, ein Bausatz',
+        text: 'Vier sind bisher gebaut: ein allgemeiner, dazu je einer für Fahranfänger, Motorrad und Wiedereinstieg — gleiche Architektur, pro Zielgruppe eine eigene Bildwelt und Ansprache. Die Rückseiten bleiben bewusst bildfrei: Text, Crest und ein QR-Code, der auf die Website führt. Für die Bildwelten musste niemand ins Archiv — das Schulfahrzeug wurde selbst fotografiert, die Lounge-Motive stammen aus dem Shooting im Schulungsraum. Gebaut wird die ganze Serie aus einem einzigen Skript: Ändert sich ein Foto oder eine Zeile, wird kein Layout angefasst, sondern der Inhalt getauscht und neu gerendert. Inhalte wechseln, das Design bleibt.',
         alt: 'Vier aufgefächerte Flyer der Fahrschule 7miles mit dunkler Vorderseite und Crest, dahinter eine helle Rückseite mit Text und QR-Code.',
       },
     },
@@ -139,8 +139,8 @@ const siebenMeilen = {
   // Pitches → kein Kundenassets-Schalter). Auf false setzen blendet den Block aus.
   galerieAn: true,
   galerie: {
-    titel: 'Route 7 — eine Bildserie für sechs Seiten',
-    intro: 'Jede Seite der Fahrschule bekam ihr eigenes Motiv aus derselben Welt: eine leere Straße in der Dämmerung, ein grüner Schimmer am Horizont, der nie erklärt wird, und ein Präriehund, der immer abseits der Fahrbahn sitzt und zuschaut. Was die Serie zusammenhält, ist eine feste Lichtgrammatik — Tintenblau, warmes Bernstein und genau ein Neongrün pro Bild — und eine Regel für jede Komposition: kein Text im Bild, eine ruhige Fläche, auf der die Überschrift der Seite wohnen kann. Selbst die Fehlerseite spielt mit; wer sich verklickt, landet an einer Sackgasse mit Laterne. Sechs Motive, ein Erzähler, keine Wiederholung.',
+    titel: 'Route 7 — ein grüner Schimmer am Horizont',
+    intro: 'Jede Seite der Fahrschule bekam ihr eigenes Motiv aus derselben Welt: eine leere Straße in der Dämmerung, ein Präriehund, der immer abseits der Fahrbahn sitzt und zuschaut — und am Horizont ein grüner Schimmer. Er ist das Markengrün als Wegmarke: Das Ziel liegt ein Stück die Straße runter, sieben Meilen vielleicht, und es leuchtet schon. Zusammengehalten wird die Serie von einer festen Lichtgrammatik — Tintenblau, warmes Bernstein und genau ein Neongrün pro Bild — und einer Regel für jede Komposition: kein Text im Bild, eine ruhige Fläche, auf der die Überschrift der Seite wohnen kann. Selbst die Fehlerseite spielt mit; wer sich verklickt, landet an einer Sackgasse mit Laterne.',
     label: 'KI-generierte Bildserie · Konzept, Bildregie und Auswahl: Torsten Günter · Kein Foto.',
     bilder: [
       { src: heroKlassen, stark: 'Alle Klassen aus einer Hand.',
@@ -223,14 +223,6 @@ const siebenMeilen = {
           ))}
         </div>
 
-        {/* A4 — Vorher-Bild. Rendert nur mit gesetztem Wert; sonst existiert hier nichts. */}
-        {siebenMeilen.vorherBild && (
-          <figure class="shot shot-wide mb-10">
-            <Image src={siebenMeilen.vorherBild.src} alt={siebenMeilen.vorherBild.alt}
-                   width={1440} widths={[640, 960, 1440]} sizes="(min-width: 640px) 900px, 100vw"
-                   format="webp" quality={72} loading="lazy" />
-          </figure>
-        )}
 
 
         {/* W1 · Rebrand */}
@@ -242,26 +234,6 @@ const siebenMeilen = {
                  format="webp" quality={74} loading="lazy" />
         </figure>
 
-        {/* Screenshots: Desktop breit, darunter Mobil (Hochformat) neben /klassen */}
-        <div class="mb-0 flex flex-col gap-4">
-          <figure class="shot">
-            <Image src={siebenMeilen.shots[0].src} alt={siebenMeilen.shots[0].alt}
-                   width={1440} widths={[640, 960, 1440]} sizes="(min-width: 1024px) 880px, 100vw"
-                   format="webp" quality={72} loading="lazy" />
-          </figure>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
-            <figure class="shot">
-              <Image src={siebenMeilen.shots[1].src} alt={siebenMeilen.shots[1].alt}
-                     width={600} widths={[300, 600]} sizes="(min-width: 640px) 290px, 100vw"
-                     format="webp" quality={72} loading="lazy" />
-            </figure>
-            <figure class="shot sm:col-span-2">
-              <Image src={siebenMeilen.shots[2].src} alt={siebenMeilen.shots[2].alt}
-                     width={1200} widths={[600, 1200]} sizes="(min-width: 640px) 580px, 100vw"
-                     format="webp" quality={72} loading="lazy" />
-            </figure>
-          </div>
-        </div>
 
         {/* Der Dreh nach dem Launch — Beleg-Zeile direkt darunter, damit die Zahlen
             nie ohne ihre Messangabe stehen (Messrunde 15./17.08., nicht die vom 20.08.) */}
@@ -280,6 +252,42 @@ const siebenMeilen = {
           ))}
         </div>
         <p id="kpi-beleg-7miles" class="text-xs text-text-secondary/80 leading-relaxed mt-3">{siebenMeilen.kpiBeleg}</p>
+
+        {/* A4 — Vorher-Bild, klein am Dreh-Block. EIN Motiv, stumm: neutrale Zeile,
+            keine Bewertung (Biz-Ruling 24.08.). Schalter AUS bis Daniel-OK und der
+            Klaerung, wer die alte Website gebaut hat — Daniel-Agenda P9.
+            Aktivierung ist ein Dateneintrag, kein Markup-Umbau. */}
+        {siebenMeilen.vorherBild && (
+          <figure class="shot mt-6 mb-0 max-w-sm">
+            <Image src={siebenMeilen.vorherBild.src} alt={siebenMeilen.vorherBild.alt}
+                   width={760} widths={[380, 760]} sizes="(min-width: 640px) 380px, 100vw"
+                   format="webp" quality={72} loading="lazy" />
+            <figcaption class="text-xs text-text-secondary/80 leading-relaxed mt-3">
+              Die Website davor, Stand Mai 2026
+            </figcaption>
+          </figure>
+        )}
+
+        {/* Screenshots: Desktop breit, darunter Mobil (Hochformat) neben /klassen */}
+        <div class="mt-6 mb-0 flex flex-col gap-4">
+          <figure class="shot">
+            <Image src={siebenMeilen.shots[0].src} alt={siebenMeilen.shots[0].alt}
+                   width={1440} widths={[640, 960, 1440]} sizes="(min-width: 1024px) 880px, 100vw"
+                   format="webp" quality={72} loading="lazy" />
+          </figure>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
+            <figure class="shot">
+              <Image src={siebenMeilen.shots[1].src} alt={siebenMeilen.shots[1].alt}
+                     width={600} widths={[300, 600]} sizes="(min-width: 640px) 290px, 100vw"
+                     format="webp" quality={72} loading="lazy" />
+            </figure>
+            <figure class="shot sm:col-span-2">
+              <Image src={siebenMeilen.shots[2].src} alt={siebenMeilen.shots[2].alt}
+                     width={1200} widths={[600, 1200]} sizes="(min-width: 640px) 580px, 100vw"
+                     format="webp" quality={72} loading="lazy" />
+            </figure>
+          </div>
+        </div>
 
         {/* W3 · Print & Ausstattung — Bild folgt dem Text, den es belegt. */}
         <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.werkschau.w3.titel}</h3>
