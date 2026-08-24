@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import teaser7miles from '../../assets/showcase/7miles-desktop.png';
+import teaserWebsite from '../../assets/showcase/website-teaser-browser.png';
+import teaser7miles from '../../assets/showcase/7miles-teaser-schluessel.png';
 
 // Index-Teaser. Leads sind an der Satzgrenze aus den Case-Seiten gekürzt —
 // kein Wort umformuliert (Ableitungsregel Biz, werkschau_7miles_copy.md).
@@ -13,7 +14,7 @@ const arbeiten = [
     titel: 'Diese Website — und das System dahinter.',
     disziplinen: 'Konzept · Design · Entwicklung · Brand-System',
     lead: 'Du schaust sie dir gerade an. Diese Seite ist meine Handwerksprobe — selbst konzipiert, gestaltet und gebaut.',
-    bild: '/showcase/tile-website.png',
+    bildImport: teaserWebsite,
     alt: 'Startseite von torsten-guenter.de als Browser-Vorschau im Brand-Look',
   },
   {
@@ -34,7 +35,7 @@ const arbeiten = [
     disziplinen: 'Rebrand · Website-Neubau · Local SEO · Print',
     lead: 'Die Website, die nicht ums Auto geht. Eine Fahrschule im Schwarzwald-Baar-Kreis, ein Fahrlehrer, drei sehr verschiedene Arten von Fahrschülern: Jugendliche, bei denen die Eltern mitentscheiden, Motorradfahrer mit eigenem Kopf, und Menschen, die nach Jahren wieder einsteigen und vor allem eines brauchen — Vertrauen.',
     bildImport: teaser7miles,
-    alt: 'Startseite der Fahrschule 7miles auf einem Desktop-Bildschirm: dunkler Hintergrund, grüne Akzentfarbe, Crest und Einstieg zur Schnupperstunde.',
+    alt: 'Autoschlüssel mit leuchtendem 7miles-Anhänger auf einem Dinertresen, daneben eine Kaffeetasse und eine aufgeschlagene Straßenkarte.',
   },
 ];
 ---
@@ -73,11 +74,11 @@ const arbeiten = [
       {arbeiten.map((a) => (
         <article id={a.anker} style="scroll-margin-top: 6rem;"
                  class="teaser bg-background border border-border-subtle rounded-lg overflow-hidden">
-          <div class="grid grid-cols-1 md:grid-cols-[minmax(0,340px)_1fr] gap-0 md:items-stretch">
+          <div>
             <div class="teaser-bild">
               {a.bildImport ? (
                 <Image src={a.bildImport} alt={a.alt}
-                       widths={[340, 680]} sizes="(min-width: 768px) 340px, 100vw"
+                       widths={[640, 960, 1920]} sizes="(min-width: 1024px) 960px, 100vw"
                        format="webp" quality={72} loading="lazy" />
               ) : (
                 <img src={a.bild} alt={a.alt} loading="lazy" />
@@ -106,9 +107,12 @@ const arbeiten = [
 </BaseLayout>
 
 <style>
+  /* Form B: Bild über Text, volle Kartenbreite. Statt Zuschnitt (cover) wird
+     das Motiv vollständig gezeigt und nur in der Höhe gedeckelt — die beiden
+     Querformate füllen die Breite aus, das hochformatige berta-Motiv steht
+     zentriert auf dem hellen Grund, bis eine Querfassung vorliegt. */
   .teaser-bild { background: var(--color-background-soft); display: flex; align-items: center; justify-content: center; }
-  .teaser-bild img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  @media (max-width: 767px) { .teaser-bild img { max-height: 15rem; } }
+  .teaser-bild img { display: block; width: 100%; height: auto; max-height: 35rem; object-fit: contain; }
 
   .teaser { transition: border-color 200ms ease, transform 200ms ease; }
   .teaser:hover { border-color: var(--color-primary); transform: translateY(-2px); }
