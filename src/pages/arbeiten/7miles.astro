@@ -201,7 +201,7 @@ const siebenMeilen = {
             zwei kurze Striche nebeneinander lasen sich als ein unterbrochener
             Trennstrich. Einer ueber dem Paar, gleiches Bauteil. */}
         <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-0">
           <div>
             <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Ausgangslage</h3>
             <p class="text-sm text-text-secondary leading-relaxed">{siebenMeilen.ausgangslage}</p>
@@ -213,7 +213,7 @@ const siebenMeilen = {
         </div>
 
         {/* Was gemacht wurde — Zweispalter im Rhythmus von Ausgangslage/Ziel */}
-        <h3 class="font-serif text-lg font-medium text-text-primary mb-5">Was gemacht wurde</h3>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">Was gemacht wurde</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 mb-10">
           {siebenMeilen.gemacht.map((g) => (
             <div>
@@ -234,16 +234,16 @@ const siebenMeilen = {
 
 
         {/* W1 · Rebrand */}
-        <figure class="tafel">
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.werkschau.w1.titel}</h3>
+        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w1.text}</p>
+        <figure class="tafel mb-6">
           <Image src={tafelW1} alt={siebenMeilen.werkschau.w1.alt}
                  widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
                  format="webp" quality={74} loading="lazy" />
         </figure>
-        <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w1.titel}</h3>
-        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-12">{siebenMeilen.werkschau.w1.text}</p>
 
         {/* Screenshots: Desktop breit, darunter Mobil (Hochformat) neben /klassen */}
-        <div class="mb-10 flex flex-col gap-4">
+        <div class="mb-0 flex flex-col gap-4">
           <figure class="shot">
             <Image src={siebenMeilen.shots[0].src} alt={siebenMeilen.shots[0].alt}
                    width={1440} widths={[640, 960, 1440]} sizes="(min-width: 1024px) 880px, 100vw"
@@ -265,7 +265,7 @@ const siebenMeilen = {
 
         {/* Der Dreh nach dem Launch — Beleg-Zeile direkt darunter, damit die Zahlen
             nie ohne ihre Messangabe stehen (Messrunde 15./17.08., nicht die vom 20.08.) */}
-        <h3 class="font-serif text-lg font-medium text-text-primary mb-3">{siebenMeilen.drehTitel}</h3>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.drehTitel}</h3>
         <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-2">{siebenMeilen.dreh}</p>
         <p class="text-xs text-text-secondary/80 leading-relaxed max-w-2xl mb-10">{siebenMeilen.drehBeleg}</p>
 
@@ -282,9 +282,9 @@ const siebenMeilen = {
         <p id="kpi-beleg-7miles" class="text-xs text-text-secondary/80 leading-relaxed mt-3">{siebenMeilen.kpiBeleg}</p>
 
         {/* W3 · Print & Ausstattung — Bild folgt dem Text, den es belegt. */}
-        <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w3.titel}</h3>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.werkschau.w3.titel}</h3>
         <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w3.text}</p>
-        <figure class="tafel mb-12">
+        <figure class="tafel mb-0">
           <Image src={tafelW3} alt={siebenMeilen.werkschau.w3.alt}
                  widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
                  format="webp" quality={74} loading="lazy" />
@@ -293,9 +293,9 @@ const siebenMeilen = {
         {/* Flyer-Faecher — belegt die Serie, ohne Galerie und ohne Lightbox.
             Nicht klickbar; eine Sammelbeschreibung am Container statt vier
             Einzel-Alts, sonst liest der Screenreader viermal dasselbe. */}
-        <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w3.flyer.titel}</h3>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.werkschau.w3.flyer.titel}</h3>
         <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w3.flyer.text}</p>
-        <div class="faecher mb-12" role="img" aria-label={siebenMeilen.werkschau.w3.flyer.alt}>
+        <div class="faecher mb-0" role="img" aria-label={siebenMeilen.werkschau.w3.flyer.alt}>
           <Image class="fl fl-a" src={flyerWiedereinstieg} alt="" widths={[240, 480]} sizes="19vw" format="webp" quality={72} loading="lazy" />
           <Image class="fl fl-b" src={flyerMotorrad} alt="" widths={[260, 520]} sizes="21vw" format="webp" quality={72} loading="lazy" />
           <Image class="fl fl-c" src={flyerAllgemein} alt="" widths={[320, 640]} sizes="26vw" format="webp" quality={74} loading="lazy" />
@@ -306,7 +306,7 @@ const siebenMeilen = {
         {/* Leuchtschild — eigenes Element neben den Drucksachen, weil es ein
             eigener Gegenstand ist. Rendert nur mit gesetztem Wert samt Label. */}
         {siebenMeilen.werkschau.w3.schild && (
-          <figure class="tafel mb-12">
+          <figure class="tafel mb-0">
             <Image src={siebenMeilen.werkschau.w3.schild.src} alt={siebenMeilen.werkschau.w3.schild.alt}
                    widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
                    format="webp" quality={74} loading="lazy" />
@@ -318,14 +318,14 @@ const siebenMeilen = {
 
         {/* W4 · Local SEO — hierher wandert der Design-Anspruch-Satz: das Neon-Bild
             steht direkt daneben (Plan § B). */}
-        <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w4.titel}</h3>
-        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-3">{siebenMeilen.werkschau.w4.text}</p>
+        <h3 class="font-serif text-lg font-medium text-text-primary mt-12 mb-3">{siebenMeilen.werkschau.w4.titel}</h3>
+        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w4.text}</p>
         <figure class="tafel">
           <Image src={tafelW4} alt={siebenMeilen.werkschau.w4.alt}
                  widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
                  format="webp" quality={74} loading="lazy" />
         </figure>
-        <p class="text-xs text-text-secondary/80 leading-relaxed mt-3 mb-12">{siebenMeilen.werkschau.w4.label}</p>
+        <p class="text-xs text-text-secondary/80 leading-relaxed mt-3 mb-0">{siebenMeilen.werkschau.w4.label}</p>
 
         {/* A5 — Crest. Rendert nur mit gesetztem Wert. */}
         {siebenMeilen.crest && (
