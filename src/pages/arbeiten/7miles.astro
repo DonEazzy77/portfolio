@@ -22,6 +22,7 @@ import hero404 from '../../assets/showcase/7miles-hero-404.png';
 import tafelW1 from '../../assets/showcase/7miles-w1-rebrand.png';
 import tafelW3 from '../../assets/showcase/7miles-w3-print.png';
 import tafelW4 from '../../assets/showcase/7miles-w4-localseo.png';
+import schildVisual from '../../assets/showcase/7miles-w3-leuchtschild.png';
 // ── CASE 3: Fahrschule 7miles ──────────────────────────────────────────────
 // Eigenes Case-Objekt, bewusst NICHT die Arrays von Case 1 erweitert (die sind an
 // Case 1 gebunden; Auftrag § 4 / Befund § 2).
@@ -70,6 +71,11 @@ const siebenMeilen = {
     },
     w3: {
       titel: 'Ein System, das man in die Hand nehmen kann',
+      // Leuchtschild-Visual (Klinker, Torsten 24.08.). SCHALTER AUS, bis die
+      // Label-Zeile von Biz vorliegt — ein KI-Bild ohne Kennzeichnung darf
+      // nicht live (S&R). Aktivierung: schild auf { src: schildVisual, label:
+      // '<Wortlaut Biz>', alt: '<Wortlaut Biz>' } setzen. Kein Markup-Umbau.
+      schild: null,
       text: 'Visitenkarte, zwei Stempel, Gutscheinkarte, dazu Briefpapier, Rechnungsvorlage, E-Mail-Signatur, Standby-Bilder für den Beamer im Schulungsraum und drei Flyer — je einer pro Zielgruppe. Alles aus denselben Bausteinen, alles druckfertig mit Beschnitt übergeben.',
       alt: 'Drucksachen der Fahrschule 7miles: zweiseitige Visitenkarte, Rechteck- und Rundstempel mit Crest, Gutscheinkarte für eine kostenlose Schnupperstunde.',
     },
@@ -263,6 +269,19 @@ const siebenMeilen = {
         </figure>
         <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w3.titel}</h3>
         <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-12">{siebenMeilen.werkschau.w3.text}</p>
+
+        {/* Leuchtschild — eigenes Element neben den Drucksachen, weil es ein
+            eigener Gegenstand ist. Rendert nur mit gesetztem Wert samt Label. */}
+        {siebenMeilen.werkschau.w3.schild && (
+          <figure class="tafel mb-12">
+            <Image src={siebenMeilen.werkschau.w3.schild.src} alt={siebenMeilen.werkschau.w3.schild.alt}
+                   widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
+                   format="webp" quality={74} loading="lazy" />
+            <figcaption class="text-xs text-text-secondary/80 leading-relaxed mt-3">
+              {siebenMeilen.werkschau.w3.schild.label}
+            </figcaption>
+          </figure>
+        )}
 
         {/* W4 · Local SEO — hierher wandert der Design-Anspruch-Satz: das Neon-Bild
             steht direkt daneben (Plan § B). */}
