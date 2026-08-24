@@ -198,14 +198,16 @@ const siebenMeilen = {
         <p class="text-base text-text-primary leading-relaxed spalten-2 mb-10">{siebenMeilen.lead}</p>
 
         {/* Ausgangslage / Ziel — gleiches Muster wie Case 1 */}
+        {/* Akzentlinie gehoert dem Abschnitt, nicht der einzelnen Ueberschrift:
+            zwei kurze Striche nebeneinander lasen sich als ein unterbrochener
+            Trennstrich. Einer ueber dem Paar, gleiches Bauteil. */}
+        <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-10">
           <div>
-            <div class="w-8 h-[3px] bg-primary rounded-full mb-4" aria-hidden="true"></div>
             <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Ausgangslage</h3>
             <p class="text-sm text-text-secondary leading-relaxed">{siebenMeilen.ausgangslage}</p>
           </div>
           <div>
-            <div class="w-8 h-[3px] bg-primary rounded-full mb-4" aria-hidden="true"></div>
             <h3 class="font-serif text-lg font-medium text-text-primary mb-2">Ziel</h3>
             <p class="text-sm text-text-secondary leading-relaxed">{siebenMeilen.ziel}</p>
           </div>
