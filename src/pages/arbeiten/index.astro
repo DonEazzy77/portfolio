@@ -25,6 +25,11 @@ const arbeiten = [
     disziplinen: 'Naming & Marke · Produkt · Landingpage',
     lead: 'berta ist ein digitales Büro und Dokumenten-Concierge für Einzel- und Kleinbetriebe: berta ordnet Belege, erinnert an Fristen und hält die Ablage im Blick — damit der Papierkram nicht liegenbleibt und die Daten im Betrieb bleiben.',
     bild: '/showcase/berta-hero-vogel.png',
+    // Aus public/ ausgeliefert, laeuft nicht ueber <Image> — width/height
+    // deshalb von Hand. Ohne sie reserviert der Browser keinen Platz und die
+    // Karte springt beim Laden (gemessen am Original: 1200 x 1357).
+    bildW: 1200,
+    bildH: 1357,
     alt: 'Illustration der Marke berta: ein Sekretärvogel mit einem Blatt Papier im Schnabel steht auf einem Stapel Dokumente',
   },
   {
@@ -81,7 +86,7 @@ const arbeiten = [
                        widths={[640, 960, 1920]} sizes="(min-width: 1024px) 960px, 100vw"
                        format="webp" quality={72} loading="lazy" />
               ) : (
-                <img src={a.bild} alt={a.alt} loading="lazy" />
+                <img src={a.bild} alt={a.alt} width={a.bildW} height={a.bildH} loading="lazy" />
               )}
             </div>
 
