@@ -427,7 +427,18 @@ const siebenMeilen = {
      verschiedene Achsen uebereinander. */
   .spalten-2 { max-width: none; }
   @media (min-width: 900px) {
-    .spalten-2 { columns: 2; column-gap: 2rem; }
+    .spalten-2 {
+      columns: 2;
+      column-gap: 2rem;
+      /* Blocksatz nur im Zweispalter — und nie ohne Silbentrennung: deutsche
+         Komposita reissen sonst Loecher zwischen die Woerter. Die Trennung
+         haengt an lang="de" im BaseLayout. Einspaltig bleibt es Flattersatz,
+         dort waere Blocksatz auf 878 px zu breit fuer saubere Wortabstaende. */
+      text-align: justify;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      hyphenate-limit-chars: 6 3 3;
+    }
   }
 
   /* ── Flyer-Faecher ────────────────────────────────────────────────────
