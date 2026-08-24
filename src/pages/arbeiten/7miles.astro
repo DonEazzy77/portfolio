@@ -240,7 +240,7 @@ const siebenMeilen = {
                  format="webp" quality={74} loading="lazy" />
         </figure>
         <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w1.titel}</h3>
-        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-12">{siebenMeilen.werkschau.w1.text}</p>
+        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-12">{siebenMeilen.werkschau.w1.text}</p>
 
         {/* Screenshots: Desktop breit, darunter Mobil (Hochformat) neben /klassen */}
         <div class="mb-10 flex flex-col gap-4">
@@ -283,7 +283,7 @@ const siebenMeilen = {
 
         {/* W3 · Print & Ausstattung — Bild folgt dem Text, den es belegt. */}
         <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w3.titel}</h3>
-        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-6">{siebenMeilen.werkschau.w3.text}</p>
+        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w3.text}</p>
         <figure class="tafel mb-12">
           <Image src={tafelW3} alt={siebenMeilen.werkschau.w3.alt}
                  widths={[720, 1080, 1440]} sizes="(min-width: 1024px) 860px, 100vw"
@@ -294,7 +294,7 @@ const siebenMeilen = {
             Nicht klickbar; eine Sammelbeschreibung am Container statt vier
             Einzel-Alts, sonst liest der Screenreader viermal dasselbe. */}
         <h3 class="font-serif text-lg font-medium text-text-primary mt-6 mb-3">{siebenMeilen.werkschau.w3.flyer.titel}</h3>
-        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-6">{siebenMeilen.werkschau.w3.flyer.text}</p>
+        <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-6">{siebenMeilen.werkschau.w3.flyer.text}</p>
         <div class="faecher mb-12" role="img" aria-label={siebenMeilen.werkschau.w3.flyer.alt}>
           <Image class="fl fl-a" src={flyerWiedereinstieg} alt="" widths={[240, 480]} sizes="19vw" format="webp" quality={72} loading="lazy" />
           <Image class="fl fl-b" src={flyerMotorrad} alt="" widths={[260, 520]} sizes="21vw" format="webp" quality={72} loading="lazy" />
@@ -343,7 +343,7 @@ const siebenMeilen = {
             <h3 id="route7-titel" class="font-serif text-lg font-medium text-text-primary mb-3">
               {siebenMeilen.galerie.titel}
             </h3>
-            <p class="text-sm text-text-secondary leading-relaxed max-w-2xl mb-2">
+            <p class="text-sm text-text-secondary leading-relaxed spalten-2 mb-2">
               {siebenMeilen.galerie.intro}
             </p>
             <p class="text-xs text-text-secondary/80 leading-relaxed max-w-2xl mb-6">
