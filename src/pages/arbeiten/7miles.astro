@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import shot7milesDesktop from '../../assets/showcase/7miles-desktop.png';
 import shot7milesMobile from '../../assets/showcase/7miles-mobile.png';
 import shot7milesKlassen from '../../assets/showcase/7miles-unterseite.png';
+import vorherBild from '../../assets/showcase/7miles-vorher.png';
 
 // Nachzügler 7miles (Biz 21.08.): /klassen-Hero wird neu gerendert, das Schild
 // zeigt die falsche Crest-Variante. Der Tausch ist ein reiner Dateitausch —
@@ -36,9 +37,13 @@ import schildVisual from '../../assets/showcase/7miles-w3-leuchtschild.png';
 // (Torsten-Go 20.08.2026, S&R-Kurzpass grün, Nachtrag XLIII). Hier wird kein Wort
 // redaktionell geändert — Textfehler werden an Biz gemeldet, nicht behoben.
 //
-// vorherBild (A4), crest (A5) und zitat (A8) sind bewusst null: die zugehörigen
-// Blöcke rendern nur, wenn ein Wert gesetzt ist. Aktivierung = Wert eintragen,
-// kein Markup-Umbau, keine Platzhalter-Optik im Live-Output.
+// crest (A5) und zitat (A8) sind bewusst null: die zugehörigen Blöcke rendern nur,
+// wenn ein Wert gesetzt ist. Aktivierung = Wert eintragen, kein Markup-Umbau,
+// keine Platzhalter-Optik im Live-Output.
+// A5 bleibt aus (Torsten 31.08./07.09.): das Crest steht auf derselben Seite
+// bereits fünfmal in der Marken-Tafel W1 — ein sechstes wiederholt nur.
+// A8 bleibt leer, bis ein echter O-Ton Daniels vorliegt. Nichts erfinden.
+// vorherBild (A4) ist seit 07.09.2026 gesetzt, siehe Kommentar am Wert.
 const siebenMeilen = {
   eyebrow: 'Kundenprojekt · Fahrschule · 2026',
   titel: 'Fahrschule 7miles',
@@ -164,7 +169,17 @@ const siebenMeilen = {
     ],
   },
 
-  vorherBild: null,   // A4 — erst nach Daniel-OK + Motivprüfung
+  // A4 aktiviert 07.09.2026: Daniel-OK liegt vor (S&R Nachtrag LXVI, P3' erfüllt),
+  // A4-Entscheid FREI — Alt-Seite von einem Bekannten gebaut, kein Agentur-Fall;
+  // Fotos von Daniel selbst. Motiv ist die Unterseite /fahrschule statt der
+  // Startseite: deren Screenshot enthält ein nicht geladenes Bild. Schnitt bei
+  // 1580 px — nimmt die Cookie-Leiste weg und endet über der Telefonzeile.
+  // Wortlaut Alt-Text: Biz-Lieferung 31.08., zwei Korrekturen von Torsten
+  // freigegeben (07.09.): Schreibweise „7miles" und Unterseite statt Startseite.
+  vorherBild: {
+    src: vorherBild,
+    alt: 'Frühere Website der Fahrschule 7miles, Unterseite Fahrschule, Stand Mai 2026.',
+  },
   crest: null,        // A5 — erst nach Daniel-OK pro forma
   zitat: null,        // A8 — erst nach O-Ton Daniel
 };
