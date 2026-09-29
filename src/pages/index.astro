@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title       = 'Torsten Günter — Online Marketing & E-Commerce mit technischer DNA';
-const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performance-Marketing und Customer Experience. Heute mit Fokus auf CRM und KI-gestützter Automation.';
+const title       = 'Webdesign & Online-Marketing in Villingen-Schwenningen — Torsten Günter';
+// Helix-Variante fuer den Vorschau-Stand: 'H1' | 'H2' | 'H3' (Biz-Nachtrag 29.09.)
+const HELIX = 'H1';
+
+const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plane und baue es für kleine Betriebe in Villingen-Schwenningen und im Schwarzwald-Baar-Kreis. Marketing und Technik aus einer Hand, ein Ansprechpartner.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -11,42 +14,59 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
   <!-- overflow-x-clip: die Desktop-Helix darf nach rechts auslaufen, ohne eine
        horizontale Scrollleiste zu erzeugen (NICHT overflow-hidden → kein vertikales Clipping) -->
   <section class="py-20 sm:py-28 overflow-x-clip">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
       <!-- Badge-Pill -->
       <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-soft text-primary mb-6">
         Online Marketing · E-Commerce · CRM
       </span>
 
-      {/* Die Marken-Tagline behält bewusst & (statt ·), weil sie als
-          Brand-Statement in großer Display-Schrift Charakter trägt und
-          als gewachsene Phrase (vergleichbar mit Markennamen) gilt.
-          Strukturelle Trennungen verwenden ·, die Marken-Tagline behält &. */}
-      <!-- Headline: "technischer DNA." in Bronze; "DNA." ist Anker für das Helix-Element -->
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-6 max-w-3xl">
-        Marketing &amp; E-Commerce<br />
-        mit <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.<!--
-          Desktop: Helix tritt aus dem Punkt nach „DNA." heraus und läuft nach rechts in den freien Raum.
-        --><img
+      {/* HELIX-VARIANTE — Vorschau-Stand fuer Torstens Wahl (Biz-Nachtrag 29.09., Punkt 1).
+          'H1' Wortbild: Helix klein, in Textgroesse, hinter „DNA." im Untertitel.
+          'H2' Bildmarke: Helix geloest, eigenstaendiges Zeichen rechts im Kopf.
+          'H3' ohne Helix im Kopf.
+          Nach Torstens Entscheid bleibt eine Variante stehen, die anderen fliegen raus. */}
+
+      <!-- Headline: neue H1 (Biz Zeile 3). Kein „DNA." mehr -> die Helix hat hier keinen Wortanker. -->
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-4 max-w-3xl">
+        Websites, Online-Marketing und KI-Automatisierung für kleine Betriebe.
+      </h1>
+
+      <!-- Untertitel (Biz Zeile 3) — ersetzt die fruehere Subline (Nachtrag Punkt 2) -->
+      <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl">
+        Marketing und Technik aus einer Hand — mit <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.{HELIX === 'H1' && (
+          <img
             src="/dna-hero.png"
             alt=""
             aria-hidden="true"
-            class="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 w-[34rem] lg:w-[42rem] max-w-[52vw] h-auto pointer-events-none select-none"
-          /></span>
-      </h1>
+            class="inline-block align-baseline ml-2 h-[1.15em] w-auto pointer-events-none select-none"
+          />
+        )}</span>
+      </p>
 
-      <!-- Mobile: kein Platz seitlich → Helix als Band unter der Headline (volle Breite) -->
-      <img
-        src="/dna-hero.png"
-        alt=""
-        aria-hidden="true"
-        class="md:hidden mt-5 w-full h-auto pointer-events-none select-none"
-      />
+      {HELIX === 'H2' && (
+        <img
+          src="/dna-hero.png"
+          alt=""
+          aria-hidden="true"
+          class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[30rem] lg:w-[36rem] max-w-[45vw] h-auto pointer-events-none select-none"
+        />
+      )}
 
-      <!-- Subline -->
-      <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl">
-        10+ Jahre an der Schnittstelle von Webentwicklung, Performance-Marketing und Customer Experience.
-        Heute mit Fokus auf CRM und KI-gestützter Automation.
+      {HELIX !== 'H3' && (
+        <img
+          src="/dna-hero.png"
+          alt=""
+          aria-hidden="true"
+          class="md:hidden mb-8 w-full h-auto pointer-events-none select-none"
+        />
+      )}
+
+      <!-- Erster Absatz (Biz Zeile 4). Der frühere „10+ Jahre"-Absatz entfällt hier (Nachtrag Punkt 2). -->
+      <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl">
+        Ich baue für kleine Betriebe in Villingen-Schwenningen und im Schwarzwald-Baar-Kreis das,
+        was zwischen ‚wir sollten mal‘ und ‚läuft‘ liegt: eine Website, die gefunden wird,
+        ein Onlineshop, der zum Betrieb passt, und KI-Automatisierung, die Routinearbeit abnimmt.
       </p>
 
       <!-- CTA-Buttons -->
@@ -86,11 +106,26 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
         <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
           <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
           <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
-            Marketing · E-Commerce
+            Websites & Webentwicklung
           </h3>
           <p class="text-sm text-text-secondary leading-relaxed">
-            Über 10 Jahre Erfahrung in Performance-Marketing, SEO/SEA, Multichannel-Vertrieb und
-            Plattformen wie Shopify und Plentymarkets. Strategie und operative Umsetzung in einer Person.
+            Schnelle, klare Websites — von Hand gebaut statt aus dem Baukasten, so, dass Sie gefunden
+            werden und die Seite selbst pflegen können.
+          </p>
+          <div class="mt-5 pt-4 border-t border-border-subtle">
+            <p class="text-xs tracking-[0.16em] uppercase text-primary font-medium mb-1.5">Stack</p>
+            <p class="text-sm text-text-secondary leading-relaxed">Astro · Tailwind · Frontend · Git/GitHub · Netlify CI/CD · Claude Code &amp; Multi-Agent</p>
+          </div>
+        </article>
+
+        <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
+          <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
+          <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
+            Online-Marketing & E-Commerce
+          </h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Sichtbarkeit, die zum Betrieb passt: Suchmaschinen, Google-Unternehmensprofil, Onlineshop
+            und die Kanäle dahinter — Strategie und Umsetzung in einer Person.
           </p>
           <div class="mt-5 pt-4 border-t border-border-subtle">
             <p class="text-xs tracking-[0.16em] uppercase text-primary font-medium mb-1.5">Stack</p>
@@ -101,30 +136,15 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
         <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
           <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
           <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
-            CRM · Customer Experience
+            KI-Automatisierung
           </h3>
           <p class="text-sm text-text-secondary leading-relaxed">
-            Im laufenden CRM-Manager-Studium (IHK) mit Fokus auf datengetriebene Customer Journey,
-            Kundenbindung und Conversion-Optimierung. Wo aus Daten echte Beziehungen werden.
+            Routinearbeit, die ein Werkzeug übernehmen kann, wird eines: Belege, Anfragen, Texte,
+            Abläufe — pragmatisch, ohne dass jemand ein neues System lernen muss.
           </p>
           <div class="mt-5 pt-4 border-t border-border-subtle">
             <p class="text-xs tracking-[0.16em] uppercase text-primary font-medium mb-1.5">Stack</p>
-            <p class="text-sm text-text-secondary leading-relaxed">Klaviyo · Marketing Automation · Flows &amp; Journeys · KI-gestützte Automation · Customer Journey</p>
-          </div>
-        </article>
-
-        <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
-          <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
-          <h3 class="font-serif text-xl font-medium text-text-primary mb-3">
-            Tech · Web
-          </h3>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Ausgebildeter Informatiker (Multimedia) mit Frontend-Erfahrung. Versteht die technische
-            Seite und spricht die Sprache von Entwickler-Teams. Schließt die Lücke zwischen Marketing und IT.
-          </p>
-          <div class="mt-5 pt-4 border-t border-border-subtle">
-            <p class="text-xs tracking-[0.16em] uppercase text-primary font-medium mb-1.5">Stack</p>
-            <p class="text-sm text-text-secondary leading-relaxed">Astro · Tailwind · Frontend · Git/GitHub · Netlify CI/CD · Claude Code &amp; Multi-Agent</p>
+            <p class="text-sm text-text-secondary leading-relaxed">Claude · ChatGPT &amp; DALL-E · eigene Skripte (Python, Shell)</p>
           </div>
         </article>
 
@@ -147,7 +167,7 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
             Aktueller Fokus
           </p>
           <h2 class="font-serif text-3xl font-medium text-text-primary leading-snug">
-            CRM trifft auf KI-gestützte Automation.
+            KI-Automatisierung für den Alltag im Betrieb.
           </h2>
         </div>
 
@@ -155,7 +175,7 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
         <p class="text-base text-text-secondary leading-relaxed">
           Aktuell vertiefe ich meine CRM-Expertise im Studium zum CRM-Manager (IHK, Abschluss 2026)
           und arbeite intensiv an der Verbindung von Customer-Experience-Strategien mit modernen
-          KI-Werkzeugen — von Claude und Multi-Agent-Systemen bis zu Marketing-Automation.
+          KI-Werkzeugen — von Claude und Multi-Agent-Systemen bis zu Marketing-Automatisierung.
           Das Ziel: smarte, datengetriebene Kundenreisen, in denen Mensch und Maschine sinnvoll
           zusammenspielen — statt sich gegenseitig zu ersetzen.
         </p>
@@ -169,11 +189,11 @@ const description = '10+ Jahre an der Schnittstelle von Webentwicklung, Performa
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
       <h2 class="font-serif text-4xl font-medium text-text-primary mb-5">
-        Lass uns sprechen.
+        Was steht bei Ihnen an?
       </h2>
       <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto">
         Auf der Suche nach jemandem, der Marketing und Tech wirklich verbindet?
-        Ob Festanstellung, Freelance oder Beratung — ich freue mich auf dein Anliegen.
+        Ob Festanstellung, Freelance oder Beratung — ich freue mich auf Ihr Anliegen.
       </p>
       <a
         href="/kontakt"
