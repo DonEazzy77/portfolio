@@ -2,10 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title       = 'Webdesign & Online-Marketing in Villingen-Schwenningen — Torsten Günter';
-// Helix-Variante fuer den Vorschau-Stand: 'H1' | 'H2' | 'H3' (Biz-Nachtrag 29.09.)
-const HELIX = 'H1';
-
-const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plane und baue es für kleine Betriebe in Villingen-Schwenningen und im Schwarzwald-Baar-Kreis. Marketing und Technik aus einer Hand, ein Ansprechpartner.';
+const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plane und baue es für kleine und mittlere Betriebe in Villingen-Schwenningen und im Schwarzwald-Baar-Kreis. Marketing und Technik aus einer Hand, ein Ansprechpartner.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -16,57 +13,52 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
   <section class="py-20 sm:py-28 overflow-x-clip">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
-      <!-- Badge-Pill -->
+      <!-- Badge-Pill (Nachtrag 2 A) -->
       <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-soft text-primary mb-6">
-        Online Marketing · E-Commerce · CRM
+        Websites · Online-Marketing · E-Commerce · KI-Automatisierung
       </span>
 
-      {/* HELIX-VARIANTE — Vorschau-Stand fuer Torstens Wahl (Biz-Nachtrag 29.09., Punkt 1).
-          'H1' Wortbild: Helix klein, in Textgroesse, hinter „DNA." im Untertitel.
-          'H2' Bildmarke: Helix geloest, eigenstaendiges Zeichen rechts im Kopf.
-          'H3' ohne Helix im Kopf.
-          Nach Torstens Entscheid bleibt eine Variante stehen, die anderen fliegen raus. */}
-
-      <!-- Headline: neue H1 (Biz Zeile 3). Kein „DNA." mehr -> die Helix hat hier keinen Wortanker. -->
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-4 max-w-3xl">
-        Websites, Online-Marketing und KI-Automatisierung für kleine Betriebe.
-      </h1>
-
-      <!-- Untertitel (Biz Zeile 3) — ersetzt die fruehere Subline (Nachtrag Punkt 2) -->
-      <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl">
-        Marketing und Technik aus einer Hand — mit <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.{HELIX === 'H1' && (
-          <img
+      {/* Die Marken-Tagline behält bewusst & (statt ·), weil sie als
+          Brand-Statement in großer Display-Schrift Charakter trägt und
+          als gewachsene Phrase (vergleichbar mit Markennamen) gilt.
+          Strukturelle Trennungen verwenden ·, die Marken-Tagline behält &. */}
+      <!-- Headline (Nachtrag 2 A, Headline B): "technischer DNA." in Bronze;
+           "DNA." ist Anker für das Helix-Element — Original-Platzierung, Original-Asset. -->
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-5 max-w-3xl">
+        Marketing und Technik aus einer Hand —<br />
+        dank <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.<!--
+          Desktop: Helix tritt aus dem Punkt nach „DNA." heraus und läuft nach rechts in den freien Raum.
+        --><img
             src="/dna-hero.png"
             alt=""
             aria-hidden="true"
-            class="inline-block align-baseline ml-2 h-[1.15em] w-auto pointer-events-none select-none"
-          />
-        )}</span>
+            class="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 w-[34rem] lg:w-[42rem] max-w-[52vw] h-auto pointer-events-none select-none"
+          /></span>
+      </h1>
+
+      <!-- Mobile: kein Platz seitlich → Helix als Band unter der Headline (volle Breite) -->
+      <img
+        src="/dna-hero.png"
+        alt=""
+        aria-hidden="true"
+        class="md:hidden mt-5 w-full h-auto pointer-events-none select-none"
+      />
+
+      <!-- Untertitel (Nachtrag 2 A). Auflage: sichtbar, nicht klein und grau — er traegt die
+           Suchbegriffe, die aus der H1 gewandert sind. Deshalb Primaerfarbe statt Sekundaer
+           und eine Stufe groesser als der Fliesstext darunter. Groesse/Farbe = Vorschlag D&E. -->
+      <p class="text-xl sm:text-2xl text-text-primary font-medium leading-snug mt-6 mb-6 max-w-3xl">
+        Websites, Online-Marketing, E-Commerce und KI-Automatisierung für kleine und mittlere
+        Betriebe in Villingen-Schwenningen.
       </p>
 
-      {HELIX === 'H2' && (
-        <img
-          src="/dna-hero.png"
-          alt=""
-          aria-hidden="true"
-          class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[30rem] lg:w-[36rem] max-w-[45vw] h-auto pointer-events-none select-none"
-        />
-      )}
-
-      {HELIX !== 'H3' && (
-        <img
-          src="/dna-hero.png"
-          alt=""
-          aria-hidden="true"
-          class="md:hidden mb-8 w-full h-auto pointer-events-none select-none"
-        />
-      )}
-
-      <!-- Erster Absatz (Biz Zeile 4). Der frühere „10+ Jahre"-Absatz entfällt hier (Nachtrag Punkt 2). -->
+      <!-- Erster Absatz (Nachtrag 2 A). Der frühere „10+ Jahre"-Absatz entfällt hier. -->
       <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl">
-        Ich baue für kleine Betriebe in Villingen-Schwenningen und im Schwarzwald-Baar-Kreis das,
-        was zwischen ‚wir sollten mal‘ und ‚läuft‘ liegt: eine Website, die gefunden wird,
-        ein Onlineshop, der zum Betrieb passt, und KI-Automatisierung, die Routinearbeit abnimmt.
+        Ich baue für kleine und mittlere Betriebe in Villingen-Schwenningen und im
+        Schwarzwald-Baar-Kreis das, was zwischen ‚wir sollten mal‘ und ‚läuft‘ liegt:
+        eine Website, die gefunden wird, ein Onlineshop, der zum Betrieb passt, und
+        KI-Automatisierung, die Routinearbeit abnimmt — auf Wunsch auch projektweise,
+        als Verstärkung für Agenturen und Teams.
       </p>
 
       <!-- CTA-Buttons -->
@@ -173,11 +165,10 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
 
         <!-- Rechte Spalte: Fließtext -->
         <p class="text-base text-text-secondary leading-relaxed">
-          Aktuell vertiefe ich meine CRM-Expertise im Studium zum CRM-Manager (IHK, Abschluss 2026)
-          und arbeite intensiv an der Verbindung von Customer-Experience-Strategien mit modernen
-          KI-Werkzeugen — von Claude und Multi-Agent-Systemen bis zu Marketing-Automatisierung.
-          Das Ziel: smarte, datengetriebene Kundenreisen, in denen Mensch und Maschine sinnvoll
-          zusammenspielen — statt sich gegenseitig zu ersetzen.
+          Belege sortieren, Anfragen beantworten, Texte vorbereiten, Termine abgleichen — vieles
+          davon kann heute ein Werkzeug übernehmen, ohne dass jemand ein neues System lernen muss.
+          Ich schaue mir an, was bei Ihnen täglich Zeit frisst, und baue dafür eine Lösung, die in
+          Ihren Ablauf passt — nicht umgekehrt.
         </p>
 
       </div>
@@ -192,8 +183,8 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
         Was steht bei Ihnen an?
       </h2>
       <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto">
-        Auf der Suche nach jemandem, der Marketing und Tech wirklich verbindet?
-        Ob Festanstellung, Freelance oder Beratung — ich freue mich auf Ihr Anliegen.
+        Website, Onlineshop oder die Abläufe dahinter — schreiben Sie mir kurz, worum es geht.
+        Sie bekommen eine ehrliche Einschätzung, ob und wie ich helfen kann.
       </p>
       <a
         href="/kontakt"

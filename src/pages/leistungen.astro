@@ -54,7 +54,7 @@ const gruppen: Gruppe[] = [
       titel: 'KI-Automatisierung',
     vorbemerkung: 'Künstliche Intelligenz ist bei mir kein Schlagwort, sondern täglicher Werkzeugkasten — ich arbeite selbst durchgehend KI-gestützt. Diese Erfahrung gebe ich weiter:',
     items: [
-      { titel: 'KI-Beratung für kleine Betriebe', text: 'Wo lohnt sich KI bei Ihnen — und wo nicht? Eine ehrliche Bestandsaufnahme mit konkreten, umsetzbaren nächsten Schritten.' },
+      { titel: 'KI-Beratung für kleine und mittlere Betriebe', text: 'Wo lohnt sich KI bei Ihnen — und wo nicht? Eine ehrliche Bestandsaufnahme mit konkreten, umsetzbaren nächsten Schritten.' },
       { titel: 'KI-gestützte Marketing-Automatisierung', text: 'Wiederkehrende Marketing-Aufgaben beschleunigen: Texte, Auswertungen, Kampagnen-Routinen — mit Kontrolle statt Blackbox.' },
       { titel: 'KI-gestützte Büro-Workflows', text: 'Ablage, Dokumente, wiederkehrende Büroarbeit: Ich entwickle Abläufe, die Zeit sparen und nachvollziehbar bleiben. Wie das aussehen kann, zeigt mein Werkstatt-Projekt berta.', beleg: { label: 'Arbeiten: berta (Case-Study)', href: '/arbeiten/berta/' } },
     ],
@@ -62,7 +62,7 @@ const gruppen: Gruppe[] = [
 ];
 
 const pageTitle = 'Leistungen — Webdesign & Online-Marketing · Villingen-Schwenningen';
-const pageDescription = 'Webdesign, Onlineshops, SEO und KI-Automatisierung für kleine Betriebe in Villingen-Schwenningen, im Schwarzwald-Baar-Kreis. Technisch sauber, direkt vom Umsetzer.';
+const pageDescription = 'Webdesign, Onlineshops, SEO und KI-Automatisierung für kleine und mittlere Betriebe in Villingen-Schwenningen, im Schwarzwald-Baar-Kreis. Technisch sauber, direkt vom Umsetzer.';
 // Social-Karten kürzen bei ~70 Zeichen; der SEO-Title hat 97. Gekürzte Fassung
 // der freigegebenen v3.1-§2-Zeile, von Biz am 03.08.2026 beauftragt (60 Zeichen).
 const pageOgTitle = 'Leistungen — Webdesign & Online-Marketing · Villingen-Schwenningen';
@@ -85,8 +85,8 @@ const pageOgTitle = 'Leistungen — Webdesign & Online-Marketing · Villingen-Sc
           Leistungen
         </h1>
         <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
-          Websites, Online-Marketing, E-Commerce und KI-Automatisierung für kleine Betriebe in der
-          Region — geplant und umgesetzt von einer Person, die beides kann: Marketing und Technik.
+          Websites, Online-Marketing, E-Commerce und KI-Automatisierung für kleine und mittlere Betriebe
+          in der Region — geplant und umgesetzt von einer Person, die beides kann: Marketing und Technik.
           Ich arbeite ohne Agentur-Overhead, direkt und nachvollziehbar — aus Unterkirnach für
           Villingen-Schwenningen, den Schwarzwald-Baar-Kreis, Rottweil und Tuttlingen.
         </p>
@@ -141,6 +141,21 @@ const pageOgTitle = 'Leistungen — Webdesign & Online-Marketing · Villingen-Sc
         ))}
 
       </div>
+
+      <!-- PROJEKTWEISE (Nachtrag 2 D) — dieselbe Kartenform wie die Leistungsgruppen,
+           aber ohne Nummer und ohne Liste: der Block beschreibt kein Leistungspaket,
+           sondern eine Arbeitsform. Steht bewusst hinter dem Raster und vor dem Abschluss. -->
+      <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8">
+        <h2 class="font-serif text-xl sm:text-2xl font-medium text-text-primary">
+          Auch projektweise.
+        </h2>
+        <div class="w-8 h-[3px] bg-primary rounded-full mt-4 mb-6" aria-hidden="true"></div>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl">
+          Manchmal braucht es keinen Dienstleister, sondern Verstärkung auf Zeit: für Agenturen
+          und Teams, die für ein Projekt Marketing und Technik in einer Person brauchen — vor Ort
+          in der Region oder remote.
+        </p>
+      </article>
 
       <!-- ABSCHLUSS / CTA -->
       <div>
