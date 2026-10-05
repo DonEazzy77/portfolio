@@ -10,13 +10,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Website, Onlineshop oder Abläufe: Schreiben Sie mir kurz, was bei Ihnen ansteht — Sie bekommen eine ehrliche Einschätzung. Villingen-Schwenningen und Umgebung."
 >
 
-  <!--
+  {/*
     Spacing-Konvention (siehe skills.astro / Memory):
       • Page-Wrapper:    py-16 md:py-24 lg:py-32  (Abstand zu Header/Footer)
       • Sektionen:       flex flex-col + Inline-Style row-gap: clamp(2.5rem, 4vw, 4.5rem)
       • Alle Grids:      Inline-Style display:grid + repeat(auto-fit, minmax(…))
-                         Kein Tailwind-grid-cols-*/gap-* – im Setup unzuverlässig.
-  -->
+                         Kein Tailwind grid-cols-* / gap-* – im Setup unzuverlässig.
+  */}
   <div class="py-16 md:py-24 lg:py-32">
 
     <div
@@ -24,7 +24,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
     >
 
-      <!-- ── 1. HERO ───────────────────────────────────────────────────── -->
+      {/* ── 1. HERO ───────────────────────────────────────────────────── */}
       <div>
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -39,42 +39,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <!-- ── 2. EMAIL + STANDORT (2-Spalten-Grid, auto-fit) ────────────── -->
-      <!-- align-items: stretch ist Grid-Default, hier zur Klarheit explizit:
-           sorgt dafür, dass Email- und Standort-Card in einer Reihe dieselbe Höhe bekommen. -->
+      {/* ── 2. EMAIL + STANDORT (2-Spalten-Grid, auto-fit) ────────────── */}
+      {/* align-items: stretch ist Grid-Default, hier zur Klarheit explizit:
+           sorgt dafür, dass Email- und Standort-Card in einer Reihe dieselbe Höhe bekommen. */}
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch;">
 
-        <!-- ── CARD A: EMAIL (ganze Card ist mailto-Link) ──────────────── -->
+        {/* ── CARD A: EMAIL (ganze Card ist mailto-Link) ──────────────── */}
         <a
           href="mailto:me@torsten-guenter.de?subject=%5BPortfolio%5D%20Anfrage%20%C3%BCber%20torsten-guenter.de"
           class="contact-card flex flex-col items-center text-center"
           style="padding: 2rem; gap: 0.75rem; position: relative;"
         >
-          <!-- Bronze-Akzentlinie (konsistent zu den Werte-Cards auf /ueber-mich) -->
+          {/* Bronze-Akzentlinie (konsistent zu den Werte-Cards auf /ueber-mich) */}
           <div aria-hidden="true" style="width: 2rem; height: 3px; background: var(--color-primary); margin: 0 auto 1rem;"></div>
 
-          <!-- SLOT 1: Icon-Zone (rem-basiert → skaliert mit System-Schriftgröße) -->
+          {/* SLOT 1: Icon-Zone (rem-basiert → skaliert mit System-Schriftgröße) */}
           <div style="min-height: 8.75rem; display: flex; align-items: center; justify-content: center; width: 100%;">
             <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="text-primary">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
             </svg>
           </div>
 
-          <!-- SLOT 2: Eyebrow -->
+          {/* SLOT 2: Eyebrow */}
           <div style="min-height: 1.5rem;">
             <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em;">
               Direkter Draht
             </p>
           </div>
 
-          <!-- SLOT 3: Hauptzeile (vereinheitlicht auf 1.125rem – gleich groß wie Standort-Card) -->
+          {/* SLOT 3: Hauptzeile (vereinheitlicht auf 1.125rem – gleich groß wie Standort-Card) */}
           <div style="min-height: 3.5rem; display: flex; align-items: center; justify-content: center;">
             <p class="font-serif font-medium text-text-primary" style="font-size: 1.125rem;">
               me@torsten-guenter.de
             </p>
           </div>
 
-          <!-- Corner-Hint unten rechts (absolute, einheitlicher Stil zur Standort-Card) -->
+          {/* Corner-Hint unten rechts (absolute, einheitlicher Stil zur Standort-Card) */}
           <span
             class="text-primary"
             style="position: absolute; bottom: 0.75rem; right: 0.875rem; font-size: 0.6875rem; opacity: 0.85; display: flex; align-items: center; gap: 0.25rem;"
@@ -87,7 +87,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <!-- ── CARD B: STANDORT (3D-Flip) ──────────────────────────────── -->
+        {/* ── CARD B: STANDORT (3D-Flip) ──────────────────────────────── */}
         <div
           class="flip-container"
           tabindex="0"
@@ -98,24 +98,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         >
           <div class="flip-inner" data-flip-inner aria-hidden="true">
 
-            <!-- ── VORDERSEITE: Schwarzwald-Mini-Illustration ──────────── -->
-            <!--
+            {/* ── VORDERSEITE: Schwarzwald-Mini-Illustration ──────────── */}
+            {/*
               Achtung: position: relative wird hier NICHT inline gesetzt –
               .flip-face hat per CSS-Klasse position: absolute; inset: 0;
               (notwendig für die 3D-Flip-Stack-Geometrie). Der Corner-Hint
               findet seinen positioned ancestor über die Klasse.
-            -->
+            */}
             <div class="flip-face flip-front flex flex-col items-center text-center" style="padding: 2rem; gap: 0.75rem;">
 
-              <!-- Bronze-Akzentlinie (konsistent zur Email-Card und zu den Werte-Cards) -->
+              {/* Bronze-Akzentlinie (konsistent zur Email-Card und zu den Werte-Cards) */}
               <div aria-hidden="true" style="width: 2rem; height: 3px; background: var(--color-primary); margin: 0 auto 1rem;"></div>
 
-              <!-- SLOT 1: Icon-Zone (rem-basiert) -->
+              {/* SLOT 1: Icon-Zone (rem-basiert) */}
               <div style="min-height: 8.75rem; display: flex; align-items: center; justify-content: center; width: 100%;">
                 <svg width="128" height="96" viewBox="0 0 96 64" fill="currentColor" aria-hidden="true" class="text-primary">
                   <path d="M 0 42 Q 24 26 48 32 T 96 36 L 96 56 L 0 56 Z" opacity="0.2"/>
                   <path d="M 13 56 L 20 42 L 27 56 Z M 15 47 L 20 33 L 25 47 Z M 17 37 L 20 26 L 23 37 Z"/>
-                  <!-- Mitte: Drei-Türme-Wappen (Unterkirnach) -->
+                  {/* Mitte: Drei-Türme-Wappen (Unterkirnach) */}
                   <rect x="27.60" y="37.60" width="7.20" height="18.40"/>
                   <rect x="27.60" y="35.87" width="1.87" height="1.73"/>
                   <rect x="30.26" y="35.87" width="1.87" height="1.73"/>
@@ -144,21 +144,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </svg>
               </div>
 
-              <!-- SLOT 2: Eyebrow -->
+              {/* SLOT 2: Eyebrow */}
               <div style="min-height: 1.5rem;">
                 <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em;">
                   Standort
                 </p>
               </div>
 
-              <!-- SLOT 3: Hauptzeile, zweizeilig (vereinheitlicht auf 1.125rem) -->
+              {/* SLOT 3: Hauptzeile, zweizeilig (vereinheitlicht auf 1.125rem) */}
               <div style="min-height: 3.5rem; display: flex; align-items: center; justify-content: center;">
                 <p class="font-serif font-medium text-text-primary leading-snug" style="font-size: 1.125rem;">
                   Im Schwarzwald zuhause —<br/>weltweit digital.
                 </p>
               </div>
 
-              <!-- Corner-Hint unten rechts (absolute, einheitlicher Stil zur Email-Card) -->
+              {/* Corner-Hint unten rechts (absolute, einheitlicher Stil zur Email-Card) */}
               <span
                 class="text-primary"
                 style="position: absolute; bottom: 0.75rem; right: 0.875rem; font-size: 0.6875rem; opacity: 0.85; display: flex; align-items: center; gap: 0.25rem;"
@@ -170,19 +170,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </span>
             </div>
 
-            <!-- ── RÜCKSEITE: Region-Outline + Stadt-Detail ────────────── -->
+            {/* ── RÜCKSEITE: Region-Outline + Stadt-Detail ────────────── */}
             <div class="flip-face flip-back flex flex-col items-center justify-center text-center" style="padding: 2rem;">
 
-              <!-- Eyebrow -->
+              {/* Eyebrow */}
               <p class="text-text-secondary" style="font-size: 12px; letter-spacing: 0.02em; margin-bottom: 12px;">
                 Standort
               </p>
 
-              <!--
+              {/*
                 Schwarzwald-Baar-Kreis – brand-bereinigte SVG (Wikipedia-Basis, CC BY-SA).
                 VS in Bronze, Kreis-Gemeinden in Cream, Flüsse in gedämpftem Blau.
                 Größe wird über .kreis-map gesteuert (siehe Style-Block).
-              -->
+              */}
               <img
                 src="/schwarzwald_baar_brand.svg"
                 alt="Lage von Villingen-Schwenningen im Schwarzwald-Baar-Kreis"
@@ -192,16 +192,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 loading="lazy"
               />
 
-              <!-- Stadt (vereinheitlicht auf 1.125rem — gleich groß wie Vorderseiten-Haupttext) -->
+              {/* Stadt (vereinheitlicht auf 1.125rem — gleich groß wie Vorderseiten-Haupttext) */}
               <p class="font-serif font-medium text-text-primary" style="font-size: 1.125rem; margin-bottom: 2px;">
                 Villingen-Schwenningen
               </p>
-              <!-- Region -->
+              {/* Region */}
               <p class="text-text-secondary" style="font-size: 11px;">
                 Schwarzwald-Baar-Kreis
               </p>
 
-              <!-- Corner-Hint unten rechts -->
+              {/* Corner-Hint unten rechts */}
               <span class="text-primary" style="position: absolute; bottom: 10px; right: 12px; font-size: 10px; opacity: 0.85; display: inline-flex; align-items: center; gap: 4px;">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>

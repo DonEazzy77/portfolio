@@ -7,9 +7,9 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
 
 <BaseLayout title={title} description={description}>
 
-  <!-- ── 1. HERO ─────────────────────────────────────────────────── -->
-  <!-- overflow-x-clip: die Desktop-Helix darf nach rechts auslaufen, ohne eine
-       horizontale Scrollleiste zu erzeugen (NICHT overflow-hidden → kein vertikales Clipping) -->
+  {/* ── 1. HERO ─────────────────────────────────────────────────── */}
+  {/* overflow-x-clip: die Desktop-Helix darf nach rechts auslaufen, ohne eine
+       horizontale Scrollleiste zu erzeugen (NICHT overflow-hidden → kein vertikales Clipping) */}
   <section class="py-20 sm:py-28 overflow-x-clip">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
@@ -27,19 +27,23 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
           "DNA." ist Anker für das Helix-Element — Original-Platzierung, Original-Asset. */}
       <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-text-primary leading-tight mb-5 max-w-3xl">
         Strategie und Umsetzung aus einer Hand —<br />
-        dank <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.<!--
+        dank <span class="text-primary">technischer </span><span class="relative inline-block text-primary">DNA.{/*
           Desktop: Helix tritt aus dem Punkt nach „DNA." heraus und läuft nach rechts in den freien Raum.
-        --><img
+        */}<img
             src="/dna-hero.png"
+            width="2400"
+            height="408"
             alt=""
             aria-hidden="true"
             class="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 w-[34rem] lg:w-[42rem] max-w-[52vw] h-auto pointer-events-none select-none"
           /></span>
       </h1>
 
-      <!-- Mobile: kein Platz seitlich → Helix als Band unter der Headline (volle Breite) -->
+      {/* Mobile: kein Platz seitlich → Helix als Band unter der Headline (volle Breite) */}
       <img
         src="/dna-hero.png"
+        width="2400"
+        height="408"
         alt=""
         aria-hidden="true"
         class="md:hidden mt-5 w-full h-auto pointer-events-none select-none"
@@ -62,7 +66,7 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
         als Verstärkung für Agenturen und Teams.
       </p>
 
-      <!-- CTA-Buttons -->
+      {/* CTA-Buttons */}
       <div class="flex flex-wrap gap-4">
         <a
           href="/ueber-mich"
@@ -81,7 +85,7 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
     </div>
   </section>
 
-  <!-- ── 2. DREI DISZIPLINEN ──────────────────────────────────────── -->
+  {/* ── 2. DREI DISZIPLINEN ──────────────────────────────────────── */}
   <section class="bg-background-soft py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -93,7 +97,7 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
         Ich tue es seit über 15 Jahren.
       </p>
 
-      <!-- Cards: 1 Spalte → 2 Spalten → 3 Spalten -->
+      {/* Cards: 1 Spalte → 2 Spalten → 3 Spalten */}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
@@ -145,16 +149,16 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
     </div>
   </section>
 
-  <!-- ── 3. AKTUELLER FOKUS ──────────────────────────────────────── -->
+  {/* ── 3. AKTUELLER FOKUS ──────────────────────────────────────── */}
   <section class="py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Zweispaltig auf lg+, gestapelt auf Mobile -->
+      {/* Zweispaltig auf lg+, gestapelt auf Mobile */}
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        <!-- Linke Spalte: Eyebrow + Headline -->
+        {/* Linke Spalte: Eyebrow + Headline */}
         <div>
-          <!-- Bronze-Quadrat als Eyebrow-Marker statt Caps -->
+          {/* Bronze-Quadrat als Eyebrow-Marker statt Caps */}
           <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
             <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
             Aktueller Fokus
@@ -164,7 +168,7 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
           </h2>
         </div>
 
-        <!-- Rechte Spalte: Fließtext -->
+        {/* Rechte Spalte: Fließtext */}
         <p class="text-base text-text-secondary leading-relaxed">
           Belege sortieren, Anfragen beantworten, Texte vorbereiten, Termine abgleichen — vieles
           davon kann heute ein Werkzeug übernehmen, ohne dass jemand ein neues System lernen muss.
@@ -176,7 +180,7 @@ const description = 'Website, Onlineshop oder die Abläufe dahinter — ich plan
     </div>
   </section>
 
-  <!-- ── 4. CTA ───────────────────────────────────────────────────── -->
+  {/* ── 4. CTA ───────────────────────────────────────────────────── */}
   <section class="bg-background-soft py-20 sm:py-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
