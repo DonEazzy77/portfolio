@@ -61,13 +61,13 @@ const educationStations: EducationStation[] = [
   description="Selbstständig in Unterkirnach im Schwarzwald: Webdesign, Online-Marketing und KI-Automatisierung für kleine und mittlere Betriebe. Mein Weg dorthin — Agentur, Freelance, Handel — und was mich antreibt."
 >
 
-  <!--
+  {/*
     Spacing-Konvention (siehe skills.astro / kontakt.astro / Memory):
       • Page-Wrapper:  py-16 md:py-24 lg:py-32
       • Sektionen:     flex flex-col + Inline-Style row-gap: clamp(...)
       • Grids:         Inline-Style display:grid + repeat(auto-fit, minmax(...))
     Tailwind gap-* / grid-cols-* sind in diesem Setup unzuverlässig.
-  -->
+  */}
   <div class="py-16 md:py-24 lg:py-32">
 
     <div
@@ -75,11 +75,11 @@ const educationStations: EducationStation[] = [
       style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
     >
 
-      <!-- ── 1. HERO (zweispaltig: Text + Foto-Stack mit Mini-Qualifikationen) ── -->
+      {/* ── 1. HERO (zweispaltig: Text + Foto-Stack mit Mini-Qualifikationen) ── */}
       <section>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;">
 
-          <!-- LEFT: Text -->
+          {/* LEFT: Text */}
           <div>
             <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
               <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -93,18 +93,18 @@ const educationStations: EducationStation[] = [
             </p>
           </div>
 
-          <!-- RIGHT: Profil-Card (Akzentlinie, Foto, Separator, Eyebrow, Qualifikationen) -->
+          {/* RIGHT: Profil-Card (Akzentlinie, Foto, Separator, Eyebrow, Qualifikationen) */}
           <div class="flex justify-center">
             <article class="profile-card">
 
-              <!-- Bronze-Akzentlinie (wie auf den Werte-Cards) -->
+              {/* Bronze-Akzentlinie (wie auf den Werte-Cards) */}
               <div class="profile-accent" aria-hidden="true"></div>
 
-              <!--
+              {/*
                 Foto-Container (Kreis, Bronze-Border, Bronze-Soft-BG als Platzhalter-Fläche).
                 `overflow: hidden` sorgt dafür, dass `object-fit: cover` sauber im Kreis greift.
                 aria-hidden nur, solange der TG-Initialen-Fallback aktiv ist.
-              -->
+              */}
               <div
                 class="profile-photo"
                 aria-hidden={hasRealPhoto ? undefined : 'true'}
@@ -123,16 +123,16 @@ const educationStations: EducationStation[] = [
                 )}
               </div>
 
-              <!-- Subtiler Separator zwischen Foto und Text-Block -->
+              {/* Subtiler Separator zwischen Foto und Text-Block */}
               <hr class="profile-separator" />
 
-              <!-- Eyebrow „Profil auf einen Blick" mit Bronze-Punkt (::before) -->
+              {/* Eyebrow „Profil auf einen Blick" mit Bronze-Punkt (::before) */}
               <p class="profile-eyebrow">Profil auf einen Blick</p>
 
-              <!-- Quick-Facts: <strong> für Label, <span class="qual-note"> für Wert.
+              {/* Quick-Facts: <strong> für Label, <span class="qual-note"> für Wert.
                    Klassen analog zur vormaligen Qualifikationen-Liste, damit Styling
                    konsistent bleibt. Ausbildungs-Details stehen jetzt im dedizierten
-                   Ausbildungs-Block unterhalb des Werdegangs. -->
+                   Ausbildungs-Block unterhalb des Werdegangs. */}
               <ul class="profile-quals">
                 <li><strong>Erfahrung</strong><span class="qual-note">— 15+ Jahre Marketing &amp; Tech</span></li>
                 <li><strong>Leistungen</strong><span class="qual-note">— Websites · Online-Marketing · E-Commerce · KI-Automatisierung</span></li>
@@ -149,14 +149,11 @@ const educationStations: EducationStation[] = [
       {/* ── 2. EINSTIEG (v2 § 3) ── */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-          Meine Ausbildung war technisch, mein Beruf wurde das Marketing — und der interessante Teil liegt seitdem genau dazwischen. Seit über fünfzehn Jahren arbeite ich an dieser Schnittstelle: in der Agentur, als selbstständiger Berater und im Handel, wo ich den Online-Vertrieb verantwortet habe. Ich frage zuerst, wie etwas funktioniert, und dann, wie es Kunden bringt.
+          Meine Ausbildung war technisch, mein Beruf wurde das Marketing — und der interessante Teil liegt seitdem genau dazwischen. Seit über fünfzehn Jahren arbeite ich an dieser Schnittstelle: in der Agentur, als selbstständiger Berater und im Handel, wo ich den Online-Vertrieb verantwortet habe. Ich frage zuerst, wie etwas funktioniert, und dann, wie es Kunden bringt. Aktuell bilde ich mich zum CRM-Manager (IHK) weiter.
         </p>
-        {/* OFFEN — nicht gebaut: der CRM-Schlusssatz aus v2 § 3
-            ("Aktuell bilde ich mich zum CRM-Manager (IHK) weiter.") haengt an der
-            Rueckfrage vom 05.10. — § 9 verbietet die Bezeichnung alleinstehend. */}
       </section>
 
-      <!-- ── 3. WERTE-STATEMENTS (3 Cards) ───────────────────────────── -->
+      {/* ── 3. WERTE-STATEMENTS (3 Cards) ───────────────────────────── */}
       <section>
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -228,15 +225,13 @@ const educationStations: EducationStation[] = [
               <span class="text-primary">4 · </span>Heute: Marketing, Technik und KI — aus einer Hand.
             </h3>
             <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-              Seit 2024 baue ich das zusammen, was ich auf allen drei Stationen gelernt habe: Websites, die gefunden werden, Onlineshops, die zum Betrieb passen, und KI-Automatisierung, die Routinearbeit abnimmt. Ich arbeite mit KI-Assistenten in klar getrennten Rollen und festen Übergaben — so, wie ein kleines Team arbeiten würde.
+              Seit 2024 baue ich das zusammen, was ich auf allen drei Stationen gelernt habe: Websites, die gefunden werden, Onlineshops, die zum Betrieb passen, und KI-Automatisierung, die Routinearbeit abnimmt. Ich arbeite mit KI-Assistenten in klar getrennten Rollen und festen Übergaben — so, wie ein kleines Team arbeiten würde. Und ich bilde mich weiter — im Fernlehrgang zum CRM-Manager (IHK), weil Kundenbeziehung die Stelle ist, an der Marketing und Technik sich am härtesten begegnen.
             </p>
-            {/* OFFEN — nicht gebaut: der CRM-Schlusssatz aus v2 § 5 Kapitel 4,
-                gleiche Rueckfrage wie in § 3. */}
           </article>
         </div>
       </section>
 
-      <!-- ── 5. AUSBILDUNGS-TIMELINE (3 Stationen, reverse chronologisch) ─ -->
+      {/* ── 5. AUSBILDUNGS-TIMELINE (3 Stationen, reverse chronologisch) ─ */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -258,7 +253,7 @@ const educationStations: EducationStation[] = [
         </ol>
       </section>
 
-      <!-- ── 6. CLOSING-CTA ──────────────────────────────────────────── -->
+      {/* ── 6. CLOSING-CTA ──────────────────────────────────────────── */}
       <section>
         <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
