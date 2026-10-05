@@ -10,12 +10,6 @@ interface Value {
   body: string;
 }
 
-interface EducationStation {
-  period: string;
-  title: string;
-  institution: string;
-  description: string;
-}
 
 const values: Value[] = [
   {
@@ -32,27 +26,11 @@ const values: Value[] = [
   },
 ];
 
-// Ausbildungs-Stationen für den dedizierten Block unter dem Werdegang.
-// Reihenfolge: chronologisch absteigend (neueste zuerst).
-const educationStations: EducationStation[] = [
-  {
-    period: 'Mai 2025 – 2026',
-    title: 'CRM-Manager (IHK)',
-    institution: 'ILS — Institut für Lernsysteme',
-    description: 'Fernstudium · in Vorbereitung · Abschluss 2026',
-  },
-  {
-    period: '2016 – 2018',
-    title: 'Geprüfter Fachkaufmann für Marketing (IHK)',
-    institution: 'IHK Schwarzwald-Baar-Heuberg',
-    description: 'Berufsbegleitende Weiterbildung parallel zur Selbstständigkeit',
-  },
-  {
-    period: '2004 – 2006',
-    title: 'Staatlich geprüfter Informatiker für Multimedia',
-    institution: 'SRH Heidelberg',
-    description: 'Erstausbildung — technisches Fundament für die spätere Marketing-Karriere',
-  },
+// Ausbildung und Weiterbildung (v2 § 6) — Wortlaut von Biz, drei Zeilen.
+const ausbildung = [
+  { titel: 'Fernlehrgang CRM-Manager/in (IHK)', detail: 'laufend, Abschluss offen' },
+  { titel: 'Geprüfter Fachkaufmann für Marketing (IHK)', detail: 'berufsbegleitend, 2016–2018' },
+  { titel: 'Staatlich geprüfter Informatiker für Multimedia', detail: 'SRH Heidelberg, 2004–2006' },
 ];
 ---
 
@@ -231,26 +209,39 @@ const educationStations: EducationStation[] = [
         </div>
       </section>
 
-      {/* ── 5. AUSBILDUNGS-TIMELINE (3 Stationen, reverse chronologisch) ─ */}
+      {/* ── 5. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Ausbildung
         </p>
         <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
-          Formale Basis und Weiterbildung.
+          Ausbildung und Weiterbildung.
         </h2>
 
-        <ol class="timeline">
-          {educationStations.map((station) => (
-            <li>
-              <p class="station-period">{station.period}</p>
-              <h3 class="station-title">{station.title}</h3>
-              <p class="station-company">{station.institution}</p>
-              <p class="station-description">{station.description}</p>
+        <ul class="flex flex-col gap-4">
+          {ausbildung.map((zeile) => (
+            <li class="text-text-secondary" style="font-size: 17px; line-height: 1.6;">
+              <strong class="font-medium text-text-primary">{zeile.titel}</strong> — {zeile.detail}
             </li>
           ))}
-        </ol>
+        </ul>
+
+        {/* ── Lebenslauf-Download (v2 § 7). Datei liegt unter public/dokumente/,
+             per _headers auf noindex, nofollow gesetzt. ── */}
+        <div class="bg-background-soft border border-border-subtle rounded-lg mt-10" style="padding: clamp(1.25rem, 3vw, 1.75rem);">
+          <p class="text-text-secondary mb-4" style="font-size: 16.5px; line-height: 1.6;">
+            Der vollständige Lebenslauf mit allen Stationen und Jahreszahlen — als PDF.
+          </p>
+          <a
+            href="/dokumente/Torsten_Guenter_Lebenslauf.pdf"
+            type="application/pdf"
+            download
+            class="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-200 hover:bg-primary-hover"
+          >
+            Lebenslauf herunterladen (PDF)
+          </a>
+        </div>
       </section>
 
       {/* ── 6. CLOSING-CTA ──────────────────────────────────────────── */}
