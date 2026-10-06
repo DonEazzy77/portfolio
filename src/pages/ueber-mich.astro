@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import torstenImage from '../assets/images/torsten.jpeg';
+import Spine, { type SpineSchritt } from '../components/Spine.astro';
 
 const hasRealPhoto = true;
 
@@ -32,6 +33,32 @@ const ausbildung = [
   { titel: 'Geprüfter Fachkaufmann für Marketing (IHK)', detail: 'berufsbegleitend, 2016–2018' },
   { titel: 'Staatlich geprüfter Informatiker für Multimedia', detail: 'SRH Heidelberg, 2004–2006' },
 ];
+
+// Werdegang als Erzaehlkapitel auf der Spine (Biz 06.10. § 1: Ziffer sitzt im Knoten,
+// das Bronze-Praefix in der Ueberschrift entfaellt).
+const stationen: SpineSchritt[] = [
+  {
+    kopf: "Agentur: Wo Idee und Technik sich zum ersten Mal getroffen haben.",
+    text:
+      "Angefangen habe ich in einer Agentur als Multimedia-Entwickler — fast sechs Jahre lang. Websites, Content-Management-Systeme, Digital-Signage-Lösungen, Kampagnen, die technisch funktionieren mussten, SEO und SEA von Anfang an. Und ich saß mit am Tisch, wenn Strategien entstanden — für Mittelständler, aber auch für große Firmen und Konzerne. In den letzten beiden Jahren kam der Aufbau von Social-Media-Strategien dazu. Gelernt habe ich dort: Die beste Idee ist nichts wert, wenn sie technisch nicht sauber auf die Straße kommt — und die sauberste Technik ist nichts wert, wenn niemand sie findet. Seitdem denke ich beides zusammen.",
+  },
+  {
+    kopf: "Selbstständig im Schwarzwald: Wie Betriebe wirklich ticken.",
+    text:
+      "Zurück in der Heimat habe ich als Freelancer Industrie- und Handelsbetriebe in E-Commerce und Online-Marketing beraten und umgesetzt — Strategie, SEO- und SEA-Konzepte, Frontend-Entwicklung. Parallel die Weiterbildung zum Geprüften Fachkaufmann für Marketing (IHK). Gelernt habe ich: Ein Betrieb braucht keine Präsentation mit vierzig Folien, sondern jemanden, der zuhört, das Problem versteht und dann liefert. Diese Zeit ist der Grund, warum ich heute wieder genau das mache.",
+  },
+  {
+    kopf: "Handel von innen: Wie digitaler Verkauf im Alltag funktioniert.",
+    text:
+      "Vier Jahre habe ich bei einem Sportfachhändler alles verantwortet, was digital war: den Onlineshop und die Marktplätze, Multichannel-Vertrieb, SEO und SEA, die Online-Kundenbetreuung — und die Technik im Laden, von der Kasseneinrichtung über Drucker bis zur Hardware-Beschaffung. Wenn es eng wurde, habe ich auch selbst gepickt, gepackt und mich um Retouren gekümmert. Danach zwei Jahre bei einem Hersteller von Musterkoffern und Reisegepäck mit eigener patentierter Technik — B2B und B2C, mehrere Shops, Performance-Marketing und Conversion-Optimierung, Produktmanagement und Vermarktung der Kollektionen, dazu die komplette Online-Kundenbetreuung. Gelernt habe ich, was man von außen nicht sieht: Online-Marketing endet nicht beim Klick. Es geht weiter im Lager, an der Kasse, im Kundengespräch. Diesen Blick bringe ich in jedes Projekt mit.",
+  },
+  {
+    kopf: "Heute: Marketing, Technik und KI — aus einer Hand.",
+    text:
+      "Seit 2024 baue ich das zusammen, was ich auf allen drei Stationen gelernt habe: Websites, die gefunden werden, Onlineshops, die zum Betrieb passen, und KI-Automatisierung, die Routinearbeit abnimmt. Ich arbeite mit KI-Assistenten in klar getrennten Rollen und festen Übergaben — so, wie ein kleines Team arbeiten würde. Und ich bilde mich weiter — im Fernlehrgang zum CRM-Manager (IHK), weil Kundenbeziehung die Stelle ist, an der Marketing und Technik sich am härtesten begegnen.",
+  },
+];
+
 ---
 
 <BaseLayout
@@ -158,7 +185,7 @@ const ausbildung = [
 
       {/* ── 4. WERDEGANG als EIN Erzaehlblock (v2 § 5) — ersetzt Story-Zeitstrahl.
           Keine Jahreszahlen ausser "Seit 2024" in Kapitel 4, keine Firmennamen. */}
-      <section class="max-w-3xl mx-auto w-full">
+      <section class="mx-auto w-full" style="max-width: 878px;">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Werdegang
@@ -170,43 +197,7 @@ const ausbildung = [
           Was ich wo gelernt habe — und was Sie davon haben.
         </p>
 
-        <div class="flex flex-col gap-10">
-          <article>
-            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
-              <span class="text-primary">1 · </span>Agentur: Wo Idee und Technik sich zum ersten Mal getroffen haben.
-            </h3>
-            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-              Angefangen habe ich in einer Agentur als Multimedia-Entwickler — fast sechs Jahre lang. Websites, Content-Management-Systeme, Digital-Signage-Lösungen, Kampagnen, die technisch funktionieren mussten, SEO und SEA von Anfang an. Und ich saß mit am Tisch, wenn Strategien entstanden — für Mittelständler, aber auch für große Firmen und Konzerne. In den letzten beiden Jahren kam der Aufbau von Social-Media-Strategien dazu. Gelernt habe ich dort: Die beste Idee ist nichts wert, wenn sie technisch nicht sauber auf die Straße kommt — und die sauberste Technik ist nichts wert, wenn niemand sie findet. Seitdem denke ich beides zusammen.
-            </p>
-          </article>
-
-          <article>
-            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
-              <span class="text-primary">2 · </span>Selbstständig im Schwarzwald: Wie Betriebe wirklich ticken.
-            </h3>
-            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-              Zurück in der Heimat habe ich als Freelancer Industrie- und Handelsbetriebe in E-Commerce und Online-Marketing beraten und umgesetzt — Strategie, SEO- und SEA-Konzepte, Frontend-Entwicklung. Parallel die Weiterbildung zum Geprüften Fachkaufmann für Marketing (IHK). Gelernt habe ich: Ein Betrieb braucht keine Präsentation mit vierzig Folien, sondern jemanden, der zuhört, das Problem versteht und dann liefert. Diese Zeit ist der Grund, warum ich heute wieder genau das mache.
-            </p>
-          </article>
-
-          <article>
-            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
-              <span class="text-primary">3 · </span>Handel von innen: Wie digitaler Verkauf im Alltag funktioniert.
-            </h3>
-            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-              Vier Jahre habe ich bei einem Sportfachhändler alles verantwortet, was digital war: den Onlineshop und die Marktplätze, Multichannel-Vertrieb, SEO und SEA, die Online-Kundenbetreuung — und die Technik im Laden, von der Kasseneinrichtung über Drucker bis zur Hardware-Beschaffung. Wenn es eng wurde, habe ich auch selbst gepickt, gepackt und mich um Retouren gekümmert. Danach zwei Jahre bei einem Hersteller von Musterkoffern und Reisegepäck mit eigener patentierter Technik — B2B und B2C, mehrere Shops, Performance-Marketing und Conversion-Optimierung, Produktmanagement und Vermarktung der Kollektionen, dazu die komplette Online-Kundenbetreuung. Gelernt habe ich, was man von außen nicht sieht: Online-Marketing endet nicht beim Klick. Es geht weiter im Lager, an der Kasse, im Kundengespräch. Diesen Blick bringe ich in jedes Projekt mit.
-            </p>
-          </article>
-
-          <article>
-            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
-              <span class="text-primary">4 · </span>Heute: Marketing, Technik und KI — aus einer Hand.
-            </h3>
-            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-              Seit 2024 baue ich das zusammen, was ich auf allen drei Stationen gelernt habe: Websites, die gefunden werden, Onlineshops, die zum Betrieb passen, und KI-Automatisierung, die Routinearbeit abnimmt. Ich arbeite mit KI-Assistenten in klar getrennten Rollen und festen Übergaben — so, wie ein kleines Team arbeiten würde. Und ich bilde mich weiter — im Fernlehrgang zum CRM-Manager (IHK), weil Kundenbeziehung die Stelle ist, an der Marketing und Technik sich am härtesten begegnen.
-            </p>
-          </article>
-        </div>
+        <Spine schritte={stationen} stil="erzaehlung" />
       </section>
 
       {/* ── 5. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
