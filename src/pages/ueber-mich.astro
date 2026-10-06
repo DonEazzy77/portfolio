@@ -5,109 +5,11 @@ import torstenImage from '../assets/images/torsten.jpeg';
 
 const hasRealPhoto = true;
 
-interface Station {
-  period: string;
-  title: string;
-  company: string | null;
-  description: string;
-  bullets: string[];
-}
-
 interface Value {
   title: string;
   body: string;
 }
 
-interface EducationStation {
-  period: string;
-  title: string;
-  institution: string;
-  description: string;
-}
-
-// Werdegang – reverse chronologisch (neueste Station zuerst)
-const stations: Station[] = [
-  {
-    period: '2024 – heute',
-    title: 'Weiterbildung · Neuorientierung',
-    company: null,
-    description: 'Bewusste Phase der Vertiefung und Erweiterung — fachlich und in der Toolchain.',
-    bullets: [
-      'Laufendes Studium zum CRM-Manager (IHK) mit Abschluss 2026',
-      'Vertiefung in datengetriebene Customer Experience und Marketing-Automation',
-      'Aktiver Aufbau einer modernen Toolchain mit KI-gestützten Workflows (Claude, Multi-Agent-Systeme, Prompt Engineering)',
-      'Systematische Integration von KI in Marketing- und Entwicklungs-Prozesse',
-    ],
-  },
-  {
-    period: '2022 – 2024',
-    title: 'Online Marketing & E-Commerce Manager',
-    company: 'Pull Up Case',
-    description: 'Verantwortlich für den digitalen Auftritt der Marke Pull Up Case in B2C und B2B (Sample Cases), im internationalen E-Commerce-Umfeld.',
-    bullets: [
-      'Gesamtverantwortung für mehrere Online-Shops und Multichannel-Vertriebskanäle (B2B & B2C)',
-      'Steuerung der Performance-Marketing-Aktivitäten (SEA, Social Ads, E-Mail) inkl. Conversion- und Kundenbindungs-Optimierung',
-      'Konzeption und Umsetzung kreativer Kampagnen für Digital und Print, in enger Abstimmung mit externen Agenturen',
-      'Internationale Zusammenarbeit in englischsprachigen Teams',
-    ],
-  },
-  {
-    period: '2021 – 2022',
-    title: 'Berufliche Neuorientierung',
-    company: null,
-    description: 'Marktbeobachtung und Reflektion der eigenen Karriereschwerpunkte vor dem Einstieg bei Pull Up Case.',
-    bullets: [],
-  },
-  {
-    period: '2017 – 2021',
-    title: 'E-Commerce Manager',
-    company: 'Intersport Stähle',
-    description: 'Aufbau und Weiterentwicklung des E-Commerce-Bereichs mit Verantwortung für alle digitalen Vertriebskanäle.',
-    bullets: [
-      'Gesamtverantwortung für E-Commerce und Multichannel-Plattformen',
-      'Strategische und operative Steuerung von SEO- und SEA-Maßnahmen',
-      'Schnittstelle zwischen Marketing, IT und externen Agenturen für die Umsetzung digitaler Projekte',
-      'Analyse und Optimierung von Online-Marketing-Kampagnen und Nutzerverhalten',
-      'Übergreifende technische Verantwortung für angrenzende IT-Themen: Kassensysteme, Geräte-Beschaffung und technischer Support im Filial-Umfeld',
-    ],
-  },
-  {
-    period: '2014 – 2017',
-    title: 'Freelancer im Bereich E-Commerce & Online-Marketing',
-    company: null,
-    description: 'Nach Standortwechsel von Ludwigsburg zurück in den Schwarzwald: Aufbau einer selbstständigen Beratungs- und Umsetzungstätigkeit für Unternehmen verschiedener Branchen — mit einer 6-monatigen Vollzeit-Unterbrechung durch das Engagement bei WAHL GmbH (siehe folgende Station).',
-    bullets: [
-      'Strategie- und Konzeptberatung im E-Commerce und Online-Marketing',
-      'Konzeption und Umsetzung von SEO- und SEA-Strategien für Industrieunternehmen',
-      'Frontend-Entwicklung und technische Umsetzung von Webprojekten',
-      'Berufsbegleitende Weiterbildung zum Geprüften Fachkaufmann für Marketing (IHK), 2016-2018',
-    ],
-  },
-  {
-    period: '11/2014 – 04/2015',
-    title: 'Marketing-Praktikum · befristete Vollzeit-Anstellung',
-    company: 'WAHL GmbH, Unterkirnach (internationaler Premium-Hersteller für Profi-Haarschneidemaschinen)',
-    description: 'Sechs Monate Vollzeit-Engagement: 3 Monate Marketing-Praktikum mit strategischem Schwerpunkt, gefolgt von 3 Monaten befristeter Anstellung mit operativem Fokus.',
-    bullets: [
-      'Eigenständige Markt-Segmentierung des Friseurmarkts erstellt, vor der Geschäftsführung präsentiert und in die strategische Planung übernommen',
-      'Online-Marketing: SEO-Analysen, Social Ads (Facebook, Google Adwords), Webseiten-Pflege und Content-Distribution',
-      'Frontend-/Backend-Fehlersuche, technische Dokumentation, Gewinnspiel-Konzeption und -Auswertung',
-      'Überarbeitung des YouTube-Channels, Konzeption von Facebook-Content',
-    ],
-  },
-  {
-    period: '2007 – 2012',
-    title: 'Multimedia-Entwickler & Online-Marketing',
-    company: 'Mediacluster GmbH',
-    description: 'Mein technisches Fundament — vom Frontend zum Online-Marketing.',
-    bullets: [
-      'Frontend-Entwicklung und technische Umsetzung von Webprojekten und digitalen Kampagnen',
-      'Konzeption und operative Umsetzung von SEO-, SEA- und Social-Media-Maßnahmen',
-      'Mitwirkung am Aufbau des Tochterunternehmens „OnlineAffairs" mit Fokus auf Social-Media-Strategien',
-      'Weiterentwicklung des unternehmenseigenen CMS-Systems sowie Realisierung von Digital-Signage-Lösungen mit Hardwareintegration',
-    ],
-  },
-];
 
 const values: Value[] = [
   {
@@ -124,27 +26,11 @@ const values: Value[] = [
   },
 ];
 
-// Ausbildungs-Stationen für den dedizierten Block unter dem Werdegang.
-// Reihenfolge: chronologisch absteigend (neueste zuerst).
-const educationStations: EducationStation[] = [
-  {
-    period: 'Mai 2025 – 2026',
-    title: 'CRM-Manager (IHK)',
-    institution: 'ILS — Institut für Lernsysteme',
-    description: 'Fernstudium · in Vorbereitung · Abschluss 2026',
-  },
-  {
-    period: '2016 – 2018',
-    title: 'Geprüfter Fachkaufmann für Marketing (IHK)',
-    institution: 'IHK Schwarzwald-Baar-Heuberg',
-    description: 'Berufsbegleitende Weiterbildung parallel zur Selbstständigkeit',
-  },
-  {
-    period: '2004 – 2006',
-    title: 'Staatlich geprüfter Informatiker für Multimedia',
-    institution: 'SRH Heidelberg',
-    description: 'Erstausbildung — technisches Fundament für die spätere Marketing-Karriere',
-  },
+// Ausbildung und Weiterbildung (v2 § 6) — Wortlaut von Biz, drei Zeilen.
+const ausbildung = [
+  { titel: 'Fernlehrgang CRM-Manager/in (IHK)', detail: 'laufend, Abschluss offen' },
+  { titel: 'Geprüfter Fachkaufmann für Marketing (IHK)', detail: 'berufsbegleitend, 2016–2018' },
+  { titel: 'Staatlich geprüfter Informatiker für Multimedia', detail: 'SRH Heidelberg, 2004–2006' },
 ];
 ---
 
@@ -153,13 +39,13 @@ const educationStations: EducationStation[] = [
   description="Selbstständig in Unterkirnach im Schwarzwald: Webdesign, Online-Marketing und KI-Automatisierung für kleine und mittlere Betriebe. Mein Weg dorthin — Agentur, Freelance, Handel — und was mich antreibt."
 >
 
-  <!--
+  {/*
     Spacing-Konvention (siehe skills.astro / kontakt.astro / Memory):
       • Page-Wrapper:  py-16 md:py-24 lg:py-32
       • Sektionen:     flex flex-col + Inline-Style row-gap: clamp(...)
       • Grids:         Inline-Style display:grid + repeat(auto-fit, minmax(...))
     Tailwind gap-* / grid-cols-* sind in diesem Setup unzuverlässig.
-  -->
+  */}
   <div class="py-16 md:py-24 lg:py-32">
 
     <div
@@ -167,36 +53,36 @@ const educationStations: EducationStation[] = [
       style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
     >
 
-      <!-- ── 1. HERO (zweispaltig: Text + Foto-Stack mit Mini-Qualifikationen) ── -->
+      {/* ── 1. HERO (zweispaltig: Text + Foto-Stack mit Mini-Qualifikationen) ── */}
       <section>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;">
 
-          <!-- LEFT: Text -->
+          {/* LEFT: Text */}
           <div>
             <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
               <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
               Über mich
             </p>
             <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
-              Hinter den Skills.
+              Marketing und Technik — warum ich beides mache.
             </h1>
             <p class="text-lg text-text-secondary leading-relaxed" style="max-width: 440px;">
-              Wer ich bin, wo ich herkomme — und warum die Schnittstelle zwischen Marketing und Tech mein Zuhause ist.
+              Wer ich bin, wo ich herkomme, und warum ein Betrieb bei mir nicht zwischen Agentur und IT-Dienstleister wählen muss.
             </p>
           </div>
 
-          <!-- RIGHT: Profil-Card (Akzentlinie, Foto, Separator, Eyebrow, Qualifikationen) -->
+          {/* RIGHT: Profil-Card (Akzentlinie, Foto, Separator, Eyebrow, Qualifikationen) */}
           <div class="flex justify-center">
             <article class="profile-card">
 
-              <!-- Bronze-Akzentlinie (wie auf den Werte-Cards) -->
+              {/* Bronze-Akzentlinie (wie auf den Werte-Cards) */}
               <div class="profile-accent" aria-hidden="true"></div>
 
-              <!--
+              {/*
                 Foto-Container (Kreis, Bronze-Border, Bronze-Soft-BG als Platzhalter-Fläche).
                 `overflow: hidden` sorgt dafür, dass `object-fit: cover` sauber im Kreis greift.
                 aria-hidden nur, solange der TG-Initialen-Fallback aktiv ist.
-              -->
+              */}
               <div
                 class="profile-photo"
                 aria-hidden={hasRealPhoto ? undefined : 'true'}
@@ -215,16 +101,16 @@ const educationStations: EducationStation[] = [
                 )}
               </div>
 
-              <!-- Subtiler Separator zwischen Foto und Text-Block -->
+              {/* Subtiler Separator zwischen Foto und Text-Block */}
               <hr class="profile-separator" />
 
-              <!-- Eyebrow „Profil auf einen Blick" mit Bronze-Punkt (::before) -->
+              {/* Eyebrow „Profil auf einen Blick" mit Bronze-Punkt (::before) */}
               <p class="profile-eyebrow">Profil auf einen Blick</p>
 
-              <!-- Quick-Facts: <strong> für Label, <span class="qual-note"> für Wert.
+              {/* Quick-Facts: <strong> für Label, <span class="qual-note"> für Wert.
                    Klassen analog zur vormaligen Qualifikationen-Liste, damit Styling
                    konsistent bleibt. Ausbildungs-Details stehen jetzt im dedizierten
-                   Ausbildungs-Block unterhalb des Werdegangs. -->
+                   Ausbildungs-Block unterhalb des Werdegangs. */}
               <ul class="profile-quals">
                 <li><strong>Erfahrung</strong><span class="qual-note">— 15+ Jahre Marketing &amp; Tech</span></li>
                 <li><strong>Leistungen</strong><span class="qual-note">— Websites · Online-Marketing · E-Commerce · KI-Automatisierung</span></li>
@@ -238,18 +124,14 @@ const educationStations: EducationStation[] = [
         </div>
       </section>
 
-      <!-- ── 2. STORY-BLOCK ──────────────────────────────────────────── -->
+      {/* ── 2. EINSTIEG (v2 § 3) ── */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
-          Meine Basis ist eine technische: ausgebildeter Informatiker für Multimedia, ursprünglich
-          als Frontend-Entwickler unterwegs. Aber schnell wurde klar — die spannenderen Fragen
-          liegen zwischen Code und Kunde. Seit über zehn Jahren bewege ich mich an dieser
-          Schnittstelle, heute mit Fokus auf CRM und KI-gestützte Customer Experience.
-          Aktuell bilde ich mich zum CRM-Manager (IHK) weiter.
+          Meine Ausbildung war technisch, mein Beruf wurde das Marketing — und der interessante Teil liegt seitdem genau dazwischen. Seit über fünfzehn Jahren arbeite ich an dieser Schnittstelle: in der Agentur, als selbstständiger Berater und im Handel, wo ich den Online-Vertrieb verantwortet habe. Ich frage zuerst, wie etwas funktioniert, und dann, wie es Kunden bringt. Aktuell bilde ich mich zum CRM-Manager (IHK) weiter.
         </p>
       </section>
 
-      <!-- ── 3. WERTE-STATEMENTS (3 Cards) ───────────────────────────── -->
+      {/* ── 3. WERTE-STATEMENTS (3 Cards) ───────────────────────────── */}
       <section>
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -274,56 +156,95 @@ const educationStations: EducationStation[] = [
         </div>
       </section>
 
-      <!-- ── 4. WERDEGANGS-TIMELINE (5 Stationen, reverse chronologisch) ─ -->
+      {/* ── 4. WERDEGANG als EIN Erzaehlblock (v2 § 5) — ersetzt Story-Zeitstrahl.
+          Keine Jahreszahlen ausser "Seit 2024" in Kapitel 4, keine Firmennamen. */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Werdegang
         </p>
-        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
-          Stationen meiner bisherigen Reise.
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-3">
+          Vier Stationen, ein roter Faden.
         </h2>
+        <p class="text-text-secondary leading-relaxed mb-8">
+          Was ich wo gelernt habe — und was Sie davon haben.
+        </p>
 
-        <ol class="timeline">
-          {stations.map((station) => (
-            <li>
-              <p class="station-period">{station.period}</p>
-              <h3 class="station-title">{station.title}</h3>
-              {station.company && (
-                <p class="station-company">{station.company}</p>
-              )}
-              <p class="station-description">{station.description}</p>
-              <ul class="bullet-list">
-                {station.bullets.map((bullet) => <li>{bullet}</li>)}
-              </ul>
-            </li>
-          ))}
-        </ol>
+        <div class="flex flex-col gap-10">
+          <article>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+              <span class="text-primary">1 · </span>Agentur: Wo Idee und Technik sich zum ersten Mal getroffen haben.
+            </h3>
+            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
+              Angefangen habe ich in einer Agentur als Multimedia-Entwickler — fast sechs Jahre lang. Websites, Content-Management-Systeme, Digital-Signage-Lösungen, Kampagnen, die technisch funktionieren mussten, SEO und SEA von Anfang an. Und ich saß mit am Tisch, wenn Strategien entstanden — für Mittelständler, aber auch für große Firmen und Konzerne. In den letzten beiden Jahren kam der Aufbau von Social-Media-Strategien dazu. Gelernt habe ich dort: Die beste Idee ist nichts wert, wenn sie technisch nicht sauber auf die Straße kommt — und die sauberste Technik ist nichts wert, wenn niemand sie findet. Seitdem denke ich beides zusammen.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+              <span class="text-primary">2 · </span>Selbstständig im Schwarzwald: Wie Betriebe wirklich ticken.
+            </h3>
+            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
+              Zurück in der Heimat habe ich als Freelancer Industrie- und Handelsbetriebe in E-Commerce und Online-Marketing beraten und umgesetzt — Strategie, SEO- und SEA-Konzepte, Frontend-Entwicklung. Parallel die Weiterbildung zum Geprüften Fachkaufmann für Marketing (IHK). Gelernt habe ich: Ein Betrieb braucht keine Präsentation mit vierzig Folien, sondern jemanden, der zuhört, das Problem versteht und dann liefert. Diese Zeit ist der Grund, warum ich heute wieder genau das mache.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+              <span class="text-primary">3 · </span>Handel von innen: Wie digitaler Verkauf im Alltag funktioniert.
+            </h3>
+            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
+              Vier Jahre habe ich bei einem Sportfachhändler alles verantwortet, was digital war: den Onlineshop und die Marktplätze, Multichannel-Vertrieb, SEO und SEA, die Online-Kundenbetreuung — und die Technik im Laden, von der Kasseneinrichtung über Drucker bis zur Hardware-Beschaffung. Wenn es eng wurde, habe ich auch selbst gepickt, gepackt und mich um Retouren gekümmert. Danach zwei Jahre bei einem Hersteller von Musterkoffern und Reisegepäck mit eigener patentierter Technik — B2B und B2C, mehrere Shops, Performance-Marketing und Conversion-Optimierung, Produktmanagement und Vermarktung der Kollektionen, dazu die komplette Online-Kundenbetreuung. Gelernt habe ich, was man von außen nicht sieht: Online-Marketing endet nicht beim Klick. Es geht weiter im Lager, an der Kasse, im Kundengespräch. Diesen Blick bringe ich in jedes Projekt mit.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+              <span class="text-primary">4 · </span>Heute: Marketing, Technik und KI — aus einer Hand.
+            </h3>
+            <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
+              Seit 2024 baue ich das zusammen, was ich auf allen drei Stationen gelernt habe: Websites, die gefunden werden, Onlineshops, die zum Betrieb passen, und KI-Automatisierung, die Routinearbeit abnimmt. Ich arbeite mit KI-Assistenten in klar getrennten Rollen und festen Übergaben — so, wie ein kleines Team arbeiten würde. Und ich bilde mich weiter — im Fernlehrgang zum CRM-Manager (IHK), weil Kundenbeziehung die Stelle ist, an der Marketing und Technik sich am härtesten begegnen.
+            </p>
+          </article>
+        </div>
       </section>
 
-      <!-- ── 5. AUSBILDUNGS-TIMELINE (3 Stationen, reverse chronologisch) ─ -->
+      {/* ── 5. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Ausbildung
         </p>
         <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
-          Formale Basis und Weiterbildung.
+          Ausbildung und Weiterbildung.
         </h2>
 
-        <ol class="timeline">
-          {educationStations.map((station) => (
-            <li>
-              <p class="station-period">{station.period}</p>
-              <h3 class="station-title">{station.title}</h3>
-              <p class="station-company">{station.institution}</p>
-              <p class="station-description">{station.description}</p>
+        <ul class="flex flex-col gap-4">
+          {ausbildung.map((zeile) => (
+            <li class="text-text-secondary" style="font-size: 17px; line-height: 1.6;">
+              <strong class="font-medium text-text-primary">{zeile.titel}</strong> — {zeile.detail}
             </li>
           ))}
-        </ol>
+        </ul>
+
+        {/* ── Lebenslauf-Download (v2 § 7). Datei liegt unter public/dokumente/,
+             per _headers auf noindex, nofollow gesetzt. ── */}
+        <div class="bg-background-soft border border-border-subtle rounded-lg mt-10" style="padding: clamp(1.25rem, 3vw, 1.75rem);">
+          <p class="text-text-secondary mb-4" style="font-size: 16.5px; line-height: 1.6;">
+            Der vollständige Lebenslauf mit allen Stationen und Jahreszahlen — als PDF.
+          </p>
+          <a
+            href="/dokumente/Torsten_Guenter_Lebenslauf.pdf"
+            type="application/pdf"
+            download
+            class="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-200 hover:bg-primary-hover"
+          >
+            Lebenslauf herunterladen (PDF)
+          </a>
+        </div>
       </section>
 
-      <!-- ── 6. CLOSING-CTA ──────────────────────────────────────────── -->
+      {/* ── 6. CLOSING-CTA ──────────────────────────────────────────── */}
       <section>
         <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
