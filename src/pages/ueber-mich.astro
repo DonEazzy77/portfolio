@@ -219,7 +219,7 @@ const stationen: SpineSchritt[] = [
            hochgezogen und um die Gassenbreite eingerueckt, damit der Schweif
            NEBEN dem Block ausfranst statt unter ihm. ── */}
       <section class="spine-anschluss">
-        <div class="cta-feld bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
+        <div class="cta-feld bg-background-soft border border-border-subtle rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
             <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-3">
               Was steht bei Ihnen an?
@@ -422,12 +422,16 @@ const stationen: SpineSchritt[] = [
      Mobil wird der linke Bildteil gezeigt: dort liegt die bronzene Route, die
      bei mittigem Zuschnitt sonst wegfaellt. */
   .cta-feld {
-    /* Schleier in der Grundfarbe ueber dem Motiv: ohne ihn misst der Fliesstext
-       4,14:1 gegen die hellsten Stellen und reisst die WCAG-Schwelle 4,5:1.
-       Mit 35 % sind es 5,11:1 (Desktop) und 5,16:1 (Mobil), das Motiv bleibt
-       dabei sichtbar. */
+    /* Schleier in der Grundfarbe ueber dem Motiv. Zwei Aufgaben:
+       Lesbarkeit — ohne Schleier misst der Fliesstext 4,14:1 gegen die hellsten
+       Bildstellen und reisst die WCAG-Schwelle 4,5:1.
+       Ruhe — das Bild traegt rechts dichtere Hoehenlinien als links. Gemessen
+       an der Kantenenergie je Felddrittel: flach 35 % ergibt links 3,10 gegen
+       rechts 3,58, das Feld kippt nach rechts. Die Rampe 30 % -> 58 % dreht es
+       auf 3,10 gegen 2,83 — die rechte Seite wird etwas ruhiger als die linke,
+       damit die bronzene Route links die Aufmerksamkeit fuehrt. */
     background-image:
-      linear-gradient(rgba(249, 250, 251, 0.35), rgba(249, 250, 251, 0.35)),
+      linear-gradient(to right, rgba(249, 250, 251, 0.30), rgba(249, 250, 251, 0.58)),
       url('/cta-schwarzwald.webp');
     background-size: cover;
     background-position: center;
