@@ -225,10 +225,15 @@ const erzaehlung = stil === 'erzaehlung';
         if (erreicht >= y) el.classList.add('is-visible');
       });
 
-      // Zerfall erst, wenn die Schiene unten ankommt - nicht vorher
-      if (!fussGezeigt && maxFill > 0.985) {
+      // Zerfall erst, wenn die Schiene unten ANGEKOMMEN IST - nicht vorher.
+      // maxFill ist der gerechnete Fuellstand; die Schiene zeichnet ihren mit
+      // 0,12s Uebergang nach. Bei 0.985 ohne Wartezeit startet der Fuss, waehrend
+      // die Kante noch rund 30px zu hoch steht - gemessen: Fuss bei Deckkraft
+      // 0,09, Schiene erst bei 97,5 %. Darum voller Fuellstand plus eine Pause
+      // etwas laenger als der Uebergang.
+      if (!fussGezeigt && maxFill > 0.999) {
         fussGezeigt = true;
-        fuss && fuss.classList.add('is-visible');
+        setTimeout(() => fuss && fuss.classList.add('is-visible'), 160);
       }
     };
 
