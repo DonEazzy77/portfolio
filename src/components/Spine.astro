@@ -83,7 +83,15 @@ const erzaehlung = stil === 'erzaehlung';
     position: absolute; left: 6px; top: 0;
     width: 46px; height: 100%;
     display: block; pointer-events: none; user-select: none;
-    background-image: url('/dna-spine.png');
+    /* Gekachelt wird dna-spine-kachel.png, NICHT dna-spine.png: Das Original ist
+       1200px hoch, eine Helixwindung misst rund 136px — das sind 8,8 Windungen,
+       keine ganze Zahl. Beim Wiederholen stossen Anfang und Ende in
+       unterschiedlicher Phase aneinander, die Naht ist als Bruch sichtbar.
+       Die Kachel ist auf 1085px zugeschnitten (Start 40), dort passen Anfang und
+       Ende zusammen: gemessener Nahtfehler 0,03 statt 0,44.
+       Wer das Bild austauscht, muss den Zuschnitt neu bestimmen — Quelle bleibt
+       dna-spine.png, das /arbeiten unveraendert per object-fit nutzt. */
+    background-image: url('/dna-spine-kachel.png');
     background-size: 98px auto;
     /* Unten verankert: Die Kachelung muss am UNTEREN Ende buendig sein, weil
        dort der Zerfalls-Fuss ansetzt. Bei top-Verankerung wird die letzte
