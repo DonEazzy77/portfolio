@@ -83,22 +83,31 @@ const erzaehlung = stil === 'erzaehlung';
     position: absolute; left: 6px; top: 0;
     width: 46px; height: 100%;
     display: block; pointer-events: none; user-select: none;
-    /* Gekachelt wird dna-spine-kachel.png, NICHT dna-spine.png: Das Original ist
-       1200px hoch, eine Helixwindung misst rund 136px — das sind 8,8 Windungen,
-       keine ganze Zahl. Beim Wiederholen stossen Anfang und Ende in
-       unterschiedlicher Phase aneinander, die Naht ist als Bruch sichtbar.
-       Die Kachel ist auf 1085px zugeschnitten (Start 40), dort passen Anfang und
-       Ende zusammen: gemessener Nahtfehler 0,03 statt 0,44.
-       Wer das Bild austauscht, muss den Zuschnitt neu bestimmen — Quelle bleibt
-       dna-spine.png, das /arbeiten unveraendert per object-fit nutzt. */
+    /* Gekachelt wird dna-spine-kachel.png, NICHT dna-spine.png.
+
+       Warum ueberhaupt eine eigene Kachel: dna-spine.png ist 1200px hoch, eine
+       Helixwindung misst rund 136px — etwa 8,8 Windungen, keine ganze Zahl.
+       Beim Wiederholen stossen Anfang und Ende in unterschiedlicher Phase
+       aneinander; die Naht ist als Bruch sichtbar.
+
+       Warum der Versatz: Die nahtlose Kachel ist aus der Bildmitte geschnitten
+       (Quellzeilen 40 bis 1125). Damit sitzt am Kachelende nicht mehr das
+       urspruengliche Bildende — und genau darauf ist der Zerfalls-Fuss
+       gezeichnet, der das Ausduennen des Strangs fortsetzt. Da das Muster
+       periodisch ist, laesst sich die Phase am unteren Rand zurueckdrehen:
+       Quellzeile 1200 entspricht Kachelzeile 75, das sind bei 98px
+       Darstellungsbreite 40,83 CSS-Pixel Versatz nach oben.
+
+       Beides zusammen gemessen (Farbsprung ueber die Naht gegen den normalen
+       Abstand zweier benachbarter Bildzeilen):
+         ganzes Bild gekachelt        26,59 zu 12,07   Faktor 2,20
+         Kachel ohne Versatz           0,55 zu 12,79   Faktor 0,04  (Fuss passt nicht)
+         Kachel mit Versatz           siehe Commit     (Fuss passt)
+
+       Wer dna-spine.png austauscht, muss Zuschnitt UND Versatz neu bestimmen. */
     background-image: url('/dna-spine-kachel.png');
     background-size: 98px auto;
-    /* Unten verankert: Die Kachelung muss am UNTEREN Ende buendig sein, weil
-       dort der Zerfalls-Fuss ansetzt. Bei top-Verankerung wird die letzte
-       Kachel mitten im Muster abgeschnitten und es entsteht eine harte Kante
-       genau an der Nahtstelle. Der Schnitt liegt so oben, wo die Maske
-       ohnehin ausblendet. */
-    background-position: bottom center;
+    background-position: center calc(100% - 40.83px);
     background-repeat: repeat-y;
     opacity: 0.85;
     /* Weicher Kopf: die obersten ~9 % faden aus (kein harter Start oben) */
