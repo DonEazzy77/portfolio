@@ -200,42 +200,7 @@ const stationen: SpineSchritt[] = [
         <Spine schritte={stationen} stil="erzaehlung" />
       </section>
 
-      {/* ── 5. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
-      <section class="max-w-3xl mx-auto w-full">
-        <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
-          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
-          Ausbildung
-        </p>
-        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
-          Ausbildung und Weiterbildung.
-        </h2>
-
-        <ul class="flex flex-col gap-4">
-          {ausbildung.map((zeile) => (
-            <li class="text-text-secondary" style="font-size: 17px; line-height: 1.6;">
-              <strong class="font-medium text-text-primary">{zeile.titel}</strong> — {zeile.detail}
-            </li>
-          ))}
-        </ul>
-
-        {/* ── Lebenslauf-Download (v2 § 7). Datei liegt unter public/dokumente/,
-             per _headers auf noindex, nofollow gesetzt. ── */}
-        <div class="bg-background-soft border border-border-subtle rounded-lg mt-10" style="padding: clamp(1.25rem, 3vw, 1.75rem);">
-          <p class="text-text-secondary mb-4" style="font-size: 16.5px; line-height: 1.6;">
-            Der vollständige Lebenslauf mit allen Stationen und Jahreszahlen — als PDF.
-          </p>
-          <a
-            href="/dokumente/Torsten_Guenter_Lebenslauf.pdf"
-            type="application/pdf"
-            download
-            class="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-medium transition-all duration-200 hover:bg-primary-hover"
-          >
-            Lebenslauf herunterladen (PDF)
-          </a>
-        </div>
-      </section>
-
-      {/* ── 6. CLOSING-CTA ──────────────────────────────────────────── */}
+      {/* ── 5. CLOSING-CTA (vor der Ausbildung, Biz 06.10. § 2) ──────────────────────────────────────────── */}
       <section>
         <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
@@ -255,6 +220,40 @@ const stationen: SpineSchritt[] = [
           </div>
         </div>
       </section>
+
+      {/* ── 6. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
+      <section class="max-w-3xl mx-auto w-full">
+        <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
+          <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
+          Ausbildung
+        </p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-8">
+          Ausbildung und Weiterbildung.
+        </h2>
+
+        <ul class="flex flex-col gap-4">
+          {ausbildung.map((zeile) => (
+            <li class="text-text-secondary" style="font-size: 17px; line-height: 1.6;">
+              <strong class="font-medium text-text-primary">{zeile.titel}</strong> — {zeile.detail}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── Lebenslauf als Textzeile (Biz 06.10. § 2 — kein eigener Block mehr).
+             Datei liegt unter public/dokumente/, per _headers auf noindex, nofollow. ── */}
+        <p class="text-text-secondary mt-8" style="font-size: 17px; line-height: 1.6;">
+          Der vollständige Lebenslauf mit allen Stationen und Jahreszahlen —
+          <a
+            href="/dokumente/Torsten_Guenter_Lebenslauf.pdf"
+            type="application/pdf"
+            download
+            class="text-primary underline"
+            style="text-underline-offset: 3px;"
+          >Lebenslauf als PDF</a>.
+        </p>
+      </section>
+
+      
 
     </div>
   </div>
