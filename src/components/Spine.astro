@@ -10,11 +10,12 @@
  *   stil="kompakt"    — kurze Prozessschritte (z. B. /arbeiten)
  *   stil="erzaehlung" — Fliesstext-Kapitel mit Serifen-Ueberschrift (/ueber-mich)
  *
- * Die Schiene ist vertikal GEKACHELT (background-repeat), nicht per object-fit
- * gedehnt. Grund: dna-spine.png ist 180x1200; object-fit:cover bindet die
- * Darstellungsbreite an die Spurhoehe — bei langen Texten wird die Helix
- * aufgeblasen und auf einen schmalen Mittelstreifen beschnitten. 98px Kachel-
- * breite entspricht genau dem, was cover bei ~650px Spurhoehe liefert.
+ * Die Schiene ist ein durchgehendes Hintergrundband (dna-spine-band.png),
+ * nicht per object-fit gedehnt. Grund: dna-spine.png ist 180x1200;
+ * object-fit:cover bindet die Darstellungsbreite an die Spurhoehe — bei langen
+ * Texten wird die Helix aufgeblasen und auf einen schmalen Mittelstreifen
+ * beschnitten. 98px Darstellungsbreite entspricht dem, was cover bei ~650px
+ * Spurhoehe liefert. Details zum Band siehe Kommentar an .spine-rail.
  */
 export interface SpineSchritt {
   kopf: string;
@@ -83,31 +84,35 @@ const erzaehlung = stil === 'erzaehlung';
     position: absolute; left: 6px; top: 0;
     width: 46px; height: 100%;
     display: block; pointer-events: none; user-select: none;
-    /* Gekachelt wird dna-spine-kachel.png, NICHT dna-spine.png.
+    /* Die Schiene ist EIN durchgehendes Band, keine Kachel.
 
-       Warum ueberhaupt eine eigene Kachel: dna-spine.png ist 1200px hoch, eine
-       Helixwindung misst rund 136px — etwa 8,8 Windungen, keine ganze Zahl.
-       Beim Wiederholen stossen Anfang und Ende in unterschiedlicher Phase
-       aneinander; die Naht ist als Bruch sichtbar.
+       Warum nicht kacheln: dna-spine.png ist 1200 Quellpixel hoch, die Spur
+       wird je nach Fensterbreite bis zu 3273 (gemessen bei 641px Viewport).
+       Das Bild muss sich also wiederholen — und eine Helixwindung misst rund
+       136px, das Bild enthaelt keine ganze Zahl davon. Daraus folgt ein
+       Zielkonflikt, den keine Kachel loesen kann:
+         - Naht weit weg vom Fuss  -> am unteren Ende sitzt nicht mehr das
+           Original-Bildende, auf das der Zerfalls-Fuss gezeichnet ist
+         - Original-Bildende unten -> die Naht landet 41px ueber dem Fuss,
+           also genau dort, wohin man schaut
+       Alle Zuschnitte, die am Bildende aufhoeren, wurden durchgerechnet; der
+       beste kommt auf Nahtfehler 0,148 (gerendert deutlich sichtbar).
 
-       Warum der Versatz: Die nahtlose Kachel ist aus der Bildmitte geschnitten
-       (Quellzeilen 40 bis 1125). Damit sitzt am Kachelende nicht mehr das
-       urspruengliche Bildende — und genau darauf ist der Zerfalls-Fuss
-       gezeichnet, der das Ausduennen des Strangs fortsetzt. Da das Muster
-       periodisch ist, laesst sich die Phase am unteren Rand zurueckdrehen:
-       Quellzeile 1200 entspricht Kachelzeile 75, das sind bei 98px
-       Darstellungsbreite 40,83 CSS-Pixel Versatz nach oben.
+       dna-spine-band.png loest das: dreimal der nahtlos kachelbare Abschnitt
+       (Quellzeilen 40 bis 1125, Nahtfehler 0,0345), darunter das unveraenderte
+       Original-Ende (1125 bis 1200) als natuerliche Fortsetzung. 3330
+       Quellpixel, deckt die hoechste gemessene Spur ab.
+         - am Fuss gar keine Naht, das Bildende sitzt unveraendert unten
+         - die zwei verbleibenden Naehte liegen 632 und 1222 CSS-px darueber
+       256 Farben quantisiert: 94 KB statt 456 KB, leichter als die alte Kachel.
 
-       Beides zusammen gemessen (Farbsprung ueber die Naht gegen den normalen
-       Abstand zweier benachbarter Bildzeilen):
-         ganzes Bild gekachelt        26,59 zu 12,07   Faktor 2,20
-         Kachel ohne Versatz           0,55 zu 12,79   Faktor 0,04  (Fuss passt nicht)
-         Kachel mit Versatz           siehe Commit     (Fuss passt)
-
-       Wer dna-spine.png austauscht, muss Zuschnitt UND Versatz neu bestimmen. */
-    background-image: url('/dna-spine-kachel.png');
+       repeat-y bleibt als Netz fuer den Fall, dass eine Spur je hoeher wird
+       als 1813 CSS-px; die Wiederholungsnaht laege dann im oberen Bereich,
+       den die Maske ohnehin ausblendet.
+       Wer dna-spine.png austauscht, muss das Band neu erzeugen. */
+    background-image: url('/dna-spine-band.png');
     background-size: 98px auto;
-    background-position: center calc(100% - 40.83px);
+    background-position: center bottom;
     background-repeat: repeat-y;
     opacity: 0.85;
     /* Weicher Kopf: die obersten ~9 % faden aus (kein harter Start oben) */
