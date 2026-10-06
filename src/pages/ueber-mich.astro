@@ -219,7 +219,7 @@ const stationen: SpineSchritt[] = [
            hochgezogen und um die Gassenbreite eingerueckt, damit der Schweif
            NEBEN dem Block ausfranst statt unter ihm. ── */}
       <section class="spine-anschluss">
-        <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
+        <div class="cta-feld bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
             <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-3">
               Was steht bei Ihnen an?
@@ -412,5 +412,29 @@ const stationen: SpineSchritt[] = [
 
   @media (max-width: 640px) {
     .spine-anschluss { padding-left: 0; margin-top: 1.5rem; }
+  }
+
+  /* Hintergrundmotiv im Abschlussfeld (Hoehenlinien mit Route und Knoten).
+     bg-background-soft bleibt als Grundfarbe darunter stehen: faellt das Bild
+     aus, sieht das Feld aus wie vorher.
+     Das Motiv ist beschnitten (der eingebackene weisse Rahmen samt Rundung ist
+     weg) und als WebP in Anzeigegroesse abgelegt — 27 KB statt 1,6 MB.
+     Mobil wird der linke Bildteil gezeigt: dort liegt die bronzene Route, die
+     bei mittigem Zuschnitt sonst wegfaellt. */
+  .cta-feld {
+    /* Schleier in der Grundfarbe ueber dem Motiv: ohne ihn misst der Fliesstext
+       4,14:1 gegen die hellsten Stellen und reisst die WCAG-Schwelle 4,5:1.
+       Mit 35 % sind es 5,11:1 (Desktop) und 5,16:1 (Mobil), das Motiv bleibt
+       dabei sichtbar. */
+    background-image:
+      linear-gradient(rgba(249, 250, 251, 0.35), rgba(249, 250, 251, 0.35)),
+      url('/cta-schwarzwald.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 640px) {
+    .cta-feld { background-position: 28% center; }
   }
 </style>
