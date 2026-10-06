@@ -19,8 +19,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Rechtliches
         </p>
+        {/* Weiche Trennstelle (&shy;): bricht bei Bedarf als "Datenschutz-/erklärung".
+             Funktioniert ohne Trennwoerterbuch, anders als hyphens:auto — Chromium
+             ohne deutsches Woerterbuch bricht sonst mitten im Wort ("...erkläru/ng").
+             Im Fliesstext unsichtbar, beim Kopieren entfernen Browser das Zeichen. */}
         <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-3">
-          Datenschutzerklärung
+          Datenschutz&shy;erklärung
         </h1>
         <p class="legal-stand">Stand: Juli 2026</p>
       </header>
@@ -281,5 +285,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .legal-section a:hover {
     color: var(--color-primary);
+  }
+
+  /* ── Ueberlauf-Schutz fuer die H1 (Kleinauftrag Biz 06.10. § 3) ──────────
+     "Datenschutzerklaerung" ist 20 Zeichen ohne Trennstelle und passt bei
+     390px Viewport nicht in die Spalte: 358px Platz gegen 386px Inhalt, die
+     Seite liess sich 12px seitwaerts scrollen.
+     hyphens:auto trennt deutsch (html lang="de" ist gesetzt). Browser ohne
+     deutsches Trennwoerterbuch ignorieren das still — darum zusaetzlich
+     overflow-wrap:break-word als harte Rueckfallebene: dann bricht das Wort
+     ohne Trennstrich um, aber es laeuft nie ueber.
+     Kein Wort Copy, keine Schriftgroesse, kein Layout angefasst. */
+  .legal-page h1 {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
   }
 </style>
