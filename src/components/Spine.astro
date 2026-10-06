@@ -85,7 +85,12 @@ const erzaehlung = stil === 'erzaehlung';
     display: block; pointer-events: none; user-select: none;
     background-image: url('/dna-spine.png');
     background-size: 98px auto;
-    background-position: top center;
+    /* Unten verankert: Die Kachelung muss am UNTEREN Ende buendig sein, weil
+       dort der Zerfalls-Fuss ansetzt. Bei top-Verankerung wird die letzte
+       Kachel mitten im Muster abgeschnitten und es entsteht eine harte Kante
+       genau an der Nahtstelle. Der Schnitt liegt so oben, wo die Maske
+       ohnehin ausblendet. */
+    background-position: bottom center;
     background-repeat: repeat-y;
     opacity: 0.85;
     /* Weicher Kopf: die obersten ~9 % faden aus (kein harter Start oben) */

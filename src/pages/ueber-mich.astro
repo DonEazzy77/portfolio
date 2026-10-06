@@ -200,8 +200,11 @@ const stationen: SpineSchritt[] = [
         <Spine schritte={stationen} stil="erzaehlung" />
       </section>
 
-      {/* ── 5. CLOSING-CTA (vor der Ausbildung, Biz 06.10. § 2) ──────────────────────────────────────────── */}
-      <section>
+      {/* ── 5. CLOSING-CTA (vor der Ausbildung, Biz 06.10. § 2).
+           Schliesst wie .spine-result auf /arbeiten an den Zerfalls-Fuss an:
+           hochgezogen und um die Gassenbreite eingerueckt, damit der Schweif
+           NEBEN dem Block ausfranst statt unter ihm. ── */}
+      <section class="spine-anschluss">
         <div class="bg-background-soft rounded-lg text-center" style="padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);">
           <div class="max-w-md mx-auto">
             <h2 class="font-serif text-2xl sm:text-3xl font-medium text-text-primary mb-3">
@@ -365,5 +368,24 @@ const stationen: SpineSchritt[] = [
     font-weight: 400;
     color: var(--color-text-secondary);
     margin-left: 0.25rem;
+  }
+
+  /* Anschluss an den Zerfalls-Fuss der Spine (Gegenstueck zu .spine-result auf
+     /arbeiten). Gehoert sinngemaess zum Spine-Bauteil; liegt hier, weil Astro
+     Komponentenstile nicht nach aussen gibt.
+       • Gassenbreite 104px + 1rem Spalte = Einrueckung
+       • -6rem holt den Block in den ausfadenden Schweif zurueck; zusaetzlich
+         wird die row-gap des Seitenwrappers herausgerechnet, sonst bleibt vom
+         Hochzug fast nichts uebrig.
+       • Breite wie der Erzaehlblock (878px), damit beide fluchten. */
+  .spine-anschluss {
+    max-width: 878px;
+    margin: calc(-6rem - clamp(2.5rem, 4vw, 4.5rem)) auto 0;
+    padding-left: calc(104px + 1rem);
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .spine-anschluss { padding-left: 0; margin-top: 1.5rem; }
   }
 </style>
