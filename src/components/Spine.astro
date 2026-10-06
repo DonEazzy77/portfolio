@@ -1,0 +1,192 @@
+---
+/**
+ * Spine — gemeinsames Grundbauteil fuer die DNA-Schiene.
+ *
+ * Eine Gasse links (104px, mobil 52px) mit nummerierten Sechsecken, dahinter
+ * die Helix als Schiene, die beim Scrollen mitwaechst. Darunter optional der
+ * Zerfalls-Fuss, der in Daten zerstaeubt.
+ *
+ * Zwei Auspraegungen, ein Bauteil:
+ *   stil="kompakt"    — kurze Prozessschritte (z. B. /arbeiten)
+ *   stil="erzaehlung" — Fliesstext-Kapitel mit Serifen-Ueberschrift (/ueber-mich)
+ *
+ * Die Schiene ist vertikal GEKACHELT (background-repeat), nicht per object-fit
+ * gedehnt. Grund: dna-spine.png ist 180x1200; object-fit:cover bindet die
+ * Darstellungsbreite an die Spurhoehe — bei langen Texten wird die Helix
+ * aufgeblasen und auf einen schmalen Mittelstreifen beschnitten. 98px Kachel-
+ * breite entspricht genau dem, was cover bei ~650px Spurhoehe liefert.
+ */
+export interface SpineSchritt {
+  kopf: string;
+  text: string;
+}
+
+interface Props {
+  schritte: SpineSchritt[];
+  stil?: 'kompakt' | 'erzaehlung';
+  fuss?: boolean;
+  einblenden?: boolean;
+}
+
+const { schritte, stil = 'kompakt', fuss = true, einblenden = false } = Astro.props;
+const erzaehlung = stil === 'erzaehlung';
+---
+
+<div class="spine">
+  <div class="spine-track">
+    <span class="spine-rail" aria-hidden="true"></span>
+
+    <ol class="spine-steps">
+      {schritte.map((s, i) => (
+        <li class="spine-step" data-reveal={einblenden ? '' : undefined}>
+          <span class="spine-node" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="40" height="40" role="presentation">
+              <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="currentColor" />
+              <text
+                x="50" y="53" text-anchor="middle" dominant-baseline="central"
+                font-family="Inter, sans-serif" font-weight="700" font-size="42" fill="#fff"
+              >{i + 1}</text>
+            </svg>
+          </span>
+
+          <div class="spine-body">
+            {erzaehlung ? (
+              <Fragment>
+                <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">{s.kopf}</h3>
+                <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">{s.text}</p>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p class="spine-step-title">{s.kopf}</p>
+                <p class="spine-step-desc">{s.text}</p>
+              </Fragment>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  {fuss && (
+    <div class="spine-foot" aria-hidden="true">
+      <img src="/dna-spine-foot.png" width="280" height="501" alt="" />
+    </div>
+  )}
+</div>
+
+<style>
+  .spine-track { position: relative; }
+
+  /* Durchgehende Helix links. Wird von den Knoten NICHT unterbrochen;
+     der Zerfall passiert erst im Fuss darunter. */
+  .spine-rail {
+    position: absolute; left: 6px; top: 0;
+    width: 46px; height: 100%;
+    display: block; pointer-events: none; user-select: none;
+    background-image: url('/dna-spine.png');
+    background-size: 98px auto;
+    background-position: top center;
+    background-repeat: repeat-y;
+    opacity: 0.85;
+    /* Weicher Kopf: die obersten ~9 % faden aus (kein harter Start oben) */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+    transition: clip-path 0.12s linear;
+  }
+
+  .spine-steps {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; row-gap: 2.5rem;
+  }
+
+  /* Spalte 1 = Knoten-Gasse (Sechseck ragt RECHTS aus der Helix), Spalte 2 = Text */
+  .spine-step {
+    display: grid; grid-template-columns: 104px 1fr;
+    column-gap: 1rem; align-items: start;
+  }
+
+  /* Sechseck sitzt am rechten Rand der Gasse; der Arm (::before) zeigt
+     zurueck zur Helix und ueberlappt sie um 8px. */
+  .spine-node {
+    position: relative; justify-self: end; margin-top: 0.1rem;
+    width: 40px; height: 40px; color: var(--color-primary);
+  }
+  .spine-node::before {
+    content: ""; position: absolute; top: 50%; left: -20px;
+    width: 20px; height: 2px; background: var(--color-primary);
+    transform: translateY(-50%);
+  }
+  .spine-node svg { display: block; }
+
+  .spine-step-title {
+    font-weight: 600; color: var(--color-text-primary);
+    font-size: 0.95rem; margin: 0.15rem 0 0.15rem;
+  }
+  .spine-step-desc {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem; line-height: 1.6; margin: 0;
+  }
+
+  /* Zerfalls-Fuss: schliesst UNTEN an die Schiene an und faechert in Daten auf.
+     GESCHWISTER der Spur, nicht ihr Kind — sonst liefe die Schiene hinter ihm
+     weiter. Links auf die Schiene (6px) ausgerichtet. */
+  .spine-foot { margin: -2px 0 0 6px; }
+  .spine-foot img { display: block; width: 100px; height: auto; opacity: 0.9; }
+
+  /* Ohne JS ist die Schiene voll sichtbar; erst wenn das Skript uebernimmt,
+     startet sie leer und waechst scroll-gekoppelt. */
+  .spine-reveal-ready .spine-rail { clip-path: inset(0 0 100% 0); }
+  .spine-reveal-ready [data-reveal] {
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .spine-reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  /* Mobil: Schiene + Fuss ausblenden, Sechsecke bleiben als Timeline-Marker */
+  @media (max-width: 640px) {
+    .spine-rail { display: none; }
+    .spine-foot { display: none; }
+    .spine-step { grid-template-columns: 52px 1fr; column-gap: 0.85rem; }
+    .spine-node { width: 34px; height: 34px; }
+    .spine-node svg { width: 34px; height: 34px; }
+    .spine-node::before { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spine-reveal-ready [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+    .spine-rail { clip-path: none !important; transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.spine').forEach((spine) => {
+    const track = spine.querySelector('.spine-track') as HTMLElement | null;
+    const rail  = spine.querySelector('.spine-rail') as HTMLElement | null;
+    const steps = Array.from(spine.querySelectorAll('.spine-step[data-reveal]'));
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || !track || !rail) {
+      steps.forEach((el) => el.classList.add('is-visible'));
+      return;                     // Schiene bleibt voll sichtbar (CSS-Default)
+    }
+
+    spine.classList.add('spine-reveal-ready');
+
+    let maxFill = 0;              // Fuellstand waechst nur, schrumpft nie
+    const update = () => {
+      const rect = track.getBoundingClientRect();
+      const sicht = window.innerHeight;
+      const gelaufen = sicht * 0.75 - rect.top;
+      const anteil = Math.max(0, Math.min(1, gelaufen / Math.max(1, rect.height)));
+      maxFill = Math.max(maxFill, anteil);
+      rail.style.clipPath = `inset(0 0 ${((1 - maxFill) * 100).toFixed(2)}% 0)`;
+      steps.forEach((li) => {
+        if (li.getBoundingClientRect().top < sicht * 0.85) li.classList.add('is-visible');
+      });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  });
+</script>
