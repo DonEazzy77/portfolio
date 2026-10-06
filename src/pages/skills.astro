@@ -109,7 +109,7 @@ const isLearning = (pill: string) =>
   description="Marketing, E-Commerce, CRM, Tech und KI-Workflow — die Skills, mit denen ich Disziplinen verbinde."
 >
 
-  <!--
+  {/*
     Spacing-Konvention für Content-Seiten:
       • Page-Wrapper:   py-16 md:py-24 lg:py-32  (Abstand zu Header/Footer)
       • Sektionen:      flat hierarchy – jede Sektion ist EIN direktes Kind
@@ -118,35 +118,35 @@ const isLearning = (pill: string) =>
     Hinweis: Die Startseite (index.astro) nutzt bewusst eigene per-Sektion-Werte
     und folgt dieser Konvention nicht. Bei neuen Content-Seiten bitte konsistent
     diese Werte verwenden.
-  -->
+  */}
   <div class="py-16 md:py-24 lg:py-32">
 
-    <!--
+    {/*
       Spacing per inline-style mit clamp(): Tailwinds gap-* Utilities werden in
       diesem Setup (Tailwind v4 + Astro) für diesen Container nicht zuverlässig
       generiert (Diagnose abgeschlossen). clamp() liefert responsive Spacing
       ohne Klassen-Detection-Abhängigkeit.
-    -->
+    */}
     <div
       class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col"
       style="row-gap: clamp(2.5rem, 4vw, 4.5rem);"
     >
 
-      <!-- ── 1. INTRO-BOX ─────────────────────────────────────────────── -->
+      {/* ── 1. INTRO-BOX ─────────────────────────────────────────────── */}
       <div>
 
-        <!-- Eyebrow -->
+        {/* Eyebrow */}
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-5">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Skills
         </p>
 
-        <!-- Headline -->
+        {/* Headline */}
         <h1 class="font-serif text-4xl sm:text-5xl font-medium text-text-primary leading-tight mb-5">
           Was ich kann.
         </h1>
 
-        <!-- Subline -->
+        {/* Subline */}
         <p class="text-lg text-text-secondary leading-relaxed max-w-2xl">
           Eine Übersicht der Werkzeuge, Methoden und Disziplinen, mit denen ich Marketing, Customer
           Experience und Tech zusammenbringe. Manche davon nutze ich seit über 15 Jahren, andere baue
@@ -157,26 +157,26 @@ const isLearning = (pill: string) =>
 
       </div>
 
-      <!-- ── 2. GRID-BOX ──────────────────────────────────────────────── -->
+      {/* ── 2. GRID-BOX ──────────────────────────────────────────────── */}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
         {skillGroups.map((group) => (
           <article class="bg-background border border-border-subtle rounded-lg p-6 sm:p-8 hover:-translate-y-0.5 hover:border-primary transition-all duration-200">
 
-            <!-- Bronze-Akzentlinie -->
+            {/* Bronze-Akzentlinie */}
             <div class="w-8 h-[3px] bg-primary rounded-full mb-5" aria-hidden="true"></div>
 
-            <!-- Card-Titel -->
+            {/* Card-Titel */}
             <h2 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
               {group.title}
             </h2>
 
-            <!-- Beschreibung -->
+            {/* Beschreibung */}
             <p class="text-sm text-text-secondary leading-relaxed mb-5">
               {group.description}
             </p>
 
-            <!-- Skill-Pills -->
+            {/* Skill-Pills */}
             <div class="flex flex-wrap gap-2">
               {group.pills.map((pill) => (
                 <span
