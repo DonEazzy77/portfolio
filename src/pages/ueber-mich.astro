@@ -422,16 +422,17 @@ const stationen: SpineSchritt[] = [
      Mobil wird der linke Bildteil gezeigt: dort liegt die bronzene Route, die
      bei mittigem Zuschnitt sonst wegfaellt. */
   .cta-feld {
-    /* Schleier in der Grundfarbe ueber dem Motiv. Zwei Aufgaben:
-       Lesbarkeit — ohne Schleier misst der Fliesstext 4,14:1 gegen die hellsten
-       Bildstellen und reisst die WCAG-Schwelle 4,5:1.
-       Ruhe — das Bild traegt rechts dichtere Hoehenlinien als links. Gemessen
-       an der Kantenenergie je Felddrittel: flach 35 % ergibt links 3,10 gegen
-       rechts 3,58, das Feld kippt nach rechts. Die Rampe 30 % -> 58 % dreht es
-       auf 3,10 gegen 2,83 — die rechte Seite wird etwas ruhiger als die linke,
-       damit die bronzene Route links die Aufmerksamkeit fuehrt. */
+    /* Flacher Schleier in der Grundfarbe ueber dem Motiv, allein fuer die
+       Lesbarkeit: ohne ihn misst der Fliesstext 3,96:1 gegen die hellsten
+       Bildstellen und reisst die WCAG-Schwelle 4,5:1. 28 % ist der niedrigste
+       gemessene Wert, der auf allen drei Breiten mit Luft haelt (4,74 Desktop,
+       4,85 Tablet, 4,73 Mobil) — darunter, bei 24 %, wird es mit 4,62 zu knapp.
+       Bewusst flach und nicht als Rampe: das Motiv ist asymmetrisch komponiert,
+       offene Route links, dichtes Bandwerk rechts. Eine einseitige Rampe nimmt
+       die rechte Seite heraus und laesst das Feld auslaufen statt ausgewogen
+       wirken. Geprueft und wieder verworfen. */
     background-image:
-      linear-gradient(to right, rgba(249, 250, 251, 0.30), rgba(249, 250, 251, 0.58)),
+      linear-gradient(rgba(249, 250, 251, 0.28), rgba(249, 250, 251, 0.28)),
       url('/cta-schwarzwald.webp');
     background-size: cover;
     background-position: center;
