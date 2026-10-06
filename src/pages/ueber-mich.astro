@@ -239,7 +239,7 @@ const stationen: SpineSchritt[] = [
       </section>
 
       {/* ── 6. AUSBILDUNG UND WEITERBILDUNG (v2.1, Biz 06.10. 22:07) — drei Schritte + Outro ── */}
-      <section class="max-w-3xl mx-auto w-full">
+      <section class="ausbildung-anschluss w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
           Ausbildung
@@ -441,5 +441,24 @@ const stationen: SpineSchritt[] = [
 
   @media (max-width: 640px) {
     .cta-feld { background-position: 28% center; }
+  }
+
+  /* Der Ausbildungsblock steht auf derselben Spalte wie die Erzaehlkapitel und
+     das Abschlussfeld. Vorher lief er auf der Flucht des Einstiegs (max-w-3xl,
+     768 breit) und sprang damit bei 1440 um 65 px nach links heraus, bei 820 um
+     118 px. Der Block hat die Bauform der Kapitel ohne deren Spine — auf einer
+     eigenen Kante las er sich als Fremdkoerper.
+     Dieselbe Geometrie wie .spine-anschluss, nur ohne dessen negativen Abstand:
+     104 px Rinne fuer die Schiene plus 1rem Spalt, Blockbreite 878. Knoten
+     bekommt der Block bewusst NICHT — die Zaehlung gehoert den vier Stationen. */
+  .ausbildung-anschluss {
+    max-width: 878px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(104px + 1rem);
+  }
+
+  @media (max-width: 640px) {
+    .ausbildung-anschluss { padding-left: 0; }
   }
 </style>
