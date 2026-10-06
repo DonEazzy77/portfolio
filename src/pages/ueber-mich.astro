@@ -28,10 +28,24 @@ const values: Value[] = [
 ];
 
 // Ausbildung und Weiterbildung (v2 § 6) — Wortlaut von Biz, drei Zeilen.
+// Ausbildungsblock v2.1 (Biz 06.10. 22:07) — drei Schritte als Erzaehlkapitel,
+// Reihenfolge Technik -> Marketing -> Kundenbeziehung. Wortlaut 1:1 aus dem Auftrag.
 const ausbildung = [
-  { titel: 'Fernlehrgang CRM-Manager/in (IHK)', detail: 'laufend, Abschluss offen' },
-  { titel: 'Geprüfter Fachkaufmann für Marketing (IHK)', detail: 'berufsbegleitend, 2016–2018' },
-  { titel: 'Staatlich geprüfter Informatiker für Multimedia', detail: 'SRH Heidelberg, 2004–2006' },
+  {
+    kopf: 'Heidelberg: Wo Code und Gestaltung zusammen gelernt wurden.',
+    text:
+      'Zwei Jahre Fachschule an der SRH in Heidelberg, Abschluss als staatlich geprüfter Informatiker für Multimedia. Programmierung und Datenbanken auf der einen Seite, Webproduktion, Bild, Video und 3D auf der anderen — und die Erfahrung, dass eine Anwendung erst dann gut ist, wenn beides stimmt. Diese zwei Hälften sind bis heute die Grundlage.',
+  },
+  {
+    kopf: 'Marketing, berufsbegleitend: Das Handwerk hinter dem Bauchgefühl.',
+    text:
+      'Mit einigen Jahren Praxis kam der Geprüfte Fachkaufmann für Marketing (IHK) dazu, neben dem Beruf. Marketingstrategie, Marktforschung und Marketingstatistik, Produkt- und Projektmanagement, Recht im Marketing — der Teil, der aus guten Ideen belastbare Entscheidungen macht. Genau dieses Handwerk trägt heute das Online-Marketing: Wer Zielgruppen, Zahlen und Rechtslage versteht, baut Kampagnen, die nicht nur klicken, sondern verkaufen.',
+  },
+  {
+    kopf: 'Und jetzt: Kundenbeziehungen als System.',
+    text:
+      'Weil Kundenbeziehungen heute über Daten laufen, belege ich derzeit den Fernlehrgang CRM-Manager/in (IHK) — Abschluss offen. Operatives, analytisches und kollaboratives CRM, Einführung von CRM-Systemen, Datenschutz, Change-Management: genau das, was ein Betrieb braucht, wenn aus Kontakten Kunden werden sollen.',
+  },
 ];
 
 // Werdegang als Erzaehlkapitel auf der Spine (Biz 06.10. § 1: Ziffer sitzt im Knoten,
@@ -224,7 +238,7 @@ const stationen: SpineSchritt[] = [
         </div>
       </section>
 
-      {/* ── 6. AUSBILDUNG UND WEITERBILDUNG (v2 § 6) — drei Zeilen mit Jahren ── */}
+      {/* ── 6. AUSBILDUNG UND WEITERBILDUNG (v2.1, Biz 06.10. 22:07) — drei Schritte + Outro ── */}
       <section class="max-w-3xl mx-auto w-full">
         <p class="flex items-center gap-2 text-sm text-text-secondary mb-4">
           <span class="w-2 h-2 bg-primary rounded-sm shrink-0" aria-hidden="true"></span>
@@ -234,19 +248,30 @@ const stationen: SpineSchritt[] = [
           Ausbildung und Weiterbildung.
         </h2>
 
-        <ul class="flex flex-col gap-4">
-          {ausbildung.map((zeile) => (
-            <li class="text-text-secondary" style="font-size: 17px; line-height: 1.6;">
-              <strong class="font-medium text-text-primary">{zeile.titel}</strong> — {zeile.detail}
-            </li>
+        {/* ── Ausbildungsblock v2.1 (Biz 06.10. 22:07): drei Schritte in der Form
+             der Erzaehlkapitel, aber OHNE Spine und ohne Knoten — ruhiger Nachsatz,
+             nicht die Schiene. Danach Outro ohne Ueberschrift, dann die Schlusszeile
+             mit dem Lebenslauf-Link. Wortlaut 1:1 aus dem Auftrag. ── */}
+        <div class="flex flex-col gap-10">
+          {ausbildung.map((kapitel) => (
+            <article>
+              <h3 class="font-serif text-xl sm:text-2xl font-medium text-text-primary mb-3">
+                {kapitel.kopf}
+              </h3>
+              <p class="text-text-secondary" style="font-size: 17px; line-height: 1.7;">
+                {kapitel.text}
+              </p>
+            </article>
           ))}
-        </ul>
+        </div>
 
-        {/* ── Lebenslauf als Textzeile (Biz 06.10. § 2 — kein eigener Block mehr).
-             Datei liegt unter public/dokumente/, per _headers auf noindex, nofollow. ── */}
-        <p class="text-text-secondary mt-8" style="font-size: 17px; line-height: 1.6;">
-          Der vollständige Lebenslauf mit allen Stationen und Jahreszahlen —
-          <a
+        <p class="text-text-secondary mt-10" style="font-size: 17px; line-height: 1.7;">
+          Drei Ausbildungen, ein Muster: zuerst die Technik, dann das Marketing, jetzt die Kundenbeziehung. Jede hat die vorige nicht ersetzt, sondern ergänzt — und zusammen ergeben sie genau das, was kleine und mittlere Betriebe heute brauchen: jemanden, der Strategie, Umsetzung und Daten in einer Hand hält.
+        </p>
+
+        {/* Schlusszeile. Datei liegt unter public/dokumente/, per _headers auf noindex, nofollow. */}
+        <p class="text-text-secondary mt-6" style="font-size: 17px; line-height: 1.7;">
+          Alle Stationen mit Jahreszahlen stehen im <a
             href="/dokumente/Torsten_Guenter_Lebenslauf.pdf"
             type="application/pdf"
             download
