@@ -68,7 +68,7 @@ const erzaehlung = stil === 'erzaehlung';
   </div>
 
   {fuss && (
-    <div class="spine-foot" aria-hidden="true">
+    <div class="spine-foot" data-reveal-fuss aria-hidden="true">
       <img src="/dna-spine-foot.png" width="280" height="501" alt="" />
     </div>
   )}
@@ -141,11 +141,13 @@ const erzaehlung = stil === 'erzaehlung';
   /* Ohne JS ist die Schiene voll sichtbar; erst wenn das Skript uebernimmt,
      startet sie leer und waechst scroll-gekoppelt. */
   .spine-reveal-ready .spine-rail { clip-path: inset(0 0 100% 0); }
-  .spine-reveal-ready [data-reveal] {
+  .spine-reveal-ready [data-reveal],
+  .spine-reveal-ready [data-reveal-fuss] {
     opacity: 0; transform: translateY(12px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  .spine-reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
+  .spine-reveal-ready [data-reveal].is-visible,
+  .spine-reveal-ready [data-reveal-fuss].is-visible { opacity: 1; transform: none; }
 
   /* Mobil: Schiene + Fuss ausblenden, Sechsecke bleiben als Timeline-Marker */
   @media (max-width: 640px) {
@@ -158,7 +160,8 @@ const erzaehlung = stil === 'erzaehlung';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .spine-reveal-ready [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+    .spine-reveal-ready [data-reveal],
+    .spine-reveal-ready [data-reveal-fuss] { opacity: 1 !important; transform: none !important; transition: none; }
     .spine-rail { clip-path: none !important; transition: none; }
   }
 </style>
@@ -167,31 +170,55 @@ const erzaehlung = stil === 'erzaehlung';
   document.querySelectorAll('.spine').forEach((spine) => {
     const track = spine.querySelector('.spine-track') as HTMLElement | null;
     const rail  = spine.querySelector('.spine-rail') as HTMLElement | null;
+    const fuss  = spine.querySelector('[data-reveal-fuss]');
     const steps = Array.from(spine.querySelectorAll('.spine-step[data-reveal]'));
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (reduce || !track || !rail) {
-      steps.forEach((el) => el.classList.add('is-visible'));
-      return;                     // Schiene bleibt voll sichtbar (CSS-Default)
+      [...steps, fuss].forEach((el) => el && el.classList.add('is-visible'));
+      return;                     // Schiene bleibt voll sichtbar (CSS-Vorgabe)
     }
 
     spine.classList.add('spine-reveal-ready');
 
-    let maxFill = 0;              // Fuellstand waechst nur, schrumpft nie
+    let fussGezeigt = false;
+    let maxFill = 0;              // hoechster erreichter Fuellstand - waechst nur
+
     const update = () => {
       const rect = track.getBoundingClientRect();
-      const sicht = window.innerHeight;
-      const gelaufen = sicht * 0.75 - rect.top;
-      const anteil = Math.max(0, Math.min(1, gelaufen / Math.max(1, rect.height)));
-      maxFill = Math.max(maxFill, anteil);
-      rail.style.clipPath = `inset(0 0 ${((1 - maxFill) * 100).toFixed(2)}% 0)`;
-      steps.forEach((li) => {
-        if (li.getBoundingClientRect().top < sicht * 0.85) li.classList.add('is-visible');
+      if (!rect.height) return;
+      const linie = window.innerHeight * 0.82;                        // Ausloese-Linie
+      const spitze = Math.min(Math.max(linie - rect.top, 0), rect.height);
+      const fill = spitze / rect.height;
+      if (fill > maxFill) maxFill = fill;
+      rail.style.clipPath = 'inset(0 0 ' + ((1 - maxFill) * 100).toFixed(2) + '% 0)';
+
+      // Schritt erscheint, sobald die Spitze der Schiene seinen Knoten erreicht
+      const erreicht = maxFill * rect.height;
+      steps.forEach((el) => {
+        const node = el.querySelector('.spine-node');
+        const ref = (node || el) as HTMLElement;
+        const y = ref.getBoundingClientRect().top
+                + (node ? ref.offsetHeight / 2 : 0) - rect.top;
+        if (erreicht >= y) el.classList.add('is-visible');
       });
+
+      // Zerfall erst, wenn die Schiene unten ankommt - nicht vorher
+      if (!fussGezeigt && maxFill > 0.985) {
+        fussGezeigt = true;
+        fuss && fuss.classList.add('is-visible');
+      }
+    };
+
+    let laeuft = false;
+    const beiScroll = () => {
+      if (laeuft) return;
+      laeuft = true;
+      requestAnimationFrame(() => { update(); laeuft = false; });
     };
 
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('scroll', beiScroll, { passive: true });
+    window.addEventListener('resize', beiScroll);
   });
 </script>
