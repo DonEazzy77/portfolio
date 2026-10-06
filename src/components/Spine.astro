@@ -157,16 +157,25 @@ const erzaehlung = stil === 'erzaehlung';
   /* Zerfalls-Fuss: schliesst UNTEN an die Schiene an und faechert in Daten auf.
      GESCHWISTER der Spur, nicht ihr Kind — sonst liefe die Schiene hinter ihm
      weiter. Links auf die Schiene (6px) ausgerichtet. */
-  .spine-foot { margin: -2px 0 0 6px; }
+  /* -10px statt -2px: Der Fuss ueberlappt das Ende der Helix leicht, damit die
+     Straenge sich beruehren statt untereinander zu stehen. Mehr als etwa -18px
+     schneidet in die letzte Kreuzung. */
+  .spine-foot { margin: -10px 0 0 6px; }
   .spine-foot img { display: block; width: 100px; height: auto; opacity: 0.9; }
 
   /* Ohne JS ist die Schiene voll sichtbar; erst wenn das Skript uebernimmt,
      startet sie leer und waechst scroll-gekoppelt. */
   .spine-reveal-ready .spine-rail { clip-path: inset(0 0 100% 0); }
-  .spine-reveal-ready [data-reveal],
-  .spine-reveal-ready [data-reveal-fuss] {
+  .spine-reveal-ready [data-reveal] {
     opacity: 0; transform: translateY(12px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  /* Der Fuss blendet an Ort und Stelle ein, ohne die 12px Aufwaertsbewegung:
+     ein Zerfall, der von unten heranfaehrt, wirkt losgeloest und waechst erst
+     am Ende der Animation an die Schiene heran. */
+  .spine-reveal-ready [data-reveal-fuss] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
   .spine-reveal-ready [data-reveal].is-visible,
   .spine-reveal-ready [data-reveal-fuss].is-visible { opacity: 1; transform: none; }
