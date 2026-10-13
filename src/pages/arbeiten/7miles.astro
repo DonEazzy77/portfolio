@@ -147,7 +147,9 @@ const siebenMeilen = {
   galerie: {
     titel: 'Route 7 — ein grüner Schimmer am Horizont',
     intro: 'Jede Seite der Fahrschule bekam ihr eigenes Motiv aus derselben Welt: eine leere Straße in der Dämmerung, ein Präriehund, der immer abseits der Fahrbahn sitzt und zuschaut — und am Horizont ein grüner Schimmer. Er ist das Markengrün als Wegmarke: Das Ziel liegt ein Stück die Straße runter, sieben Meilen vielleicht, und es leuchtet schon. Zusammengehalten wird die Serie von einer festen Lichtgrammatik — Tintenblau, warmes Bernstein und genau ein Neongrün pro Bild — und einer Regel für jede Komposition: kein Text im Bild, eine ruhige Fläche, auf der die Überschrift der Seite wohnen kann. Selbst die Fehlerseite spielt mit; wer sich verklickt, landet an einer Sackgasse mit Laterne.',
-    label: 'KI-generierte Bildserie · Konzept, Bildregie und Auswahl: Torsten Günter · Kein Foto.',
+    // Kopfzeile aus Kleinauftrag Biz ④-009 vom 13.10.2026, Wortlaut abgenommen
+    // von S&R (①-049). Steht ueber der Leiste, vor dem ersten Bild.
+    kiKopfzeile: 'Die Motive dieser Arbeiten sind mit KI-Werkzeugen entstanden – Bildidee, Führung und Auswahl sind meine Arbeit, abgestimmt mit dem Kunden.',
     bilder: [
       { src: heroKlassen, stark: 'Alle Klassen aus einer Hand.',
         text: 'Mofa, Roller, zwei Maschinen und ein alter Wagen vor dem Diner — im Fenster das Neonschild, genau so, wie es gebaut wird.',
@@ -371,7 +373,7 @@ const siebenMeilen = {
               {siebenMeilen.galerie.intro}
             </p>
             <p class="text-xs text-text-secondary/80 leading-relaxed max-w-2xl mb-6">
-              {siebenMeilen.galerie.label}
+              {siebenMeilen.galerie.kiKopfzeile}
             </p>
 
             <ol class="route7" tabindex="0" role="group"
